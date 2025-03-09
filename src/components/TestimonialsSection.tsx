@@ -60,7 +60,7 @@ const TestimonialsSection = () => {
     }, 8000);
 
     return () => clearInterval(interval);
-  }, [activeIndex]);
+  }, [isAnimating]); // Changed from activeIndex to isAnimating to prevent issues
 
   return (
     <section id="testimonials" className="section-padding bg-primary-light">
@@ -126,7 +126,7 @@ const TestimonialsSection = () => {
           
           <button
             onClick={goToPrevSlide}
-            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-primary-light rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20"
+            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-primary-light hover:bg-primary-light/90 rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 border border-primary-gold"
             aria-label="Previous testimonial"
           >
             <ChevronRight size={24} />
@@ -134,7 +134,7 @@ const TestimonialsSection = () => {
           
           <button
             onClick={goToNextSlide}
-            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-primary-light rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20"
+            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-primary-light hover:bg-primary-light/90 rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 border border-primary-gold"
             aria-label="Next testimonial"
           >
             <ChevronLeft size={24} />
