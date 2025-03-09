@@ -65,11 +65,6 @@
     @apply font-karantina font-bold text-black;
   }
   
-  /* Global default text color for all elements */
-  p, span, div, a, button, input, textarea, select, label {
-    @apply text-black;
-  }
-  
   /* Ensure inputs have proper contrast */
   input, textarea, select {
     @apply bg-white text-black border-gray-300;
@@ -184,15 +179,5 @@
   /* Fix button alignment */
   .btn-center {
     @apply mx-auto;
-  }
-  
-  /* Explicitly set light background overlay for sections where text may be invisible */
-  .section-overlay {
-    @apply relative z-10;
-  }
-  
-  .section-overlay::before {
-    content: "";
-    @apply absolute inset-0 bg-white bg-opacity-90 -z-10;
   }
 }
