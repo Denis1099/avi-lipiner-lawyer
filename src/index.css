@@ -62,7 +62,17 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-karantina font-bold;
+    @apply font-karantina font-bold text-black;
+  }
+  
+  /* Ensure inputs have proper contrast */
+  input, textarea, select {
+    @apply bg-white text-black border-gray-300;
+  }
+  
+  /* Fix placeholder text visibility */
+  ::placeholder {
+    @apply text-gray-500;
   }
 }
 
@@ -150,5 +160,24 @@
   
   .custom-shadow {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Fix FAQ section text visibility */
+  .faq-question {
+    @apply text-primary-gold font-medium;
+  }
+  
+  .faq-answer {
+    @apply text-black;
+  }
+  
+  /* Center align contact form */
+  .contact-form-wrapper {
+    @apply mx-auto;
+  }
+  
+  /* Fix button alignment */
+  .btn-center {
+    @apply mx-auto;
   }
 }

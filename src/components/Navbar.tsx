@@ -47,20 +47,26 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1 space-x-reverse">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-black hover:text-primary-gold hover:bg-secondary-gray px-3 py-2 rounded-md text-xl font-medium transition-all duration-200"
-              >
-                {link.name}
-              </a>
-            ))}
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-1 space-x-reverse">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-black hover:text-primary-gold hover:bg-secondary-gray px-3 py-2 rounded-md text-xl font-medium transition-all duration-200"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Button - Right aligned */}
+          <div className="hidden lg:flex items-center">
             <a
               href="tel:+1234567890"
-              className="bg-primary-gold text-primary-light hover:bg-opacity-90 mr-4 px-4 py-2 rounded-md text-xl font-medium transition-all duration-300 flex items-center"
+              className="bg-primary-gold text-primary-light hover:bg-opacity-90 px-4 py-2 rounded-md text-xl font-medium transition-all duration-300 flex items-center"
             >
               <Phone size={16} className="ml-2" />
               התקשרו עכשיו

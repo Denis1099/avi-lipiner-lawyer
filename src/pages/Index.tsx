@@ -15,9 +15,13 @@ const Index = () => {
   useEffect(() => {
     // This enables smooth scrolling when clicking on navigation links
     document.documentElement.style.scrollBehavior = 'smooth';
+    
+    // Apply contrast fixes for better visibility on page load
+    document.body.classList.add('high-contrast-mode');
 
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
+      document.body.classList.remove('high-contrast-mode');
     };
   }, []);
 

@@ -75,7 +75,7 @@ const FaqSection = () => {
                     onClick={() => toggleAccordion(index)}
                     className="w-full px-6 py-4 text-right flex justify-between items-center bg-primary-light hover:bg-gray-50 transition-colors duration-200"
                   >
-                    <span className="font-medium text-xl text-primary-gold">
+                    <span className="font-medium text-xl text-primary-gold faq-question">
                       {faq.question}
                     </span>
                     <ChevronDown
@@ -92,7 +92,7 @@ const FaqSection = () => {
                       openIndex === index ? "max-h-96 py-4 px-6" : "max-h-0"
                     )}
                   >
-                    <p className="text-black text-lg">{faq.answer}</p>
+                    <p className="text-black text-lg faq-answer">{faq.answer}</p>
                   </div>
                 </div>
               ))}
