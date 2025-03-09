@@ -39,11 +39,11 @@ const AdvantagesSection = () => {
   ];
 
   return (
-    <section id="advantages" className="section-padding bg-gradient-to-b from-white to-secondary-light relative overflow-hidden">
+    <section id="advantages" className="section-padding bg-gradient-to-b from-primary-light to-secondary-gray relative overflow-hidden">
       <div className="container mx-auto">
         <AnimatedBox animation="fadeIn">
-          <h2 className="section-title text-center mx-auto">למה לבחור בליווי משפטי של עו"ד אבי ליפינר?</h2>
-          <p className="section-subtitle text-center">
+          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl">למה לבחור בליווי משפטי של עו"ד אבי ליפינר?</h2>
+          <p className="section-subtitle text-center text-lg">
             עסקת מכר דירה היא אחת ההחלטות הפיננסיות המשמעותיות בחייכם. ליווי משפטי מקצועי ומנוסה עושה את ההבדל בין עסקה מוצלחת לבין כאב ראש מתמשך.
           </p>
         </AnimatedBox>
@@ -54,13 +54,13 @@ const AdvantagesSection = () => {
               key={index} 
               animation="scaleIn" 
               delay={100 * index}
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="bg-primary-light rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-100"
             >
-              <div className="bg-primary-light/30 rounded-full p-4 inline-block mb-4 text-primary-navy">
+              <div className="bg-primary-gold/30 rounded-full p-4 inline-block mb-4 text-primary-gold">
                 {advantage.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 text-primary-navy">{advantage.title}</h3>
-              <p className="text-gray-600">{advantage.description}</p>
+              <h3 className="text-2xl font-bold mb-3 text-primary-gold">{advantage.title}</h3>
+              <p className="text-black text-lg">{advantage.description}</p>
             </AnimatedBox>
           ))}
         </div>
@@ -72,7 +72,7 @@ const AdvantagesSection = () => {
                 {statistics.map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="text-4xl font-bold text-primary-gold mb-2">{stat.value}</div>
-                    <div className="text-white">{stat.label}</div>
+                    <div className="text-primary-light">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -83,7 +83,7 @@ const AdvantagesSection = () => {
         <AnimatedBox animation="fadeIn" delay={600} className="mt-12 text-center">
           <a 
             href="#contact" 
-            className="inline-block py-3 px-8 bg-primary-gold text-primary-navy font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            className="inline-block py-3 px-8 bg-primary-gold text-primary-light font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xl"
           >
             צרו קשר עכשיו
           </a>

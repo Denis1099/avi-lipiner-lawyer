@@ -33,11 +33,11 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-secondary-light">
+    <section id="contact" className="section-padding bg-secondary-gray">
       <div className="container mx-auto">
         <AnimatedBox animation="fadeIn">
-          <h2 className="section-title text-center mx-auto">נתחיל יחד את הדרך לעסקה מוצלחת</h2>
-          <p className="section-subtitle text-center">
+          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl">נתחיל יחד את הדרך לעסקה מוצלחת</h2>
+          <p className="section-subtitle text-center text-lg">
             השאירו פרטים ואחזור אליכם תוך 24 שעות לתיאום פגישת ייעוץ ראשונית ללא עלות
           </p>
         </AnimatedBox>
@@ -48,21 +48,21 @@ const ContactSection = () => {
           </AnimatedBox>
           
           <AnimatedBox animation="slideInLeft" delay={200} className="lg:col-span-5">
-            <div className="bg-white rounded-lg shadow-lg h-full p-6 sm:p-8">
-              <h3 className="text-xl font-bold mb-6 text-primary-navy">פרטי התקשרות</h3>
+            <div className="bg-primary-light rounded-lg shadow-lg h-full p-6 sm:p-8">
+              <h3 className="text-2xl font-bold mb-6 text-primary-gold">פרטי התקשרות</h3>
               
               <div className="space-y-6">
                 {contactInfo.map((item, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="bg-secondary-light rounded-full p-2 ml-4 flex-shrink-0 text-primary-navy">
+                    <div className="bg-secondary-gray rounded-full p-2 ml-4 flex-shrink-0 text-primary-gold">
                       {item.icon}
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-800 mb-1">{item.title}</h4>
+                      <h4 className="font-medium text-black mb-1 text-lg">{item.title}</h4>
                       {item.href ? (
                         <a 
                           href={item.href} 
-                          className="text-primary-navy hover:text-primary-gold transition-colors duration-200 flex items-center group"
+                          className="text-primary-gold hover:text-primary-gold/80 transition-colors duration-200 flex items-center group text-lg"
                           target={item.href.startsWith('http') ? "_blank" : undefined}
                           rel={item.href.startsWith('http') ? "noopener noreferrer" : undefined}
                         >
@@ -70,7 +70,7 @@ const ContactSection = () => {
                           <ArrowRight size={14} className="mr-1 opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                         </a>
                       ) : (
-                        <p className="text-gray-600">{item.value}</p>
+                        <p className="text-black text-lg">{item.value}</p>
                       )}
                     </div>
                   </div>
@@ -78,11 +78,11 @@ const ContactSection = () => {
               </div>
               
               <div className="mt-10">
-                <h3 className="text-xl font-bold mb-4 text-primary-navy">בואו נישאר בקשר</h3>
+                <h3 className="text-2xl font-bold mb-4 text-primary-gold">בואו נישאר בקשר</h3>
                 <div className="flex space-x-4 space-x-reverse">
                   <a 
                     href="#" 
-                    className="bg-primary-navy text-white p-3 rounded-full hover:bg-primary-gold transition-colors duration-300"
+                    className="bg-primary-gold text-primary-light p-3 rounded-full hover:bg-opacity-90 transition-colors duration-300"
                     aria-label="Facebook"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -91,7 +91,7 @@ const ContactSection = () => {
                   </a>
                   <a 
                     href="#" 
-                    className="bg-primary-navy text-white p-3 rounded-full hover:bg-primary-gold transition-colors duration-300"
+                    className="bg-primary-gold text-primary-light p-3 rounded-full hover:bg-opacity-90 transition-colors duration-300"
                     aria-label="Instagram"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">

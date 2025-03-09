@@ -69,14 +69,14 @@ const ContactForm: React.FC<ContactFormProps> = ({
     <form 
       onSubmit={handleSubmit} 
       className={cn(
-        'bg-white rounded-lg p-6 shadow-lg transition-all duration-300',
+        'bg-primary-light rounded-lg p-6 shadow-lg transition-all duration-300',
         'border border-gray-100 hover:shadow-xl',
         className
       )}
     >
       <div className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="name" className="block text-lg font-medium text-black mb-1">
             שם מלא
           </label>
           <input
@@ -86,13 +86,13 @@ const ContactForm: React.FC<ContactFormProps> = ({
             required
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-navy focus:border-primary-navy transition-all duration-200"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
             placeholder="הזן/י את שמך המלא"
           />
         </div>
         
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="phone" className="block text-lg font-medium text-black mb-1">
             טלפון נייד
           </label>
           <input
@@ -102,7 +102,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             required
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-navy focus:border-primary-navy transition-all duration-200"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
             placeholder="הזן/י מספר טלפון נייד"
             dir="ltr"
           />
@@ -111,7 +111,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         {!simplified && (
           <>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-lg font-medium text-black mb-1">
                 דוא"ל
               </label>
               <input
@@ -120,14 +120,14 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-navy focus:border-primary-navy transition-all duration-200"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
                 placeholder="דוא״ל (לא חובה)"
                 dir="ltr"
               />
             </div>
             
             <div>
-              <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="serviceType" className="block text-lg font-medium text-black mb-1">
                 סוג העסקה
               </label>
               <select
@@ -135,7 +135,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 name="serviceType"
                 value={formData.serviceType}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-navy focus:border-primary-navy transition-all duration-200"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
               >
                 <option value="קנייה">קנייה</option>
                 <option value="מכירה">מכירה</option>
@@ -145,7 +145,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             </div>
             
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="message" className="block text-lg font-medium text-black mb-1">
                 פרטים נוספים
               </label>
               <textarea
@@ -154,7 +154,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-navy focus:border-primary-navy transition-all duration-200"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
                 placeholder="יש לך שאלות או פרטים נוספים? זה המקום לשתף"
               />
             </div>
@@ -165,14 +165,14 @@ const ContactForm: React.FC<ContactFormProps> = ({
           type="submit"
           disabled={loading}
           className={cn(
-            'w-full py-3 px-6 text-white font-medium rounded-md transition-all duration-300',
-            'bg-primary-navy hover:bg-primary-navy/90 focus:outline-none focus:ring-2 focus:ring-primary-gold',
-            'shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex justify-center items-center space-x-2',
+            'w-full py-3 px-6 text-primary-light font-medium rounded-md transition-all duration-300',
+            'bg-primary-gold hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary-gold',
+            'shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex justify-center items-center space-x-2 text-xl',
             loading && 'opacity-80 cursor-not-allowed'
           )}
         >
           {loading ? (
-            <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+            <div className="h-5 w-5 border-2 border-primary-light border-t-transparent rounded-full animate-spin"></div>
           ) : (
             simplified ? 'קבעו שיחת ייעוץ חינם' : 'שלחו ונדבר בהקדם'
           )}

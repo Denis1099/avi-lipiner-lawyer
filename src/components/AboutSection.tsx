@@ -13,14 +13,14 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="section-padding bg-white relative overflow-hidden">
+    <section id="about" className="section-padding bg-fbfbfb relative overflow-hidden">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           <AnimatedBox animation="slideInRight" className="w-full lg:w-5/12 mb-10 lg:mb-0">
             <div className="relative">
-              <div className="absolute -top-4 -right-4 w-full h-full bg-primary-navy/10 rounded-lg"></div>
+              <div className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/10 rounded-lg"></div>
               <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=3474"
+                src="/public/lovable-uploads/d33894e1-3185-4556-9cfa-c82530c7e965.png"
                 alt="עו״ד אבי ליפינר"
                 className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover"
                 style={{ aspectRatio: '3/4' }}
@@ -31,9 +31,9 @@ const AboutSection = () => {
           
           <div className="w-full lg:w-7/12">
             <AnimatedBox animation="slideInLeft" delay={100}>
-              <h2 className="section-title mb-6">עו"ד אבי ליפינר - מומחה במקרקעין ופיננסים</h2>
+              <h2 className="section-title mb-6 text-3xl md:text-5xl">עו"ד אבי ליפינר - מומחה במקרקעין ופיננסים</h2>
               
-              <div className="text-gray-700 space-y-4 mb-8">
+              <div className="text-black space-y-4 mb-8 text-xl">
                 <p>
                   את דרכי המקצועית התחלתי מתוך תשוקה ללוות אנשים ולהקל עליהם בתהליך המורכב של רכישת דירה. כשאתם נכנסים לעסקת מקרקעין, אתם לא מחפשים רק עורך דין - אתם מחפשים שותף לדרך שיבין את כל ההיבטים של העסקה.
                 </p>
@@ -44,15 +44,15 @@ const AboutSection = () => {
             </AnimatedBox>
             
             <AnimatedBox animation="slideUp" delay={300}>
-              <div className="bg-secondary-light rounded-xl p-6 shadow-md">
-                <h3 className="font-bold text-xl mb-4 text-primary-navy">הישגים מקצועיים:</h3>
-                <ul className="space-y-3">
+              <div className="bg-secondary-gray rounded-xl p-6 shadow-md">
+                <h3 className="font-bold text-2xl mb-4 text-primary-gold">הישגים מקצועיים:</h3>
+                <ul className="space-y-3 text-lg">
                   {achievements.map((achievement, index) => (
                     <li key={index} className="flex items-start">
                       <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0">
-                        <Check size={14} className="text-white" />
+                        <Check size={14} className="text-primary-light" />
                       </div>
-                      <span>{achievement}</span>
+                      <span className="text-black">{achievement}</span>
                     </li>
                   ))}
                 </ul>
@@ -60,9 +60,9 @@ const AboutSection = () => {
             </AnimatedBox>
             
             <AnimatedBox animation="fadeIn" delay={500}>
-              <div className="mt-8 p-6 border-r-4 border-primary-gold bg-white shadow-md rounded-lg">
-                <h3 className="font-bold text-lg mb-2 text-primary-navy">המחויבות שלי אליכם:</h3>
-                <p className="text-gray-700">
+              <div className="mt-8 p-6 border-r-4 border-primary-gold bg-primary-light shadow-md rounded-lg">
+                <h3 className="font-bold text-2xl mb-2 text-primary-gold">המחויבות שלי אליכם:</h3>
+                <p className="text-black text-lg">
                   המחויבות שלי היא לספק ללקוחותיי שירות מקצועי, אמין ואישי. אני מאמין ביחס אישי לכל לקוח, בזמינות מרבית, בסבלנות לכל שאלה ובקשה, ובדקדקנות תוך ירידה לפרטים הקטנים ביותר. יחד נבטיח שהעסקה שלכם תהיה בטוחה, מוצלחת, ללא דאגות וללא פשרות!
                 </p>
               </div>
@@ -73,7 +73,7 @@ const AboutSection = () => {
       
       {/* Decorative elements */}
       <div className="hidden lg:block absolute top-20 left-10 w-64 h-64 bg-primary-gold/5 rounded-full"></div>
-      <div className="hidden lg:block absolute bottom-20 right-10 w-40 h-40 bg-primary-navy/5 rounded-full"></div>
+      <div className="hidden lg:block absolute bottom-20 right-10 w-40 h-40 bg-primary-gold/10 rounded-full"></div>
     </section>
   );
 };

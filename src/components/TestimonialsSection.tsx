@@ -63,15 +63,15 @@ const TestimonialsSection = () => {
   }, [isAnimating]);
 
   return (
-    <section id="testimonials" className="section-padding bg-secondary-light">
+    <section id="testimonials" className="section-padding bg-primary-light">
       <div className="container mx-auto">
         <AnimatedBox animation="fadeIn">
-          <h2 className="section-title text-center mx-auto">לקוחות מספרים על הליווי המשפטי שקיבלו</h2>
+          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl">לקוחות מספרים על הליווי המשפטי שקיבלו</h2>
         </AnimatedBox>
 
         <div className="mt-16 relative">
           <div 
-            className="overflow-hidden rounded-xl bg-white shadow-lg relative"
+            className="overflow-hidden rounded-xl bg-primary-light shadow-lg relative"
             ref={sliderRef}
           >
             <div 
@@ -94,14 +94,14 @@ const TestimonialsSection = () => {
                         : 'opacity-0 translate-x-[-100px]'
                     }`}
                   >
-                    <p className="text-lg text-gray-700 mb-8 leading-relaxed text-center">
+                    <p className="text-xl text-black mb-8 leading-relaxed text-center">
                       {testimonial.text}
                     </p>
                     <div className="text-center">
-                      <p className="font-bold text-primary-navy text-lg">
+                      <p className="font-bold text-primary-gold text-2xl">
                         {testimonial.name}
                       </p>
-                      <p className="text-gray-500">
+                      <p className="text-black">
                         {testimonial.location}
                       </p>
                     </div>
@@ -126,7 +126,7 @@ const TestimonialsSection = () => {
           
           <button
             onClick={goToPrevSlide}
-            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 text-primary-navy hidden sm:block"
+            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-primary-light rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold hidden sm:block"
             aria-label="Previous testimonial"
           >
             <ChevronRight size={24} />
@@ -134,7 +134,7 @@ const TestimonialsSection = () => {
           
           <button
             onClick={goToNextSlide}
-            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 text-primary-navy hidden sm:block"
+            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-primary-light rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold hidden sm:block"
             aria-label="Next testimonial"
           >
             <ChevronLeft size={24} />

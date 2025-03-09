@@ -20,6 +20,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
+				karantina: ['Karantina', 'cursive'],
 				heebo: ['Heebo', 'sans-serif'],
 				assistant: ['Assistant', 'sans-serif'],
 			},
@@ -32,15 +33,15 @@ export default {
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
-					gold: '#d4af37',
-					navy: '#1a365d',
-					light: '#f9d77e'
+					gold: '#b08d57',
+					navy: '#000000',
+					light: '#fbfbfb'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))',
-					light: '#e6f0ff',
-					gray: '#f8f9fa'
+					light: '#fbfbfb',
+					gray: '#d6d6d6'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',

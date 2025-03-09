@@ -16,25 +16,20 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-primary-navy text-white pt-16 pb-6">
+    <footer className="bg-primary-navy text-primary-light pt-16 pb-6">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
           <div className="md:col-span-1 lg:col-span-1">
             <div className="flex items-center mb-6">
-              <div className="h-12 w-12 bg-white rounded-lg flex items-center justify-center text-primary-navy font-bold text-lg">
-                עו״ד
-              </div>
-              <div className="mr-3 text-xl font-bold">
-                אבי ליפינר
-              </div>
+              <img src="/public/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
             </div>
-            <p className="text-gray-300 mb-8">
+            <p className="text-primary-light mb-8 text-lg">
               עו"ד אבי ליפינר - מומחה במקרקעין. מעניק ללקוחותיו ליווי משפטי מקצועי, אישי וזמין בעסקאות מכר דירות, תוך שילוב ייחודי של ידע משפטי ופיננסי.
             </p>
             <div className="flex space-x-4 space-x-reverse">
               <a 
                 href="#" 
-                className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300"
+                className="bg-primary-light/10 hover:bg-primary-light/20 p-2 rounded-full transition-colors duration-300"
                 aria-label="Facebook"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -43,7 +38,7 @@ const Footer = () => {
               </a>
               <a 
                 href="#" 
-                className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors duration-300"
+                className="bg-primary-light/10 hover:bg-primary-light/20 p-2 rounded-full transition-colors duration-300"
                 aria-label="Instagram"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -56,13 +51,13 @@ const Footer = () => {
           </div>
           
           <div className="md:col-span-1 lg:col-span-1">
-            <h3 className="text-lg font-bold mb-6 border-b border-white/20 pb-2">ניווט מהיר</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xl font-bold mb-6 border-b border-primary-light/20 pb-2 text-primary-gold">ניווט מהיר</h3>
+            <ul className="space-y-3 text-lg">
               {footerLinks.map((link, index) => (
                 <li key={index}>
                   <a 
                     href={link.href} 
-                    className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center"
+                    className="text-primary-light hover:text-primary-gold transition-colors duration-200 flex items-center"
                   >
                     <span className="ml-2">›</span>
                     {link.name}
@@ -73,8 +68,8 @@ const Footer = () => {
           </div>
           
           <div className="md:col-span-1 lg:col-span-1">
-            <h3 className="text-lg font-bold mb-6 border-b border-white/20 pb-2">שעות פעילות</h3>
-            <div className="space-y-3 text-gray-300">
+            <h3 className="text-xl font-bold mb-6 border-b border-primary-light/20 pb-2 text-primary-gold">שעות פעילות</h3>
+            <div className="space-y-3 text-primary-light text-lg">
               <div className="flex justify-between">
                 <span>ראשון - חמישי</span>
                 <span>9:00 - 19:00</span>
@@ -87,20 +82,20 @@ const Footer = () => {
                 <span>שבת</span>
                 <span>סגור</span>
               </div>
-              <div className="pt-4 text-white">
+              <div className="pt-4 text-primary-light">
                 ניתן לתאם פגישות גם מחוץ לשעות הפעילות
               </div>
             </div>
           </div>
           
           <div className="md:col-span-1 lg:col-span-1">
-            <h3 className="text-lg font-bold mb-6 border-b border-white/20 pb-2">צור קשר</h3>
-            <div className="space-y-4">
+            <h3 className="text-xl font-bold mb-6 border-b border-primary-light/20 pb-2 text-primary-gold">צור קשר</h3>
+            <div className="space-y-4 text-lg">
               <div className="flex">
                 <PhoneCall size={18} className="ml-3 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-medium mb-1">טלפון</h4>
-                  <a href="tel:0500000000" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="tel:0500000000" className="text-primary-light hover:text-primary-gold transition-colors duration-200">
                     050-0000000
                   </a>
                 </div>
@@ -110,7 +105,7 @@ const Footer = () => {
                 <Mail size={18} className="ml-3 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-medium mb-1">דוא"ל</h4>
-                  <a href="mailto:info@lawyer.com" className="text-gray-300 hover:text-white transition-colors duration-200">
+                  <a href="mailto:info@lawyer.com" className="text-primary-light hover:text-primary-gold transition-colors duration-200">
                     info@lawyer.com
                   </a>
                 </div>
@@ -120,7 +115,7 @@ const Footer = () => {
                 <MapPin size={18} className="ml-3 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-medium mb-1">כתובת</h4>
-                  <address className="text-gray-300 not-italic">
+                  <address className="text-primary-light not-italic">
                     אבן גבירול 30, תל אביב
                   </address>
                 </div>
@@ -129,7 +124,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-white/10 mt-12 pt-6 text-center text-gray-400 text-sm">
+        <div className="border-t border-primary-light/10 mt-12 pt-6 text-center text-primary-light text-sm">
           <p>© {currentYear} כל הזכויות שמורות | עו"ד אבי ליפינר - מומחה במקרקעין</p>
         </div>
       </div>

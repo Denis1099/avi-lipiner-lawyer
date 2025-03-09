@@ -44,17 +44,17 @@ const FaqSection = () => {
   };
 
   return (
-    <section id="faq" className="section-padding bg-white">
+    <section id="faq" className="section-padding bg-secondary-gray">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
           <div className="lg:col-span-4">
             <AnimatedBox animation="slideInRight">
-              <h2 className="section-title">שאלות נפוצות בעסקאות מכר דירות</h2>
+              <h2 className="section-title text-3xl md:text-5xl">שאלות נפוצות בעסקאות מכר דירות</h2>
               
               <div className="mt-8 relative hidden lg:block">
                 <div className="relative z-10">
-                  <HelpCircle size={120} className="text-primary-navy opacity-10" />
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl font-bold text-primary-navy">?</div>
+                  <HelpCircle size={120} className="text-primary-gold opacity-10" />
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl font-bold text-primary-gold">?</div>
                 </div>
                 <div className="absolute top-20 right-8 w-40 h-40 bg-primary-gold/10 rounded-full -z-10"></div>
               </div>
@@ -73,14 +73,14 @@ const FaqSection = () => {
                 >
                   <button
                     onClick={() => toggleAccordion(index)}
-                    className="w-full px-6 py-4 text-right flex justify-between items-center bg-white hover:bg-gray-50 transition-colors duration-200"
+                    className="w-full px-6 py-4 text-right flex justify-between items-center bg-primary-light hover:bg-gray-50 transition-colors duration-200"
                   >
-                    <span className="font-medium text-lg text-primary-navy">
+                    <span className="font-medium text-xl text-primary-gold">
                       {faq.question}
                     </span>
                     <ChevronDown
                       className={cn(
-                        "text-primary-navy transition-transform duration-300",
+                        "text-primary-gold transition-transform duration-300",
                         openIndex === index ? "transform rotate-180" : ""
                       )}
                       size={20}
@@ -92,7 +92,7 @@ const FaqSection = () => {
                       openIndex === index ? "max-h-96 py-4 px-6" : "max-h-0"
                     )}
                   >
-                    <p className="text-gray-700">{faq.answer}</p>
+                    <p className="text-black text-lg">{faq.answer}</p>
                   </div>
                 </div>
               ))}

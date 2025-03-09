@@ -39,7 +39,7 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white shadow-md py-2' 
+          ? 'bg-primary-light shadow-md py-2' 
           : 'bg-transparent py-4'
       }`}
     >
@@ -47,12 +47,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <a href="#" className="flex items-center">
-              <div className="h-10 w-10 bg-primary-navy rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                עו״ד
-              </div>
-              <div className="mr-3 text-lg font-bold text-primary-navy">
-                אבי ליפינר
-              </div>
+              <img src="/public/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
             </a>
           </div>
 
@@ -62,14 +57,14 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-700 hover:text-primary-navy hover:bg-secondary-light px-3 py-2 rounded-md text-sm font-medium transition-all duration-200"
+                className="text-black hover:text-primary-gold hover:bg-secondary-gray px-3 py-2 rounded-md text-xl font-medium transition-all duration-200"
               >
                 {link.name}
               </a>
             ))}
             <a
               href="tel:+1234567890"
-              className="bg-primary-navy text-white hover:bg-primary-navy/90 mr-4 px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center"
+              className="bg-primary-gold text-primary-light hover:bg-opacity-90 mr-4 px-4 py-2 rounded-md text-xl font-medium transition-all duration-300 flex items-center"
             >
               <Phone size={16} className="ml-2" />
               התקשרו עכשיו
@@ -80,7 +75,7 @@ const Navbar = () => {
           <div className="lg:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-primary-navy hover:text-primary-navy/80 focus:outline-none transition-all duration-300"
+              className="inline-flex items-center justify-center p-2 rounded-md text-primary-gold hover:text-primary-gold/80 focus:outline-none transition-all duration-300"
             >
               {isMenuOpen ? (
                 <X size={24} className="block h-6 w-6" />
@@ -94,21 +89,21 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white shadow-lg p-4 absolute top-16 right-0 left-0 z-50 animate-slideInRight">
+        <div className="lg:hidden bg-primary-light shadow-lg p-4 absolute top-16 right-0 left-0 z-50 animate-slideInRight">
           <div className="space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-primary-navy hover:bg-secondary-light rounded-md"
+                className="block px-3 py-2 text-xl font-medium text-black hover:text-primary-gold hover:bg-secondary-gray rounded-md"
               >
                 {link.name}
               </a>
             ))}
             <a
               href="tel:+1234567890"
-              className="block px-3 py-2 text-base font-medium text-white bg-primary-navy hover:bg-primary-navy/90 rounded-md mt-3 text-center"
+              className="block px-3 py-2 text-xl font-medium text-primary-light bg-primary-gold hover:bg-opacity-90 rounded-md mt-3 text-center"
             >
               התקשרו עכשיו
             </a>

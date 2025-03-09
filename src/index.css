@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Heebo:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&family=Assistant:wght@300;400;500;600;700&family=Heebo:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -52,7 +52,7 @@
   }
 
   html {
-    @apply font-assistant;
+    @apply font-karantina;
     direction: rtl;
   }
 
@@ -62,7 +62,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heebo font-bold;
+    @apply font-karantina font-bold;
   }
 }
 
@@ -72,7 +72,7 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-6 text-primary-navy relative inline-block;
+    @apply text-3xl md:text-4xl font-bold mb-6 text-primary-gold relative inline-block;
     position: relative;
   }
   
@@ -82,7 +82,7 @@
   }
   
   .section-subtitle {
-    @apply text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-12;
+    @apply text-lg md:text-xl text-black max-w-3xl mx-auto mb-12;
   }
 
   .glass-effect {
@@ -104,7 +104,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: linear-gradient(45deg, #1a365d, #d4af37);
+    background: linear-gradient(45deg, #000000, #b08d57);
     opacity: 0.7;
     transform: scale(1.05);
     transition: transform 0.6s ease, opacity 0.6s ease;
@@ -116,7 +116,7 @@
   }
   
   .tag {
-    @apply inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary-navy text-white;
+    @apply inline-block px-3 py-1 text-sm font-medium rounded-full bg-primary-navy text-primary-light;
   }
   
   .animate-on-scroll {
@@ -141,7 +141,7 @@
     content: "•";
     position: absolute;
     right: -1.5rem;
-    color: #d4af37;
+    color: #b08d57;
   }
   
   input, textarea, select {
