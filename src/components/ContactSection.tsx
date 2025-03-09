@@ -42,12 +42,12 @@ const ContactSection = () => {
           </p>
         </AnimatedBox>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-12">
-          <AnimatedBox animation="slideInRight" className="lg:col-span-7">
-            <ContactForm />
+        <div className="flex flex-col items-center mt-12">
+          <AnimatedBox animation="slideInRight" className="w-full max-w-2xl">
+            <ContactForm className="mx-auto" />
           </AnimatedBox>
           
-          <AnimatedBox animation="slideInLeft" delay={200} className="lg:col-span-5">
+          <AnimatedBox animation="slideInLeft" delay={200} className="w-full max-w-2xl mt-8">
             <div className="bg-primary-light rounded-lg shadow-lg h-full p-6 sm:p-8">
               <h3 className="text-2xl font-bold mb-6 text-primary-gold">פרטי התקשרות</h3>
               

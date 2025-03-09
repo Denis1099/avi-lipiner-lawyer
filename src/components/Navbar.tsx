@@ -28,11 +28,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'ראשי', href: '#hero' },
     { name: 'אודות', href: '#about' },
-    { name: 'יתרונות', href: '#advantages' },
-    { name: 'שירותים', href: '#services' },
-    { name: 'המלצות', href: '#testimonials' },
     { name: 'שאלות נפוצות', href: '#faq' },
-    { name: 'צור קשר', href: '#contact' },
   ];
 
   return (
@@ -47,7 +43,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="flex items-center">
             <a href="#" className="flex items-center">
-              <img src="/public/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
+              <img src="/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
             </a>
           </div>
 

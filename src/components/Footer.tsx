@@ -8,11 +8,7 @@ const Footer = () => {
   const footerLinks = [
     { name: 'ראשי', href: '#hero' },
     { name: 'אודות', href: '#about' },
-    { name: 'יתרונות', href: '#advantages' },
-    { name: 'שירותים', href: '#services' },
-    { name: 'המלצות', href: '#testimonials' },
     { name: 'שאלות נפוצות', href: '#faq' },
-    { name: 'צור קשר', href: '#contact' },
   ];
 
   return (
@@ -21,7 +17,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
           <div className="md:col-span-1 lg:col-span-1">
             <div className="flex items-center mb-6">
-              <img src="/public/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
+              <img src="/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
             </div>
             <p className="text-primary-light mb-8 text-lg">
               עו"ד אבי ליפינר - מומחה במקרקעין. מעניק ללקוחותיו ליווי משפטי מקצועי, אישי וזמין בעסקאות מכר דירות, תוך שילוב ייחודי של ידע משפטי ופיננסי.

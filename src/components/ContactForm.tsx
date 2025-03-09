@@ -161,22 +161,24 @@ const ContactForm: React.FC<ContactFormProps> = ({
           </>
         )}
         
-        <button
-          type="submit"
-          disabled={loading}
-          className={cn(
-            'w-full py-3 px-6 text-primary-light font-medium rounded-md transition-all duration-300',
-            'bg-primary-gold hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary-gold',
-            'shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex justify-center items-center space-x-2 text-xl',
-            loading && 'opacity-80 cursor-not-allowed'
-          )}
-        >
-          {loading ? (
-            <div className="h-5 w-5 border-2 border-primary-light border-t-transparent rounded-full animate-spin"></div>
-          ) : (
-            simplified ? 'קבעו שיחת ייעוץ חינם' : 'שלחו ונדבר בהקדם'
-          )}
-        </button>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            disabled={loading}
+            className={cn(
+              'w-full max-w-md py-3 px-6 text-primary-light font-medium rounded-md transition-all duration-300',
+              'bg-primary-gold hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary-gold',
+              'shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex justify-center items-center space-x-2 text-xl',
+              loading && 'opacity-80 cursor-not-allowed'
+            )}
+          >
+            {loading ? (
+              <div className="h-5 w-5 border-2 border-primary-light border-t-transparent rounded-full animate-spin"></div>
+            ) : (
+              simplified ? 'קבעו שיחת ייעוץ חינם' : 'שלחו ונדבר בהקדם'
+            )}
+          </button>
+        </div>
       </div>
     </form>
   );
