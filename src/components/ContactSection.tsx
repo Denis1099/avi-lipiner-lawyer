@@ -8,75 +8,59 @@ const ContactSection = () => {
   const contactInfo = [{
     icon: <Phone size={20} />,
     title: "טלפון",
-    value: "050-0000000",
-    href: "tel:0500000000"
+    value: "050-2230066",
+    href: "tel:0502230066"
   }, {
     icon: <Mail size={20} />,
     title: "דוא\"ל",
-    value: "info@lawyer.com",
-    href: "mailto:info@lawyer.com"
+    value: "lipiner10@gmail.com",
+    href: "mailto:lipiner10@gmail.com"
   }, {
     icon: <MapPin size={20} />,
     title: "כתובת",
-    value: "אבן גבירול 30, תל אביב",
-    href: "https://maps.google.com"
-  }, {
-    icon: <Clock size={20} />,
-    title: "שעות פעילות",
-    value: "א'-ה' 9:00-19:00",
-    href: null
+    value: "ורדינון אליעזר 3, פתח תקווה",
+    href: "https://maps.google.com/?q=ורדינון+אליעזר+3+פתח+תקווה"
   }];
   
   return (
-    <>
-      <section id="contact" className="section-padding bg-secondary-gray">
-        <div className="container mx-auto">
-          <AnimatedBox animation="fadeIn">
-            <h2 className="section-title text-center mx-auto text-3xl md:text-5xl">נתחיל יחד את הדרך לעסקה מוצלחת</h2>
-            <p className="section-subtitle text-center text-lg font-assistant">
-              השאירו פרטים ואחזור אליכם תוך 24 שעות לתיאום פגישת ייעוץ ראשונית ללא עלות
-            </p>
-          </AnimatedBox>
+    <section id="contact" className="section-padding bg-secondary-gray">
+      <div className="container mx-auto">
+        <AnimatedBox animation="fadeIn">
+          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl">נתחיל יחד את הדרך לעסקה מוצלחת</h2>
+          <p className="section-subtitle text-center text-lg font-assistant">
+            השאירו פרטים ואחזור אליכם תוך 24 שעות לתיאום פגישת ייעוץ ראשונית ללא עלות
+          </p>
+        </AnimatedBox>
 
-          <div className="flex flex-col items-center mt-12">
-            <AnimatedBox animation="slideInRight" className="w-full max-w-2xl">
-              <ContactForm className="mx-auto" />
-            </AnimatedBox>
-            
-            <AnimatedBox animation="slideInLeft" delay={200} className="w-full max-w-2xl mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {contactInfo.map((item, index) => (
-                  <div key={index} className="bg-white p-4 rounded-lg shadow-md flex items-center">
-                    <div className="bg-primary-gold text-white p-2 rounded-full mr-3">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-gray-700">{item.title}</h3>
-                      {item.href ? (
-                        <a href={item.href} className="text-primary-gold hover:underline">
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-gray-600">{item.value}</p>
-                      )}
-                    </div>
+        <div className="flex flex-col items-center mt-12">
+          <AnimatedBox animation="slideInRight" className="w-full max-w-2xl">
+            <ContactForm className="mx-auto" />
+          </AnimatedBox>
+          
+          <AnimatedBox animation="slideInLeft" delay={200} className="w-full max-w-2xl mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {contactInfo.map((item, index) => (
+                <div key={index} className="bg-white p-4 rounded-lg shadow-md flex items-center">
+                  <div className="bg-primary-gold text-white p-2 rounded-full mr-3">
+                    {item.icon}
                   </div>
-                ))}
-              </div>
-            </AnimatedBox>
-          </div>
+                  <div>
+                    <h3 className="font-medium text-gray-700">{item.title}</h3>
+                    {item.href ? (
+                      <a href={item.href} className="text-primary-gold hover:underline">
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-gray-600">{item.value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </AnimatedBox>
         </div>
-      </section>
-      
-      {/* WhatsApp Sticky Button */}
-      <a 
-        href="#" 
-        className="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-colors duration-300 z-50"
-        aria-label="צור קשר בוואטסאפ"
-      >
-        <MessageCircle size={28} className="text-white" />
-      </a>
-    </>
+      </div>
+    </section>
   );
 };
 

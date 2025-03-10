@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronRight, ChevronLeft, Quote } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -102,7 +103,7 @@ const TestimonialsSection = () => {
 
         <div className="mt-16 relative">
           <div 
-            className="overflow-hidden rounded-xl bg-primary-light shadow-lg relative max-w-3xl mx-auto"
+            className="overflow-hidden rounded-xl bg-primary-light shadow-lg relative max-w-2xl mx-auto"
             ref={sliderRef}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -129,10 +130,10 @@ const TestimonialsSection = () => {
                     }`}
                   >
                     <div className="flex flex-col items-center">
-                      <p className="text-xl text-black mb-10 leading-relaxed text-center max-w-xl mx-auto">
+                      <p className="text-xl text-black mb-10 leading-relaxed text-center max-w-lg mx-auto">
                         {testimonial.text}
                       </p>
-                      <div className="text-center mt-6">
+                      <div className="text-center mt-10">
                         <p className="font-bold text-primary-gold text-2xl font-karantina">
                           {testimonial.name}
                         </p>

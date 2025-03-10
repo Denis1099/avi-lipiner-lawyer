@@ -17,45 +17,39 @@ const Index = () => {
     // This enables smooth scrolling when clicking on navigation links
     document.documentElement.style.scrollBehavior = 'smooth';
     
-    // Apply contrast fixes for better visibility on page load
-    document.body.classList.add('high-contrast-mode');
-    
     // Force any hidden elements to be visible
     const forceVisibility = () => {
       // Apply inline styles to ensure text visibility
       document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, a, label, input, textarea, select, button')
         .forEach((element) => {
           const el = element as HTMLElement;
-          const computedStyle = window.getComputedStyle(el);
           
-          // If element has transparent background and text, fix it
-          if (computedStyle.color === 'rgba(0, 0, 0, 0)' || 
-              computedStyle.color === 'transparent' ||
-              parseFloat(computedStyle.opacity) < 0.1) {
-            
-            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
-              el.style.backgroundColor = '#ffffff';
-              el.style.color = '#000000';
-            } else if (el.classList.contains('faq-question')) {
-              el.style.color = '#b08d57';
-            } else if (el.classList.contains('faq-answer')) {
-              el.style.color = '#000000';
-            } else if (computedStyle.backgroundColor.includes('rgba(0, 0, 0, 0)') || 
-                      computedStyle.backgroundColor === 'transparent') {
-              // If text on transparent background
-              if (el.closest('nav') || el.closest('#hero')) {
-                // In hero or nav, use light text
-                el.style.color = '#fbfbfb';
-              } else {
-                // Default to dark text
-                el.style.color = '#000000';
-              }
-            }
-            
+          // Ensure all text elements have proper opacity and visibility
+          if (getComputedStyle(el).opacity === '0' || getComputedStyle(el).visibility === 'hidden') {
             el.style.opacity = '1';
             el.style.visibility = 'visible';
           }
+          
+          // Ensure text has proper color contrast
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
+            if (!el.style.color || el.style.color === 'transparent') {
+              el.style.color = '#000000';
+            }
+          } else if (el.classList.contains('faq-question')) {
+            el.style.color = '#b08d57';
+          } else if (el.classList.contains('faq-answer')) {
+            el.style.color = '#000000';
+          }
         });
+      
+      // Fix specific color issues
+      document.querySelectorAll('.font-karantina').forEach(el => {
+        (el as HTMLElement).style.fontFamily = 'Karantina, sans-serif';
+      });
+      
+      document.querySelectorAll('.font-assistant').forEach(el => {
+        (el as HTMLElement).style.fontFamily = 'Assistant, sans-serif';
+      });
     };
 
     // Run on load and after a delay to catch dynamically rendered elements
@@ -65,7 +59,6 @@ const Index = () => {
 
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
-      document.body.classList.remove('high-contrast-mode');
     };
   }, []);
 
@@ -81,7 +74,7 @@ const Index = () => {
       <ContactSection />
       <Footer />
       
-      {/* WhatsApp Button */}
+      {/* WhatsApp Button (replaced the duplicate button in ContactSection) */}
       <WhatsAppButton />
       
       {/* Back to top button */}
@@ -89,7 +82,6 @@ const Index = () => {
         href="#hero" 
         className="fixed bottom-6 left-6 bg-primary-navy text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-primary-gold transition-colors duration-300 z-30"
         aria-label="חזרה למעלה"
-        style={{ backgroundColor: '#000000', color: '#ffffff' }}
       >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
