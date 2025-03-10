@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Award, Users, ClipboardCheck, Clock, ShieldCheck } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -51,75 +50,85 @@ const CountUp = ({ end, duration = 2000, startOnView = true, suffix = '' }) => {
 
 const AdvantagesSection = () => {
   const advantages = [{
-    icon: <Award size={24} />,
+    icon: <Award size={28} />,
     title: 'מענה הוליסטי',
-    description: 'שילוב ייחודי של ידע משפטי ופיננסי מקיף'
+    description: 'שילוב ייחודי של ידע משפטי ופיננסי מקיף להבטחת עסקה מוצלחת'
   }, {
-    icon: <ShieldCheck size={24} />,
+    icon: <ShieldCheck size={28} />,
     title: 'מומחיות מוכחת',
-    description: 'יועץ משכנתאות מוסמך ובעל רישיון תיווך מקרקעין'
+    description: 'יועץ משכנתאות מוסמך ובעל רישיון תיווך מקרקעין עם ניסיון מעשי'
   }, {
-    icon: <ClipboardCheck size={24} />,
+    icon: <ClipboardCheck size={28} />,
     title: 'ליווי אישי ומדוקדק',
-    description: 'ירידה לפרטים הקטנים ביותר בכל שלב בעסקה'
+    description: 'ירידה לפרטים הקטנים ביותר בכל שלב בעסקה וזיהוי סיכונים מראש'
   }, {
-    icon: <Clock size={24} />,
+    icon: <Clock size={28} />,
     title: 'זמינות וסבלנות',
-    description: 'זמן אישי לכל לקוח ומענה לכל שאלה ובקשה'
+    description: 'זמן אישי לכל לקוח ומענה מהיר לכל שאלה ובקשה לאורך כל התהליך'
   }, {
-    icon: <Users size={24} />,
+    icon: <Users size={28} />,
     title: 'ניסיון מוכח',
-    description: 'מאות משפחות שלוו בהצלחה בעסקאות מורכבות'
+    description: 'מאות משפחות שלוו בהצלחה בעסקאות מורכבות עם 100% שביעות רצון'
   }];
   
+  // Keep statistics in consistent order for desktop and mobile
   const statistics = [{
     value: 100,
     suffix: '%',
-    label: 'שיעור הצלחה בהשלמת עסקאות'
+    label: 'שיעור הצלחה בהשלמת עסקאות',
+    description: 'כל העסקאות שליוויתי הגיעו לקו הסיום בהצלחה'
   }, {
     value: 95,
     suffix: '%',
-    label: 'מהלקוחות ממליצים לחבריהם'
+    label: 'מהלקוחות ממליצים לחבריהם',
+    description: 'לקוחות מרוצים שבוחרים להמליץ עליי לחבריהם'
   }, {
     value: 3000,
     suffix: ' ₪',
-    label: 'חיסכון ממוצע ללקוח בזכות זיהוי מוקדם של סיכונים'
+    label: 'חיסכון ממוצע ללקוח',
+    description: 'בזכות זיהוי מוקדם של סיכונים אפשריים בעסקה'
   }];
   
   return (
-    <section id="advantages" className="section-padding bg-gradient-to-b from-primary-light to-secondary-gray relative overflow-hidden">
-      <div className="container mx-auto">
+    <section id="advantages" className="section-padding py-16 md:py-20 bg-gradient-to-b from-primary-light to-secondary-gray relative overflow-hidden">
+      <div className="container mx-auto px-5 md:px-8">
         <AnimatedBox animation="fadeIn">
-          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl">למה לבחור בליווי משפטי של עו"ד אבי ליפינר?</h2>
-          <p className="section-subtitle text-center font-assistant text-xl">
+          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl mb-4">למה לבחור בליווי משפטי של עו"ד אבי ליפינר?</h2>
+          <p className="section-subtitle text-center font-assistant text-xl max-w-3xl mx-auto">
             עסקת מכר דירה היא אחת ההחלטות הפיננסיות המשמעותיות בחייכם. ליווי משפטי מקצועי ומנוסה עושה את ההבדל בין עסקה מוצלחת לבין כאב ראש מתמשך.
           </p>
         </AnimatedBox>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12">
           {advantages.map((advantage, index) => (
-            <AnimatedBox key={index} animation="scaleIn" delay={100 * index} className="bg-primary-light rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 text-center">
+            <AnimatedBox 
+              key={index} 
+              animation="scaleIn" 
+              delay={100 * index} 
+              className="bg-primary-light rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 text-center h-full flex flex-col"
+            >
               <div className="flex justify-center mb-4">
                 <div className="bg-primary-gold/30 rounded-full p-4 inline-block text-primary-gold">
                   {advantage.icon}
                 </div>
               </div>
               <h3 className="text-2xl font-bold mb-3 text-primary-gold">{advantage.title}</h3>
-              <p className="text-black font-assistant text-base">{advantage.description}</p>
+              <p className="text-black font-assistant text-base flex-grow">{advantage.description}</p>
             </AnimatedBox>
           ))}
         </div>
 
-        <AnimatedBox animation="slideUp" delay={400} className="mt-16">
+        <AnimatedBox animation="slideUp" delay={300} className="mt-16">
           <div className="bg-primary-navy rounded-2xl shadow-xl overflow-hidden">
             <div className="p-8 md:p-10">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
                 {statistics.map((stat, index) => (
-                  <div key={index} className="text-center">
-                    <div className="text-4xl font-bold text-primary-gold mb-2 font-karantina">
+                  <div key={index} className="text-center group hover:transform hover:scale-105 transition-transform duration-300">
+                    <div className="text-5xl md:text-6xl font-bold text-primary-gold mb-2 font-karantina">
                       <CountUp end={stat.value} suffix={stat.suffix} duration={2000} />
                     </div>
-                    <div className="text-primary-light font-assistant">{stat.label}</div>
+                    <div className="text-primary-light font-assistant font-bold mb-1">{stat.label}</div>
+                    <div className="text-primary-light/80 font-assistant text-sm md:text-base">{stat.description}</div>
                   </div>
                 ))}
               </div>
@@ -127,16 +136,30 @@ const AdvantagesSection = () => {
           </div>
         </AnimatedBox>
 
-        <AnimatedBox animation="fadeIn" delay={600} className="mt-12 text-center">
-          <a href="#contact" className="inline-block py-3 px-8 bg-primary-gold text-primary-light font-assistant font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xl">
+        <AnimatedBox animation="fadeIn" delay={500} className="mt-12 text-center">
+          <a 
+            href="#contact" 
+            className="inline-block py-4 px-10 bg-primary-gold text-primary-light font-assistant font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xl"
+            aria-label="צור קשר עכשיו לקבלת ייעוץ ראשוני"
+          >
             צרו קשר עכשיו
           </a>
         </AnimatedBox>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-primary-gold/10 rounded-full"></div>
-      <div className="absolute top-1/4 -right-8 w-32 h-32 bg-primary-navy/10 rounded-full"></div>
+      {/* Decorative elements with improved visibility */}
+      <div 
+        className="absolute -bottom-16 -left-16 w-64 h-64 bg-primary-gold/10 rounded-full"
+        aria-hidden="true"
+      ></div>
+      <div 
+        className="absolute top-1/4 -right-8 w-32 h-32 bg-primary-navy/10 rounded-full"
+        aria-hidden="true"
+      ></div>
+      <div 
+        className="absolute top-1/2 left-1/4 w-24 h-24 bg-primary-gold/5 rounded-full"
+        aria-hidden="true"
+      ></div>
     </section>
   );
 };

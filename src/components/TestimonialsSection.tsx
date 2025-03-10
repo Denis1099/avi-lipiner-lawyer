@@ -1,38 +1,59 @@
-
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronRight, ChevronLeft, Quote } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Quote, Star } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
 
 interface Testimonial {
   text: string;
   name: string;
   location: string;
+  rating?: number;
+  projectType?: string;
 }
 
-const TestimonialsSection = () => {
+const TestimonialsSection: React.FC = () => {
   const testimonials: Testimonial[] = [
     {
       text: "עו\"ד אבי ליפינר ליווה אותנו ברכישת הדירה הראשונה שלנו. כזוג צעיר, היינו חסרי ניסיון וחששנו מאוד. אבי הוביל אותנו צעד אחר צעד, הסביר כל שלב בבהירות, וגרם לנו להרגיש בטוחים. הידע הפיננסי שלו חסך לנו עשרות אלפי שקלים במשכנתא!",
       name: "משפחת כהן",
-      location: "קנו דירה בפתח תקווה"
+      location: "קנו דירה בפתח תקווה",
+      rating: 5,
+      projectType: "רכישת דירה"
     },
     {
       text: "מכרנו דירה שהייתה בבעלותנו כ-30 שנה. אבי ידע לטפל בכל המורכבויות הקשורות למס שבח, תיאום מול הבנק ודרישות המיוחדות של הקונים. הכל התנהל בצורה חלקה והרבה מעבר למה שציפינו.",
       name: "חיים ושרה לוי",
-      location: "מכרו דירה בתל אביב"
+      location: "מכרו דירה בתל אביב",
+      rating: 5,
+      projectType: "מכירת דירה"
     },
     {
       text: "עסקת המכר שלנו הייתה מורכבת במיוחד וכללה פיצול נכסים ואתגרים משפטיים לא פשוטים. אבי הפגין מקצועיות יוצאת דופן, ידע להתמודד עם כל הסוגיות שעלו, והצליח להביא את העסקה לידי סיום מוצלח.",
       name: "דוד אברהמי",
-      location: "עסקת מכר מורכבת בירושלים"
+      location: "עסקת מכר מורכבת בירושלים",
+      rating: 5,
+      projectType: "עסקה מורכבת"
     }
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const autoSlideTime = 10000; // Increased to 10 seconds
+
+  const resetProgressBar = () => {
+    if (progressRef.current) {
+      progressRef.current.style.transition = 'none';
+      progressRef.current.style.width = '0%';
+      // Force reflow
+      progressRef.current.offsetHeight; 
+      progressRef.current.style.transition = `width ${autoSlideTime}ms linear`;
+      progressRef.current.style.width = '100%';
+    }
+  };
 
   const goToNextSlide = () => {
     if (isAnimating) return;
@@ -43,6 +64,8 @@ const TestimonialsSection = () => {
     setTimeout(() => {
       setIsAnimating(false);
     }, 500);
+
+    resetProgressBar();
   };
 
   const goToPrevSlide = () => {
@@ -54,6 +77,8 @@ const TestimonialsSection = () => {
     setTimeout(() => {
       setIsAnimating(false);
     }, 500);
+
+    resetProgressBar();
   };
 
   // Handle touch events for swipe functionality
@@ -86,38 +111,107 @@ const TestimonialsSection = () => {
     touchEndX.current = null;
   };
 
+  // Handle auto-sliding
   useEffect(() => {
-    const interval = setInterval(() => {
-      goToNextSlide();
-    }, 8000);
+    if (!isPaused) {
+      resetProgressBar();
+      const interval = setInterval(() => {
+        goToNextSlide();
+      }, autoSlideTime);
 
-    return () => clearInterval(interval);
-  }, [activeIndex]);
+      return () => clearInterval(interval);
+    }
+    return undefined;
+  }, [activeIndex, isPaused]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        goToNextSlide();
+      } else if (e.key === 'ArrowRight') {
+        goToPrevSlide();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeIndex, isAnimating]);
+
+  // Pause sliding when tab is not in focus
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        setIsPaused(true);
+      } else {
+        setIsPaused(false);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
+  const renderStars = (rating: number) => {
+    return (
+      <div className="flex justify-center mb-2" aria-label={`דירוג ${rating} מתוך 5`}>
+        {[...Array(5)].map((_, i) => (
+          <Star
+            key={i}
+            size={18}
+            fill={i < rating ? "#D4AF37" : "none"}
+            color={i < rating ? "#D4AF37" : "#D4AF37"}
+            className="mx-0.5"
+          />
+        ))}
+      </div>
+    );
+  };
 
   return (
-    <section id="testimonials" className="section-padding bg-primary-light">
-      <div className="container mx-auto">
+    <section id="testimonials" className="section-padding py-16 bg-gradient-to-b from-primary-light to-gray-50 relative overflow-hidden">
+      <div className="container mx-auto px-5 md:px-8">
         <AnimatedBox animation="fadeIn">
-          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl">לקוחות מספרים על הליווי המשפטי שקיבלו</h2>
+          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl mb-3">לקוחות מספרים על הליווי המשפטי שקיבלו</h2>
+          <p className="text-center text-lg text-black/80 max-w-3xl mx-auto">
+            המטרה שלנו היא לספק שירות ברמה הגבוהה ביותר וליצור חוויית לקוח יוצאת דופן
+          </p>
         </AnimatedBox>
 
-        <div className="mt-16 relative">
+        <div className="mt-12 relative">
           <div 
-            className="overflow-hidden rounded-xl bg-primary-light shadow-lg relative max-w-2xl mx-auto"
+            className="overflow-hidden rounded-xl bg-white shadow-lg relative max-w-3xl mx-auto border border-gray-100 hover:shadow-xl transition-shadow duration-300"
             ref={sliderRef}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
+
+            role="region"
+            aria-roledescription="carousel"
+            aria-label="המלצות לקוחות"
           >
-            <div 
-              className="absolute top-6 right-8 text-4xl text-primary-gold"
-              aria-hidden="true"
-            >
-              <Quote size={48} opacity={0.6} />
+            {/* Progress bar */}
+            <div className="h-1 w-full bg-gray-100 absolute top-0 left-0 z-20">
+              <div 
+                ref={progressRef}
+                className="h-full bg-primary-gold transition-width" 
+                style={{ width: '0%' }}
+              ></div>
             </div>
             
-            <div className="pt-14 pb-16 px-6 sm:px-10 relative z-10">
-              <div className="flex flex-col items-center min-h-fit relative">
+            <div 
+              className="absolute top-6 right-8 text-5xl text-primary-gold"
+              aria-hidden="true"
+            >
+              <Quote size={60} opacity={0.4} />
+            </div>
+            
+            <div className="pt-16 pb-16 px-6 sm:px-12 relative z-10">
+              <div className="flex flex-col items-center min-h-[280px] relative">
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
@@ -128,16 +222,29 @@ const TestimonialsSection = () => {
                         ? 'opacity-0 translate-x-[100px] absolute'
                         : 'opacity-0 translate-x-[-100px] absolute'
                     }`}
+                    role="group"
+                    aria-roledescription="slide"
+                    aria-label={`המלצה ${index + 1} מתוך ${testimonials.length}`}
+                    aria-hidden={index !== activeIndex}
                   >
                     <div className="flex flex-col items-center">
-                      <p className="text-xl text-black mb-10 leading-relaxed text-center max-w-lg mx-auto">
+                      {testimonial.projectType && (
+                        <span className="px-4 py-1 bg-primary-gold/10 text-primary-gold rounded-full text-sm mb-5">
+                          {testimonial.projectType}
+                        </span>
+                      )}
+                      
+                      {testimonial.rating && renderStars(testimonial.rating)}
+                      
+                      <p className="text-xl text-black mb-10 leading-relaxed text-center max-w-2xl mx-auto">
                         {testimonial.text}
                       </p>
-                      <div className="text-center mt-10">
+                      
+                      <div className="text-center mt-6 border-t border-gray-100 pt-6 w-32">
                         <p className="font-bold text-primary-gold text-2xl font-karantina">
                           {testimonial.name}
                         </p>
-                        <p className="text-black font-assistant">
+                        <p className="text-black/80 font-assistant text-sm">
                           {testimonial.location}
                         </p>
                       </div>
@@ -147,15 +254,21 @@ const TestimonialsSection = () => {
               </div>
             </div>
             
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 space-x-reverse">
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-3 space-x-reverse">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === activeIndex ? 'bg-primary-gold w-6' : 'bg-gray-300'
+                  onClick={() => {
+                    setActiveIndex(index);
+                    resetProgressBar();
+                  }}
+                  className={`transition-all duration-300 ${
+                    index === activeIndex 
+                      ? 'w-8 h-2 bg-primary-gold rounded-full' 
+                      : 'w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400'
                   }`}
-                  aria-label={`View testimonial ${index + 1}`}
+                  aria-label={`הצגת המלצה ${index + 1}`}
+                  aria-pressed={index === activeIndex}
                 />
               ))}
             </div>
@@ -163,21 +276,41 @@ const TestimonialsSection = () => {
           
           <button
             onClick={goToPrevSlide}
-            className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-primary-light rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20"
-            aria-label="Previous testimonial"
+            className="absolute top-1/2 right-2 md:right-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
+            aria-label="המלצה קודמת"
           >
             <ChevronRight size={24} />
           </button>
           
           <button
             onClick={goToNextSlide}
-            className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-primary-light rounded-full p-2 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20"
-            aria-label="Next testimonial"
+            className="absolute top-1/2 left-2 md:left-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
+            aria-label="המלצה הבאה"
           >
             <ChevronLeft size={24} />
           </button>
         </div>
+
+        <AnimatedBox animation="fadeIn" delay={300} className="mt-12 text-center">
+          <a 
+            href="#contact" 
+            className="inline-block py-4 px-10 bg-primary-gold text-primary-light font-bold rounded-lg shadow-md hover:bg-primary-gold/90 transition-all duration-300 text-xl"
+            aria-label="צור קשר לקבלת ייעוץ ראשוני"
+          >
+            צרו קשר עכשיו
+          </a>
+        </AnimatedBox>
       </div>
+
+      {/* Decorative elements */}
+      <div 
+        className="absolute -bottom-16 -right-16 w-60 h-60 bg-primary-gold/5 rounded-full" 
+        aria-hidden="true"
+      ></div>
+      <div 
+        className="absolute top-20 -left-20 w-48 h-48 bg-primary-gold/5 rounded-full"
+        aria-hidden="true"
+      ></div>
     </section>
   );
 };
