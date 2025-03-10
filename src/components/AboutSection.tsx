@@ -25,13 +25,38 @@ const AboutSection = () => {
                   className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg"
                   aria-hidden="true"
                 ></div>
-                <img 
-                  src="/lovable-uploads/avi-image.png" 
-                  alt="עו״ד אבי ליפינר" 
-                  className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover" 
-                  style={{ aspectRatio: '3/4' }}
-                  loading="lazy"
-                />
+                <div className="relative rounded-lg overflow-hidden shadow-xl">
+                  <img 
+                    src="/lovable-uploads/avi-image.webp" 
+                    alt="עו״ד אבי ליפינר" 
+                    className="w-full h-auto relative z-10 object-cover transform scale-[0.95]" 
+                    style={{ 
+                      aspectRatio: '3/4',
+                      filter: 'contrast(1.08) saturate(1.08) brightness(1.02)',
+                      imageRendering: 'crisp-edges'
+                    }}
+                    width="600"
+                    height="800"
+                    loading="lazy"
+                  />
+                  
+                  {/* Vignette overlay to add depth and hide compression artifacts */}
+                  <div 
+                    className="absolute inset-0 z-20 pointer-events-none"
+                    style={{
+                      boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), inset 0 0 3px rgba(0,0,0,0.1)',
+                      background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.07) 100%)'
+                    }}
+                  ></div>
+                  
+                  {/* Subtle golden highlight at the bottom */}
+                  <div 
+                    className="absolute bottom-0 left-0 right-0 h-20 z-20 pointer-events-none opacity-30"
+                    style={{
+                      background: 'linear-gradient(to top, rgba(176, 141, 87, 0.18), transparent)'
+                    }}
+                  ></div>
+                </div>
                 <div 
                   className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg"
                   aria-hidden="true"
@@ -64,13 +89,38 @@ const AboutSection = () => {
                     className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg"
                     aria-hidden="true"
                   ></div>
-                  <img 
-                    src="/lovable-uploads/avi-image.png" 
-                    alt="עו״ד אבי ליפינר" 
-                    className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover" 
-                    style={{ aspectRatio: '3/4' }}
-                    loading="lazy"
-                  />
+                  <div className="relative rounded-lg overflow-hidden shadow-xl">
+                    <img 
+                      src="/lovable-uploads/avi-image.webp" 
+                      alt="עו״ד אבי ליפינר" 
+                      className="w-full h-auto relative z-10 object-cover transform scale-[0.95]" 
+                      style={{ 
+                        aspectRatio: '3/4',
+                        filter: 'contrast(1.08) saturate(1.08) brightness(1.02)',
+                        imageRendering: 'crisp-edges'
+                      }}
+                      width="400"
+                      height="533"
+                      loading="lazy"
+                    />
+                    
+                    {/* Vignette overlay */}
+                    <div 
+                      className="absolute inset-0 z-20 pointer-events-none"
+                      style={{
+                        boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), inset 0 0 3px rgba(0,0,0,0.1)',
+                        background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.07) 100%)'
+                      }}
+                    ></div>
+                    
+                    {/* Subtle golden highlight at the bottom */}
+                    <div 
+                      className="absolute bottom-0 left-0 right-0 h-16 z-20 pointer-events-none opacity-30"
+                      style={{
+                        background: 'linear-gradient(to top, rgba(176, 141, 87, 0.18), transparent)'
+                      }}
+                    ></div>
+                  </div>
                   <div 
                     className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg"
                     aria-hidden="true"
@@ -105,6 +155,22 @@ const AboutSection = () => {
                 </p>
               </div>
             </AnimatedBox>
+            
+            {/* Signature section */}
+            <AnimatedBox animation="fadeIn" delay={600}>
+              <div className="mt-6 flex justify-center">
+                <div className="w-48 md:w-64">
+                  <img 
+                    src="/lovable-uploads/avi-lipiner-signature.webp" 
+                    alt="חתימת עו״ד אבי ליפינר" 
+                    className="w-full h-auto transition-all duration-300 hover:opacity-90"
+                    width="256"
+                    height="100"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </AnimatedBox>
           </div>
         </div>
       </div>
@@ -125,15 +191,5 @@ const AboutSection = () => {
     </section>
   );
 };
-
-// Add custom selection style
-const style = document.createElement('style');
-style.textContent = `
-  ::selection {
-    background-color: rgba(184, 134, 11, 0.3);
-    color: inherit;
-  }
-`;
-document.head.appendChild(style);
 
 export default AboutSection;

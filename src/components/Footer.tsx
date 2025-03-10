@@ -64,7 +64,7 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="md:col-span-5">
             <div className="flex items-start md:items-center mb-6">
-              <img src="/lovable-uploads/logo.png" alt="עו״ד אבי ליפינר" className="h-20" />
+              <img src="/lovable-uploads/logo.webp" alt="עו״ד אבי ליפינר" className="h-20" />
             </div>
             
             <p className="text-gray-300 mb-6 text-base leading-relaxed">
