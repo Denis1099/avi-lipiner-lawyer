@@ -1,8 +1,6 @@
-
 import React from 'react';
 import ContactForm from './ContactForm';
 import AnimatedBox from './AnimatedBox';
-
 const HeroSection = () => {
   return <section id="hero" className="relative min-h-screen flex items-center pt-16 pb-12 overflow-hidden" style={{
     backgroundColor: '#d6d6d6',
@@ -39,9 +37,9 @@ const HeroSection = () => {
             backgroundColor: 'rgba(251, 251, 251, 0.9)'
           }}>
               <div className="p-6 sm:p-8">
-                <h3 className="text-2xl font-bold text-primary-gold mb-6 text-center" style={{
+                <h3 style={{
                 color: '#b08d57'
-              }}>
+              }} className="font-bold text-primary-gold mb-6 text-center text-4xl">
                   קבעו שיחת ייעוץ חינם
                 </h3>
                 <ContactForm simplified />
@@ -63,5 +61,4 @@ const HeroSection = () => {
       </div>
     </section>;
 };
-
 export default HeroSection;

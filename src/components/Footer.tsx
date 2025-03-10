@@ -77,7 +77,7 @@ const Footer = () => {
               <div className="flex">
                 <PhoneCall size={18} className="ml-3 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-medium mb-1">טלפון</h4>
+                  <h4 className="font-medium mb-1 text-slate-50">טלפון</h4>
                   <a href="tel:0500000000" className="text-primary-light hover:text-primary-gold transition-colors duration-200">
                     050-0000000
                   </a>
@@ -97,7 +97,7 @@ const Footer = () => {
               <div className="flex">
                 <MapPin size={18} className="ml-3 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-medium mb-1">כתובת</h4>
+                  <h4 className="font-medium mb-1 text-slate-50">כתובת</h4>
                   <address className="text-primary-light not-italic">
                     אבן גבירול 30, תל אביב
                   </address>
