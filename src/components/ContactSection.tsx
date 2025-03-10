@@ -44,7 +44,25 @@ const ContactSection = () => {
             </AnimatedBox>
             
             <AnimatedBox animation="slideInLeft" delay={200} className="w-full max-w-2xl mt-8">
-              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {contactInfo.map((item, index) => (
+                  <div key={index} className="bg-white p-4 rounded-lg shadow-md flex items-center">
+                    <div className="bg-primary-gold text-white p-2 rounded-full mr-3">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-700">{item.title}</h3>
+                      {item.href ? (
+                        <a href={item.href} className="text-primary-gold hover:underline">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-gray-600">{item.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </AnimatedBox>
           </div>
         </div>
