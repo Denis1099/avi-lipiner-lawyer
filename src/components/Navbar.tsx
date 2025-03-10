@@ -38,9 +38,11 @@ const Navbar = () => {
           ? 'bg-primary-light shadow-md py-2' 
           : 'bg-transparent py-4'
       }`}
+      style={{ backgroundColor: scrolled ? '#fbfbfb' : 'transparent' }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
+          {/* Logo on the left */}
           <div className="flex items-center">
             <a href="#" className="flex items-center">
               <img src="/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
@@ -55,6 +57,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className="text-black hover:text-primary-gold hover:bg-secondary-gray px-3 py-2 rounded-md text-xl font-medium transition-all duration-200"
+                  style={{ color: scrolled ? '#000000' : '#fbfbfb' }}
                 >
                   {link.name}
                 </a>
@@ -67,6 +70,7 @@ const Navbar = () => {
             <a
               href="tel:+1234567890"
               className="bg-primary-gold text-primary-light hover:bg-opacity-90 px-4 py-2 rounded-md text-xl font-medium transition-all duration-300 flex items-center"
+              style={{ backgroundColor: '#b08d57', color: '#fbfbfb' }}
             >
               <Phone size={16} className="ml-2" />
               התקשרו עכשיו
@@ -78,6 +82,7 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-primary-gold hover:text-primary-gold/80 focus:outline-none transition-all duration-300"
+              style={{ color: scrolled ? '#b08d57' : '#fbfbfb' }}
             >
               {isMenuOpen ? (
                 <X size={24} className="block h-6 w-6" />
@@ -91,7 +96,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-primary-light shadow-lg p-4 absolute top-16 right-0 left-0 z-50 animate-slideInRight">
+        <div className="lg:hidden bg-primary-light shadow-lg p-4 absolute top-16 right-0 left-0 z-50 animate-slideInRight" style={{ backgroundColor: '#fbfbfb' }}>
           <div className="space-y-1">
             {navLinks.map((link) => (
               <a
@@ -99,6 +104,7 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
                 className="block px-3 py-2 text-xl font-medium text-black hover:text-primary-gold hover:bg-secondary-gray rounded-md"
+                style={{ color: '#000000' }}
               >
                 {link.name}
               </a>
@@ -106,6 +112,7 @@ const Navbar = () => {
             <a
               href="tel:+1234567890"
               className="block px-3 py-2 text-xl font-medium text-primary-light bg-primary-gold hover:bg-opacity-90 rounded-md mt-3 text-center"
+              style={{ backgroundColor: '#b08d57', color: '#fbfbfb' }}
             >
               התקשרו עכשיו
             </a>

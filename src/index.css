@@ -59,6 +59,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     overflow-x: hidden;
+    color: #000000; /* Explicit text color for body */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -74,6 +75,19 @@
   ::placeholder {
     @apply text-gray-500;
   }
+
+  /* Force text visibility */
+  p, span, div, a, label, button {
+    color: inherit; /* Inherit from parent, which we ensure has visible colors */
+  }
+
+  /* Fix form elements */
+  input, textarea, select, button {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #000000;
+    background-color: #ffffff;
+  }
 }
 
 @layer components {
@@ -84,6 +98,7 @@
   .section-title {
     @apply text-3xl md:text-4xl font-bold mb-6 text-primary-gold relative inline-block;
     position: relative;
+    color: #b08d57; /* Explicit color for section titles */
   }
   
   .section-title::after {
@@ -92,7 +107,8 @@
   }
   
   .section-subtitle {
-    @apply text-lg md:text-xl text-black max-w-3xl mx-auto mb-12;
+    @apply text-lg md:text-xl max-w-3xl mx-auto mb-12;
+    color: #000000; /* Explicit color for section subtitles */
   }
 
   .glass-effect {
@@ -129,12 +145,15 @@
     @apply inline-block px-3 py-1 text-sm font-medium rounded-full bg-primary-navy text-primary-light;
   }
   
+  /* Fix animation issues */
   .animate-on-scroll {
-    opacity: 0;
+    opacity: 1 !important; /* Force visibility */
+    transition: opacity 0.6s ease;
   }
   
   .animate-on-scroll.animated {
     @apply animate-fadeIn;
+    opacity: 1 !important;
   }
 
   /* RTL specific styles */
@@ -165,10 +184,12 @@
   /* Fix FAQ section text visibility */
   .faq-question {
     @apply text-primary-gold font-medium;
+    color: #b08d57 !important; /* Force visible color */
   }
   
   .faq-answer {
     @apply text-black;
+    color: #000000 !important; /* Force visible color */
   }
   
   /* Center align contact form */

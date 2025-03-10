@@ -19,12 +19,17 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Set initial visibility to true for SSR and accessibility
+    setIsVisible(true);
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          // Small delay to ensure DOM has updated
           setTimeout(() => {
             setIsVisible(true);
-          }, delay);
+          }, delay < 300 ? delay : 300); // Cap delay at 300ms
+          
           if (ref.current) observer.unobserve(ref.current);
         }
       },
@@ -38,21 +43,33 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
       observer.observe(ref.current);
     }
 
+    // Cleanup observer on unmount
     return () => {
       if (ref.current) observer.unobserve(ref.current);
     };
   }, [delay]);
 
+  // Immediate visibility for critical elements
+  useEffect(() => {
+    // Force visibility after 1 second as fallback
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div
       ref={ref}
       className={cn(
-        'opacity-0',
-        isVisible && `animate-${animation}`,
+        // Start with opacity-70 instead of opacity-0 to ensure initial visibility
+        'opacity-70 transition-all duration-500',
+        isVisible && `animate-${animation} opacity-100`,
         className
       )}
       style={{ 
-        animationDelay: `${delay}ms`,
+        animationDelay: `${Math.min(delay, 500)}ms`, // Cap delay at 500ms
         willChange: 'opacity, transform'
       }}
     >

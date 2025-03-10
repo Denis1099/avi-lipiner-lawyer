@@ -71,12 +71,14 @@ const ContactForm: React.FC<ContactFormProps> = ({
       className={cn(
         'bg-primary-light rounded-lg p-6 shadow-lg transition-all duration-300',
         'border border-gray-100 hover:shadow-xl',
+        'mx-auto max-w-lg', // Center the form
         className
       )}
+      style={{ backgroundColor: '#fbfbfb' }}
     >
       <div className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-lg font-medium text-black mb-1">
+          <label htmlFor="name" className="block text-lg font-medium text-black mb-1" style={{ color: '#000000' }}>
             שם מלא
           </label>
           <input
@@ -88,11 +90,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
             onChange={handleChange}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
             placeholder="הזן/י את שמך המלא"
+            style={{ 
+              backgroundColor: '#ffffff', 
+              color: '#000000', 
+              borderColor: '#d1d5db' 
+            }}
           />
         </div>
         
         <div>
-          <label htmlFor="phone" className="block text-lg font-medium text-black mb-1">
+          <label htmlFor="phone" className="block text-lg font-medium text-black mb-1" style={{ color: '#000000' }}>
             טלפון נייד
           </label>
           <input
@@ -105,13 +112,18 @@ const ContactForm: React.FC<ContactFormProps> = ({
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
             placeholder="הזן/י מספר טלפון נייד"
             dir="ltr"
+            style={{ 
+              backgroundColor: '#ffffff', 
+              color: '#000000', 
+              borderColor: '#d1d5db' 
+            }}
           />
         </div>
         
         {!simplified && (
           <>
             <div>
-              <label htmlFor="email" className="block text-lg font-medium text-black mb-1">
+              <label htmlFor="email" className="block text-lg font-medium text-black mb-1" style={{ color: '#000000' }}>
                 דוא"ל
               </label>
               <input
@@ -123,11 +135,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
                 placeholder="דוא״ל (לא חובה)"
                 dir="ltr"
+                style={{ 
+                  backgroundColor: '#ffffff', 
+                  color: '#000000', 
+                  borderColor: '#d1d5db' 
+                }}
               />
             </div>
             
             <div>
-              <label htmlFor="serviceType" className="block text-lg font-medium text-black mb-1">
+              <label htmlFor="serviceType" className="block text-lg font-medium text-black mb-1" style={{ color: '#000000' }}>
                 סוג העסקה
               </label>
               <select
@@ -136,6 +153,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 value={formData.serviceType}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
+                style={{ 
+                  backgroundColor: '#ffffff', 
+                  color: '#000000', 
+                  borderColor: '#d1d5db' 
+                }}
               >
                 <option value="קנייה">קנייה</option>
                 <option value="מכירה">מכירה</option>
@@ -145,7 +167,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
             </div>
             
             <div>
-              <label htmlFor="message" className="block text-lg font-medium text-black mb-1">
+              <label htmlFor="message" className="block text-lg font-medium text-black mb-1" style={{ color: '#000000' }}>
                 פרטים נוספים
               </label>
               <textarea
@@ -156,6 +178,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
                 placeholder="יש לך שאלות או פרטים נוספים? זה המקום לשתף"
+                style={{ 
+                  backgroundColor: '#ffffff', 
+                  color: '#000000', 
+                  borderColor: '#d1d5db' 
+                }}
               />
             </div>
           </>
@@ -171,6 +198,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
               'shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex justify-center items-center space-x-2 text-xl',
               loading && 'opacity-80 cursor-not-allowed'
             )}
+            style={{ backgroundColor: '#b08d57', color: '#fbfbfb' }}
           >
             {loading ? (
               <div className="h-5 w-5 border-2 border-primary-light border-t-transparent rounded-full animate-spin"></div>
