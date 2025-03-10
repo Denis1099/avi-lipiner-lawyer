@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ContactForm from './ContactForm';
 import AnimatedBox from './AnimatedBox';
@@ -48,8 +49,8 @@ const HeroSection = () => {
           </AnimatedBox>
         </div>
         
-        {/* Scroll indicator - adjusted position to be lower */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer animate-float">
+        {/* Scroll indicator - positioned even lower */}
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 cursor-pointer animate-float mb-2">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-gold/30 backdrop-blur-md text-primary-light">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{
             color: '#fbfbfb'

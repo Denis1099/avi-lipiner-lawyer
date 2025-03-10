@@ -9,6 +9,7 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import FaqSection from '@/components/FaqSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
   // On page load, ensure all elements are visible
@@ -79,6 +80,9 @@ const Index = () => {
       <FaqSection />
       <ContactSection />
       <Footer />
+      
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
       
       {/* Back to top button */}
       <a 

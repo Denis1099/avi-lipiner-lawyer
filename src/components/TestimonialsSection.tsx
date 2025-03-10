@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
 
         <div className="mt-16 relative">
           <div 
-            className="overflow-hidden rounded-xl bg-primary-light shadow-lg relative"
+            className="overflow-hidden rounded-xl bg-primary-light shadow-lg relative max-w-4xl mx-auto"
             ref={sliderRef}
           >
             <div 
@@ -94,16 +94,18 @@ const TestimonialsSection = () => {
                         : 'opacity-0 translate-x-[-100px]'
                     }`}
                   >
-                    <p className="text-xl text-black mb-8 leading-relaxed text-center">
-                      {testimonial.text}
-                    </p>
-                    <div className="text-center">
-                      <p className="font-bold text-primary-gold text-2xl">
-                        {testimonial.name}
+                    <div className="flex flex-col items-center">
+                      <p className="text-xl text-black mb-12 leading-relaxed text-center max-w-3xl">
+                        {testimonial.text}
                       </p>
-                      <p className="text-black">
-                        {testimonial.location}
-                      </p>
+                      <div className="text-center mt-auto">
+                        <p className="font-bold text-primary-gold text-2xl font-karantina">
+                          {testimonial.name}
+                        </p>
+                        <p className="text-black font-assistant">
+                          {testimonial.location}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}

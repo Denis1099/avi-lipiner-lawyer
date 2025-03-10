@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Award, Users, ClipboardCheck, Clock, ShieldCheck } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -59,7 +60,7 @@ const AdvantagesSection = () => {
             <div className="p-8 md:p-10">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
                 {statistics.map((stat, index) => <div key={index} className="text-center">
-                    <div className="text-4xl font-bold text-primary-gold mb-2">{stat.value}</div>
+                    <div className="text-4xl font-bold text-primary-gold mb-2 font-karantina">{stat.value}</div>
                     <div className="text-primary-light font-assistant">{stat.label}</div>
                   </div>)}
               </div>

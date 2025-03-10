@@ -170,10 +170,10 @@ const ContactForm: React.FC<ContactFormProps> = ({
               <label htmlFor="message" className="block text-lg font-medium text-black mb-1" style={{ color: '#000000' }}>
                 פרטים נוספים
               </label>
-              <textarea
+              <input
                 id="message"
                 name="message"
-                rows={4}
+                type="text"
                 value={formData.message}
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-gold focus:border-primary-gold transition-all duration-200 text-lg"
