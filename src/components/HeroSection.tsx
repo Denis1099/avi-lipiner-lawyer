@@ -16,9 +16,9 @@ const HeroSection = () => {
   return (
     <section 
       id="hero" 
-      className="relative min-h-screen flex items-center pt-24 md:pt-16 pb-16 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-28 md:pt-16 pb-16 overflow-hidden"
       style={{
-        backgroundImage: 'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.65)), url(https://images.unsplash.com/photo-1582407947304-fd86f028f716)',
+        backgroundImage: 'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.65)), url("/lovable-uploads/bg-image.webp")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'
@@ -53,7 +53,7 @@ const HeroSection = () => {
               <span className="text-primary-gold" style={{ color: '#b08d57' }}>בעסקאות מכר דירות</span>
             </h1>
             
-            <div className="text-xl md:text-2xl text-primary-light mb-8 max-w-2xl lg:mx-0 mx-auto font-assistant leading-relaxed" style={{ color: '#fbfbfb' }}>
+            <div className="text-xl md:text-2xl text-primary-light mb-0 md:mb-8 max-w-2xl lg:mx-0 mx-auto font-assistant leading-relaxed" style={{ color: '#fbfbfb' }}>
               <p className="mb-4">מהייעוץ הראשוני ועד למסירת המפתח - שילוב מנצח של מומחיות משפטית ופיננסית</p>
               <div className="flex flex-col space-y-4 md:space-y-3">
                 <div className="flex items-start">
