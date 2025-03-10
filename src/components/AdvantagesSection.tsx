@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Award, Users, ClipboardCheck, Clock, ShieldCheck } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -81,7 +80,7 @@ const AdvantagesSection = () => {
     suffix: '%',
     label: 'מהלקוחות ממליצים לחבריהם'
   }, {
-    value: 1000,
+    value: 3000,
     suffix: 'י ₪',
     label: 'חיסכון ממוצע ללקוח בזכות זיהוי מוקדם של סיכונים'
   }];
