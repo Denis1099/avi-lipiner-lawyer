@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronRight, ChevronLeft, Quote } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -31,6 +30,8 @@ const TestimonialsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const goToNextSlide = () => {
     if (isAnimating) return;
@@ -54,6 +55,36 @@ const TestimonialsSection = () => {
     }, 500);
   };
 
+  // Handle touch events for swipe functionality
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const swipeDistance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50; // Minimum distance required for a swipe
+    
+    if (Math.abs(swipeDistance) > minSwipeDistance) {
+      if (swipeDistance > 0) {
+        // Swiped right to left -> go to next slide
+        goToNextSlide();
+      } else {
+        // Swiped left to right -> go to previous slide
+        goToPrevSlide();
+      }
+    }
+    
+    // Reset values
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       goToNextSlide();
@@ -71,8 +102,11 @@ const TestimonialsSection = () => {
 
         <div className="mt-16 relative">
           <div 
-            className="overflow-hidden rounded-xl bg-primary-light shadow-lg relative max-w-4xl mx-auto"
+            className="overflow-hidden rounded-xl bg-primary-light shadow-lg relative max-w-3xl mx-auto"
             ref={sliderRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             <div 
               className="absolute top-6 right-8 text-4xl text-primary-gold"
@@ -81,24 +115,24 @@ const TestimonialsSection = () => {
               <Quote size={48} opacity={0.6} />
             </div>
             
-            <div className="pt-16 pb-12 px-8 sm:px-12 relative z-10">
-              <div className="flex flex-col items-center h-72">
+            <div className="pt-14 pb-16 px-6 sm:px-10 relative z-10">
+              <div className="flex flex-col items-center min-h-fit relative">
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
-                    className={`w-full absolute transition-all duration-500 ease-in-out ${
+                    className={`w-full transition-all duration-500 ease-in-out ${
                       index === activeIndex
-                        ? 'opacity-100 translate-x-0'
+                        ? 'opacity-100 translate-x-0 relative'
                         : index < activeIndex
-                        ? 'opacity-0 translate-x-[100px]'
-                        : 'opacity-0 translate-x-[-100px]'
+                        ? 'opacity-0 translate-x-[100px] absolute'
+                        : 'opacity-0 translate-x-[-100px] absolute'
                     }`}
                   >
                     <div className="flex flex-col items-center">
-                      <p className="text-xl text-black mb-12 leading-relaxed text-center max-w-3xl">
+                      <p className="text-xl text-black mb-10 leading-relaxed text-center max-w-xl mx-auto">
                         {testimonial.text}
                       </p>
-                      <div className="text-center mt-auto">
+                      <div className="text-center mt-6">
                         <p className="font-bold text-primary-gold text-2xl font-karantina">
                           {testimonial.name}
                         </p>
