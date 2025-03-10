@@ -20,14 +20,13 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Force visibility after a maximum timeout
-    const forceVisibilityTimeout = setTimeout(() => {
+    // Force visibility immediately for better user experience
+    const immediateVisibilityTimeout = setTimeout(() => {
       if (!isVisible) {
-        console.log('Forcing visibility due to timeout');
         setIsVisible(true);
         setHasAnimated(true);
       }
-    }, 2000); // 2 second maximum wait
+    }, 800); // Much shorter timeout for better UX
 
     let observer: IntersectionObserver | null = null;
 
@@ -35,7 +34,6 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
       observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting && !hasAnimated) {
-            console.log('Element intersecting, triggering animation');
             setIsVisible(true);
             setHasAnimated(true);
             
@@ -54,14 +52,13 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
         observer.observe(ref.current);
       }
     } catch (error) {
-      console.warn('IntersectionObserver failed, forcing visibility:', error);
+      console.warn('IntersectionObserver failed, forcing visibility');
       setIsVisible(true);
       setHasAnimated(true);
     }
 
     // Initial visibility check
     if (ref.current && window.getComputedStyle(ref.current).opacity === '0') {
-      console.log('Initial opacity is 0, scheduling visibility check');
       setTimeout(() => {
         if (!isVisible) {
           setIsVisible(true);
@@ -71,12 +68,31 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
     }
 
     return () => {
-      clearTimeout(forceVisibilityTimeout);
+      clearTimeout(immediateVisibilityTimeout);
       if (ref.current && observer) {
         observer.unobserve(ref.current);
       }
     };
-  }, [hasAnimated]);
+  }, [hasAnimated, isVisible]);
+
+  const getAnimationClass = () => {
+    if (!isVisible) return '';
+    
+    switch (animation) {
+      case 'fadeIn':
+        return 'animate-fadeIn';
+      case 'slideInRight':
+        return 'animate-slideInRight';
+      case 'slideInLeft':
+        return 'animate-slideInLeft';
+      case 'slideUp':
+        return 'animate-slideUp';
+      case 'scaleIn':
+        return 'animate-scaleIn';
+      default:
+        return 'animate-fadeIn';
+    }
+  };
 
   return (
     <div
@@ -86,8 +102,8 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
         {
           'opacity-0': !isVisible,
           'opacity-100': isVisible,
-          [`animate-${animation}`]: isVisible && animation,
         },
+        getAnimationClass(),
         className
       )}
       style={{ 

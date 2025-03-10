@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -12,6 +12,9 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+
   // On page load, ensure all elements are visible
   useEffect(() => {
     // This enables smooth scrolling when clicking on navigation links
@@ -50,6 +53,24 @@ const Index = () => {
       document.querySelectorAll('.font-assistant').forEach(el => {
         (el as HTMLElement).style.fontFamily = 'Assistant, sans-serif';
       });
+
+      setIsLoaded(true);
+    };
+
+    // Track scroll position to detect which section is active
+    const handleScroll = () => {
+      const sections = ['hero', 'about', 'advantages', 'services', 'testimonials', 'faq', 'contact'];
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
 
     // Run on load and after a delay to catch dynamically rendered elements
@@ -57,14 +78,18 @@ const Index = () => {
     setTimeout(forceVisibility, 500);
     setTimeout(forceVisibility, 1500);
 
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
-    <div className="min-h-screen bg-white" dir="rtl">
-      <Navbar />
+    <div className={`min-h-screen bg-white transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`} dir="rtl">
+      <Navbar activeSection={activeSection} />
       <HeroSection />
       <AboutSection />
       <AdvantagesSection />
@@ -77,10 +102,10 @@ const Index = () => {
       {/* WhatsApp Button (replaced the duplicate button in ContactSection) */}
       <WhatsAppButton />
       
-      {/* Back to top button */}
+      {/* Back to top button with enhanced animation */}
       <a 
         href="#hero" 
-        className="fixed bottom-6 left-6 bg-primary-navy text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-primary-gold transition-colors duration-300 z-30"
+        className={`fixed bottom-6 left-6 bg-primary-navy text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-primary-gold transition-all duration-300 z-30 ${activeSection === 'hero' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         aria-label="חזרה למעלה"
       >
         <svg 

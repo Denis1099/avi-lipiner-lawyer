@@ -67,6 +67,45 @@
     transition-duration: 150ms;
   }
   
+  /* Hover effect for cards */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-lift:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+  
+  /* Button animations */
+  .btn-primary {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+  
+  .btn-primary::after {
+    content: "";
+    @apply absolute inset-0 bg-white/20 scale-x-0 transition-transform duration-300 origin-left;
+  }
+  
+  .btn-primary:hover::after {
+    @apply scale-x-100;
+  }
+  
+  /* Text fade-in animation */
+  .text-fade-in {
+    animation: textFadeIn 0.8s ease forwards;
+  }
+  
+  @keyframes textFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
   /* Fix animation issues */
   .animate-on-scroll {
     opacity: 1 !important;
@@ -76,5 +115,36 @@
   
   .animate-on-scroll.animated {
     opacity: 1 !important;
+  }
+  
+  /* Graceful image loading */
+  .img-loading {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .img-loaded {
+    opacity: 1;
+  }
+  
+  /* Fix FAQ section text visibility */
+  .faq-question {
+    @apply text-primary-gold font-medium;
+    color: #b08d57 !important; /* Force visible color */
+  }
+  
+  .faq-answer {
+    @apply text-black;
+    color: #000000 !important; /* Force visible color */
+  }
+  
+  /* Center align contact form */
+  .contact-form-wrapper {
+    @apply mx-auto;
+  }
+  
+  /* Fix button alignment */
+  .btn-center {
+    @apply mx-auto;
   }
 }
