@@ -7,7 +7,7 @@ const ServicesSection = () => {
   const services = [
     {
       icon: <FileText size={32} className="text-primary-gold" />,
-      image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=3012",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=2712",
       title: "בדיקות מקדימות וחוזה מכר",
       description: "ליווי מקצועי בשלב הבדיקות הראשוניות, ניסוח וסקירת חוזה המכר, זיהוי סיכונים פוטנציאליים והבטחת האינטרסים שלכם. בדיקת רישום הנכס, היעדר שעבודים, ותיאום מול ספרי המקרקעין.",
       statistic: "בדיקה מדוקדקת של למעלה מ-20 נקודות קריטיות בכל חוזה מכר"

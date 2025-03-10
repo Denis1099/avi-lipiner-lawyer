@@ -21,7 +21,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="md:col-span-1">
             <div className="flex items-center mb-6">
-              <img src="/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
+              <img src="/lovable-uploads/logo.png" alt="עו״ד אבי ליפינר" className="h-16" />
             </div>
             <p className="text-primary-light mb-8 text-base">
               עו"ד אבי ליפינר - מומחה במקרקעין. מעניק ללקוחותיו ליווי משפטי מקצועי, אישי וזמין בעסקאות מכר דירות, תוך שילוב ייחודי של ידע משפטי ופיננסי.
