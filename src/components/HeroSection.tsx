@@ -1,7 +1,7 @@
-
 import React from 'react';
 import ContactForm from './ContactForm';
 import AnimatedBox from './AnimatedBox';
+
 const HeroSection = () => {
   return <section id="hero" className="relative min-h-screen flex items-center pt-16 pb-12 overflow-hidden" style={{
     backgroundColor: '#d6d6d6',
@@ -48,18 +48,19 @@ const HeroSection = () => {
             </div>
           </AnimatedBox>
         </div>
-        
-        {/* Scroll indicator - positioned even lower */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 cursor-pointer animate-float -mb-4">
-          <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-gold/30 backdrop-blur-md text-primary-light">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{
-            color: '#fbfbfb'
-          }}>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
+      </div>
+      
+      {/* Scroll indicator - positioned outside container at section level */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer animate-float z-20">
+        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-gold/30 backdrop-blur-md text-primary-light">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{
+          color: '#fbfbfb'
+        }}>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
         </div>
       </div>
     </section>;
 };
+
 export default HeroSection;

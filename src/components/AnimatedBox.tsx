@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState, ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -19,16 +18,10 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Set initial visibility to true for SSR and accessibility
-    setIsVisible(true);
-    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Small delay to ensure DOM has updated
-          setTimeout(() => {
-            setIsVisible(true);
-          }, delay < 300 ? delay : 300); // Cap delay at 300ms
+          setIsVisible(true);
           
           if (ref.current) observer.unobserve(ref.current);
         }
@@ -47,11 +40,11 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
     return () => {
       if (ref.current) observer.unobserve(ref.current);
     };
-  }, [delay]);
+  }, []);
 
-  // Immediate visibility for critical elements
+  // Fallback for visibility if intersection observer fails
   useEffect(() => {
-    // Force visibility after 1 second as fallback
+    // Ensure components are visible when JS is disabled or observer fails
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 1000);
@@ -59,17 +52,18 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
     return () => clearTimeout(timer);
   }, []);
 
+  const animationClass = isVisible ? `animate-${animation}` : '';
+
   return (
     <div
       ref={ref}
       className={cn(
-        // Start with opacity-70 instead of opacity-0 to ensure initial visibility
-        'opacity-70 transition-all duration-500',
-        isVisible && `animate-${animation} opacity-100`,
+        'opacity-0',
+        isVisible && animationClass,
         className
       )}
       style={{ 
-        animationDelay: `${Math.min(delay, 500)}ms`, // Cap delay at 500ms
+        animationDelay: `${delay}ms`,
         willChange: 'opacity, transform'
       }}
     >

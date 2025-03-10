@@ -1,22 +1,40 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
+
 const AboutSection = () => {
-  const achievements = ['מאות משפחות שלוו בהצלחה בתהליכי רכישת ומכירת דירות', 'יועץ משכנתאות מוסמך מטעם התאחדות יועצי המשכנתאות', 'בעל רישיון תיווך מקרקעין המעניק יתרון בהבנת שוק הנדל"ן', 'תארים אקדמיים במשפטים ובמנהל עסקים עם התמחות במימון', 'ניסיון רב בהתמודדות עם עסקאות מורכבות ותביעות נגד יזמים'];
-  return <section id="about" className="section-padding bg-fbfbfb relative overflow-hidden">
+  const achievements = [
+    'מאות משפחות שלוו בהצלחה בתהליכי רכישת ומכירת דירות',
+    'יועץ משכנתאות מוסמך מטעם התאחדות יועצי המשכנתאות',
+    'בעל רישיון תיווך מקרקעין המעניק יתרון בהבנת שוק הנדל"ן',
+    'תארים אקדמיים במשפטים ובמנהל עסקים עם התמחות במימון',
+    'ניסיון רב בהתמודדות עם עסקאות מורכבות ותביעות נגד יזמים'
+  ];
+
+  return (
+    <section id="about" className="section-padding bg-fbfbfb relative overflow-hidden">
       <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-          <AnimatedBox animation="slideInRight" className="w-full lg:w-5/12 mb-10 lg:mb-0">
-            <div className="relative">
-              <div className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/10 rounded-lg"></div>
-              <img src="/public/lovable-uploads/avi-image.png" alt="עו״ד אבי ליפינר" className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover" style={{
-              aspectRatio: '3/4'
-            }} />
-              <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg"></div>
-            </div>
-          </AnimatedBox>
+        {/* Desktop layout */}
+        <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-16">
+          {/* Left column (image) - Only visible on desktop */}
+          <div className="hidden lg:block lg:w-5/12">
+            <AnimatedBox animation="slideInRight">
+              <div className="relative">
+                <div className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/10 rounded-lg"></div>
+                <img 
+                  src="/public/lovable-uploads/avi-image.png" 
+                  alt="עו״ד אבי ליפינר" 
+                  className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover" 
+                  style={{ aspectRatio: '3/4' }} 
+                />
+                <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg"></div>
+              </div>
+            </AnimatedBox>
+          </div>
           
+          {/* Right column (content) - Full width on mobile */}
           <div className="w-full lg:w-7/12">
+            {/* Title and intro paragraphs */}
             <AnimatedBox animation="slideInLeft" delay={100}>
               <h2 className="section-title mb-6 text-3xl md:text-5xl">עו"ד אבי ליפינר - מומחה במקרקעין ופיננסים</h2>
               
@@ -30,20 +48,40 @@ const AboutSection = () => {
               </div>
             </AnimatedBox>
             
+            {/* Mobile-only image - appears after the paragraphs */}
+            <div className="block lg:hidden mb-8">
+              <AnimatedBox animation="slideInRight">
+                <div className="relative">
+                  <div className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/10 rounded-lg"></div>
+                  <img 
+                    src="/public/lovable-uploads/avi-image.png" 
+                    alt="עו״ד אבי ליפינר" 
+                    className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover" 
+                    style={{ aspectRatio: '3/4' }} 
+                  />
+                  <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg"></div>
+                </div>
+              </AnimatedBox>
+            </div>
+            
+            {/* Achievements section */}
             <AnimatedBox animation="slideUp" delay={300}>
               <div className="bg-secondary-gray rounded-xl p-6 shadow-md py-[28px] px-[26px]">
                 <h3 className="font-bold mb-4 text-primary-gold text-3xl">הישגים מקצועיים:</h3>
                 <ul className="space-y-3 text-lg">
-                  {achievements.map((achievement, index) => <li key={index} className="flex items-start">
+                  {achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-start">
                       <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0">
                         <Check size={14} className="text-primary-light" />
                       </div>
                       <span className="text-black text-lg">{achievement}</span>
-                    </li>)}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </AnimatedBox>
             
+            {/* Commitment section */}
             <AnimatedBox animation="fadeIn" delay={500}>
               <div className="mt-8 p-6 border-r-4 border-primary-gold bg-primary-light shadow-md rounded-lg">
                 <h3 className="font-bold mb-2 text-primary-gold text-3xl">המחויבות שלי אליכם:</h3>
@@ -59,6 +97,8 @@ const AboutSection = () => {
       {/* Decorative elements */}
       <div className="hidden lg:block absolute top-20 left-10 w-64 h-64 bg-primary-gold/5 rounded-full"></div>
       <div className="hidden lg:block absolute bottom-20 right-10 w-40 h-40 bg-primary-gold/10 rounded-full"></div>
-    </section>;
+    </section>
+  );
 };
+
 export default AboutSection;
