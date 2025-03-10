@@ -144,14 +144,27 @@
     @apply inline-block px-3 py-1 text-sm font-medium rounded-full bg-primary-navy text-primary-light;
   }
   
+  /* Force visibility for animated elements */
+  [class*='animate-'] {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  
+  /* Ensure transitions are smooth */
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+  
   /* Fix animation issues */
   .animate-on-scroll {
-    opacity: 1 !important; /* Force visibility */
+    opacity: 1 !important;
+    visibility: visible !important;
     transition: opacity 0.6s ease;
   }
   
   .animate-on-scroll.animated {
-    @apply animate-fadeIn;
     opacity: 1 !important;
   }
 
