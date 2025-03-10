@@ -1,0 +1,27 @@
+
+@layer components {
+  .custom-shadow {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Fix FAQ section text visibility */
+  .faq-question {
+    @apply text-primary-gold font-medium;
+    color: #b08d57 !important; /* Force visible color */
+  }
+  
+  .faq-answer {
+    @apply text-black;
+    color: #000000 !important; /* Force visible color */
+  }
+  
+  /* Center align contact form */
+  .contact-form-wrapper {
+    @apply mx-auto;
+  }
+  
+  /* Fix button alignment */
+  .btn-center {
+    @apply mx-auto;
+  }
+}
