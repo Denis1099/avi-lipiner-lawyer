@@ -21,10 +21,10 @@ const AboutSection = () => {
               <h2 className="section-title mb-6 text-3xl md:text-5xl">עו"ד אבי ליפינר - מומחה במקרקעין ופיננסים</h2>
               
               <div className="text-black space-y-4 mb-8 text-xl">
-                <p className="text-xl">
+                <p className="text-lg">
                   את דרכי המקצועית התחלתי מתוך תשוקה ללוות אנשים ולהקל עליהם בתהליך המורכב של רכישת דירה. כשאתם נכנסים לעסקת מקרקעין, אתם לא מחפשים רק עורך דין - אתם מחפשים שותף לדרך שיבין את כל ההיבטים של העסקה.
                 </p>
-                <p className="text-xl">
+                <p className="text-lg">
                   המומחיות הייחודית שלי משלבת ידע משפטי מעמיק בתחום המקרקעין יחד עם רקע פיננסי מוצק. כבעל תואר ראשון במנהל עסקים עם התמחות במימון, תואר ראשון במשפטים, ותואר שני במשפטים מאוניברסיטת בר אילן, אני מביא לשולחן ידע מקיף. בנוסף, אני גם יועץ משכנתאות מוסמך ובעל רישיון לתיווך מקרקעין - שילוב שמאפשר לי להציע מענה הוליסטי ולהוביל את העסקה שלכם לקו הסיום בצורה חלקה ובטוחה.
                 </p>
               </div>
@@ -38,7 +38,7 @@ const AboutSection = () => {
                       <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0">
                         <Check size={14} className="text-primary-light" />
                       </div>
-                      <span className="text-black text-xl">{achievement}</span>
+                      <span className="text-black text-lg">{achievement}</span>
                     </li>)}
                 </ul>
               </div>
@@ -47,7 +47,7 @@ const AboutSection = () => {
             <AnimatedBox animation="fadeIn" delay={500}>
               <div className="mt-8 p-6 border-r-4 border-primary-gold bg-primary-light shadow-md rounded-lg">
                 <h3 className="font-bold mb-2 text-primary-gold text-3xl">המחויבות שלי אליכם:</h3>
-                <p className="text-black text-xl">
+                <p className="text-black text-lg">
                   המחויבות שלי היא לספק ללקוחותיי שירות מקצועי, אמין ואישי. אני מאמין ביחס אישי לכל לקוח, בזמינות מרבית, בסבלנות לכל שאלה ובקשה, ובדקדקנות תוך ירידה לפרטים הקטנים ביותר. יחד נבטיח שהעסקה שלכם תהיה בטוחה, מוצלחת, ללא דאגות וללא פשרות!
                 </p>
               </div>

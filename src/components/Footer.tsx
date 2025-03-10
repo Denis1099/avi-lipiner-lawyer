@@ -1,42 +1,34 @@
-
 import React from 'react';
 import { PhoneCall, Mail, MapPin, Clock } from 'lucide-react';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  const footerLinks = [
-    { name: 'ראשי', href: '#hero' },
-    { name: 'אודות', href: '#about' },
-    { name: 'שאלות נפוצות', href: '#faq' },
-  ];
-
-  return (
-    <footer className="bg-primary-navy text-primary-light pt-16 pb-6">
+  const footerLinks = [{
+    name: 'ראשי',
+    href: '#hero'
+  }, {
+    name: 'אודות',
+    href: '#about'
+  }, {
+    name: 'שאלות נפוצות',
+    href: '#faq'
+  }];
+  return <footer className="bg-primary-navy text-primary-light pt-16 pb-6">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
           <div className="md:col-span-1 lg:col-span-1">
             <div className="flex items-center mb-6">
               <img src="/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
             </div>
-            <p className="text-primary-light mb-8 text-lg">
+            <p className="text-primary-light mb-8 text-base">
               עו"ד אבי ליפינר - מומחה במקרקעין. מעניק ללקוחותיו ליווי משפטי מקצועי, אישי וזמין בעסקאות מכר דירות, תוך שילוב ייחודי של ידע משפטי ופיננסי.
             </p>
             <div className="flex space-x-4 space-x-reverse">
-              <a 
-                href="#" 
-                className="bg-primary-light/10 hover:bg-primary-light/20 p-2 rounded-full transition-colors duration-300"
-                aria-label="Facebook"
-              >
+              <a href="#" className="bg-primary-light/10 hover:bg-primary-light/20 p-2 rounded-full transition-colors duration-300" aria-label="Facebook">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                 </svg>
               </a>
-              <a 
-                href="#" 
-                className="bg-primary-light/10 hover:bg-primary-light/20 p-2 rounded-full transition-colors duration-300"
-                aria-label="Instagram"
-              >
+              <a href="#" className="bg-primary-light/10 hover:bg-primary-light/20 p-2 rounded-full transition-colors duration-300" aria-label="Instagram">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -48,24 +40,19 @@ const Footer = () => {
           
           <div className="md:col-span-1 lg:col-span-1">
             <h3 className="text-xl font-bold mb-6 border-b border-primary-light/20 pb-2 text-primary-gold">ניווט מהיר</h3>
-            <ul className="space-y-3 text-lg">
-              {footerLinks.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-primary-light hover:text-primary-gold transition-colors duration-200 flex items-center"
-                  >
+            <ul className="space-y-3 text-body">
+              {footerLinks.map((link, index) => <li key={index}>
+                  <a href={link.href} className="text-primary-light hover:text-primary-gold transition-colors duration-200 flex items-center">
                     <span className="ml-2">›</span>
                     {link.name}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
           
           <div className="md:col-span-1 lg:col-span-1">
             <h3 className="text-xl font-bold mb-6 border-b border-primary-light/20 pb-2 text-primary-gold">שעות פעילות</h3>
-            <div className="space-y-3 text-primary-light text-lg">
+            <div className="space-y-3 text-primary-light text-body">
               <div className="flex justify-between">
                 <span>ראשון - חמישי</span>
                 <span>9:00 - 19:00</span>
@@ -86,7 +73,7 @@ const Footer = () => {
           
           <div className="md:col-span-1 lg:col-span-1">
             <h3 className="text-xl font-bold mb-6 border-b border-primary-light/20 pb-2 text-primary-gold">צור קשר</h3>
-            <div className="space-y-4 text-lg">
+            <div className="space-y-4 text-body">
               <div className="flex">
                 <PhoneCall size={18} className="ml-3 flex-shrink-0 mt-1" />
                 <div>
@@ -124,8 +111,6 @@ const Footer = () => {
           <p>© {currentYear} כל הזכויות שמורות | עו"ד אבי ליפינר - מומחה במקרקעין</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
