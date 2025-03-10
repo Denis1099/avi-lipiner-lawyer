@@ -45,7 +45,7 @@ const Navbar = () => {
           {/* Logo on the left */}
           <div className="flex items-center">
             <a href="#" className="flex items-center">
-              <img src="/lovable-uploads/cb657924-ccb5-421d-9aec-14816849dcd8.png" alt="עו״ד אבי ליפינר" className="h-16" />
+              <img src="/lovable-uploads/logo.png" alt="עו״ד אבי ליפינר לוגו" className="h-16" />
             </a>
           </div>
 

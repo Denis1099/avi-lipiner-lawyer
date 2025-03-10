@@ -9,7 +9,7 @@ const AboutSection = () => {
           <AnimatedBox animation="slideInRight" className="w-full lg:w-5/12 mb-10 lg:mb-0">
             <div className="relative">
               <div className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/10 rounded-lg"></div>
-              <img src="/public/lovable-uploads/d33894e1-3185-4556-9cfa-c82530c7e965.png" alt="עו״ד אבי ליפינר" className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover" style={{
+              <img src="/public/lovable-uploads/avi-image.png" alt="עו״ד אבי ליפינר" className="w-full h-auto rounded-lg shadow-xl relative z-10 object-cover" style={{
               aspectRatio: '3/4'
             }} />
               <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg"></div>
