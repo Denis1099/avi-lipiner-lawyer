@@ -1,10 +1,15 @@
+
 import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 
-const Navbar = () => {
+interface NavbarProps {
+  activeSection?: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ activeSection: propActiveSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState(propActiveSection || 'hero');
 
   // Toggle mobile menu with additional safeguards
   const toggleMenu = (e?: React.MouseEvent) => {
@@ -38,24 +43,33 @@ const Navbar = () => {
       setScrolled(false);
     }
 
-    // Determine active section
-    const sections = ['hero', 'about', 'faq', 'contact'];
-    const currentPosition = window.scrollY + 100;
+    // Only determine active section if not provided as a prop
+    if (!propActiveSection) {
+      const sections = ['hero', 'about', 'faq', 'contact'];
+      const currentPosition = window.scrollY + 100;
 
-    for (const sectionId of sections) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const { offsetTop, offsetHeight } = element;
-        if (
-          currentPosition >= offsetTop &&
-          currentPosition < offsetTop + offsetHeight
-        ) {
-          setActiveSection(sectionId);
-          break;
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (
+            currentPosition >= offsetTop &&
+            currentPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(sectionId);
+            break;
+          }
         }
       }
     }
-  }, []);
+  }, [propActiveSection]);
+
+  useEffect(() => {
+    // Update active section when prop changes
+    if (propActiveSection) {
+      setActiveSection(propActiveSection);
+    }
+  }, [propActiveSection]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
