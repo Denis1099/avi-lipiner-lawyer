@@ -6,14 +6,20 @@ interface AnimatedBoxProps {
   children: ReactNode;
   delay?: number;
   className?: string;
-  animation?: 'fadeIn' | 'slideInRight' | 'slideInLeft' | 'slideUp' | 'scaleIn';
+  animation?: 'fadeIn' | 'slideInRight' | 'slideInLeft' | 'slideUp' | 'scaleIn' | 'bounce';
+  duration?: number;
+  threshold?: number;
+  once?: boolean;
 }
 
 const AnimatedBox: React.FC<AnimatedBoxProps> = ({
   children,
   delay = 0,
   className,
-  animation = 'fadeIn'
+  animation = 'fadeIn',
+  duration = 500,
+  threshold = 0.1,
+  once = true
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -33,18 +39,18 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
     try {
       observer = new IntersectionObserver(
         ([entry]) => {
-          if (entry.isIntersecting && !hasAnimated) {
+          if (entry.isIntersecting && (!hasAnimated || !once)) {
             setIsVisible(true);
             setHasAnimated(true);
             
-            if (ref.current) {
+            if (ref.current && once) {
               observer?.unobserve(ref.current);
             }
           }
         },
         {
           rootMargin: '0px',
-          threshold: 0.1
+          threshold
         }
       );
 
@@ -73,7 +79,7 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
         observer.unobserve(ref.current);
       }
     };
-  }, [hasAnimated, isVisible]);
+  }, [hasAnimated, isVisible, once, threshold]);
 
   const getAnimationClass = () => {
     if (!isVisible) return '';
@@ -89,6 +95,8 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
         return 'animate-slideUp';
       case 'scaleIn':
         return 'animate-scaleIn';
+      case 'bounce':
+        return 'animate-bounce';
       default:
         return 'animate-fadeIn';
     }
@@ -98,7 +106,7 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
     <div
       ref={ref}
       className={cn(
-        'transition-all duration-500',
+        'transition-all',
         {
           'opacity-0': !isVisible,
           'opacity-100': isVisible,
@@ -108,6 +116,7 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
       )}
       style={{ 
         animationDelay: isVisible ? `${delay}ms` : '0ms',
+        transitionDuration: `${duration}ms`,
         willChange: 'opacity, transform',
         visibility: isVisible ? 'visible' : 'hidden'
       }}

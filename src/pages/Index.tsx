@@ -38,14 +38,19 @@ const Index = () => {
             if (!el.style.color || el.style.color === 'transparent') {
               el.style.color = '#000000';
             }
-          } else if (el.classList.contains('faq-question')) {
-            el.style.color = '#b08d57';
-          } else if (el.classList.contains('faq-answer')) {
-            el.style.color = '#000000';
           }
         });
       
-      // Fix specific color issues
+      // Fix specific color issues with FAQ text
+      document.querySelectorAll('.faq-question').forEach(el => {
+        (el as HTMLElement).style.color = '#b08d57';
+      });
+      
+      document.querySelectorAll('.faq-answer').forEach(el => {
+        (el as HTMLElement).style.color = '#000000';
+      });
+      
+      // Fix font family issues
       document.querySelectorAll('.font-karantina').forEach(el => {
         (el as HTMLElement).style.fontFamily = 'Karantina, sans-serif';
       });
@@ -99,7 +104,7 @@ const Index = () => {
       <ContactSection />
       <Footer />
       
-      {/* WhatsApp Button (replaced the duplicate button in ContactSection) */}
+      {/* WhatsApp Button */}
       <WhatsAppButton />
       
       {/* Back to top button with enhanced animation */}

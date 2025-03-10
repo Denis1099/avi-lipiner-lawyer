@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Check } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -20,16 +21,16 @@ const AboutSection = () => {
           {/* Left column (image) - Only visible on desktop */}
           <div className="hidden lg:block lg:w-5/12">
             <AnimatedBox animation="slideInRight">
-              <div className="relative">
+              <div className="relative group">
                 <div 
-                  className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg"
+                  className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg transition-all duration-500 group-hover:bg-primary-gold/25"
                   aria-hidden="true"
                 ></div>
-                <div className="relative rounded-lg overflow-hidden shadow-xl">
+                <div className="relative rounded-lg overflow-hidden shadow-xl transition-all duration-500 transform group-hover:scale-105">
                   <img 
                     src="/lovable-uploads/avi-image.webp" 
                     alt="עו״ד אבי ליפינר" 
-                    className="w-full h-auto relative z-10 object-cover transform scale-[0.95]" 
+                    className="w-full h-auto relative z-10 object-cover transition-all duration-500"
                     style={{ 
                       aspectRatio: '3/4',
                       filter: 'contrast(1.08) saturate(1.08) brightness(1.02)',
@@ -42,7 +43,7 @@ const AboutSection = () => {
                   
                   {/* Vignette overlay to add depth and hide compression artifacts */}
                   <div 
-                    className="absolute inset-0 z-20 pointer-events-none"
+                    className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-80"
                     style={{
                       boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), inset 0 0 3px rgba(0,0,0,0.1)',
                       background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.07) 100%)'
@@ -51,14 +52,14 @@ const AboutSection = () => {
                   
                   {/* Subtle golden highlight at the bottom */}
                   <div 
-                    className="absolute bottom-0 left-0 right-0 h-20 z-20 pointer-events-none opacity-30"
+                    className="absolute bottom-0 left-0 right-0 h-20 z-20 pointer-events-none opacity-30 transition-opacity duration-500 group-hover:opacity-50"
                     style={{
                       background: 'linear-gradient(to top, rgba(176, 141, 87, 0.18), transparent)'
                     }}
                   ></div>
                 </div>
                 <div 
-                  className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg"
+                  className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg transition-all duration-500 group-hover:w-28 group-hover:h-28 group-hover:bg-primary-gold/90"
                   aria-hidden="true"
                 ></div>
               </div>
@@ -84,16 +85,16 @@ const AboutSection = () => {
             {/* Mobile-only image - appears earlier in the flow */}
             <div className="block lg:hidden mb-8">
               <AnimatedBox animation="slideInRight">
-                <div className="relative">
+                <div className="relative group">
                   <div 
-                    className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg"
+                    className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg transition-all duration-500 group-hover:bg-primary-gold/25"
                     aria-hidden="true"
                   ></div>
-                  <div className="relative rounded-lg overflow-hidden shadow-xl">
+                  <div className="relative rounded-lg overflow-hidden shadow-xl transition-all duration-500 transform group-hover:scale-105">
                     <img 
                       src="/lovable-uploads/avi-image.webp" 
                       alt="עו״ד אבי ליפינר" 
-                      className="w-full h-auto relative z-10 object-cover transform scale-[0.95]" 
+                      className="w-full h-auto relative z-10 object-cover transition-all duration-500"
                       style={{ 
                         aspectRatio: '3/4',
                         filter: 'contrast(1.08) saturate(1.08) brightness(1.02)',
@@ -106,7 +107,7 @@ const AboutSection = () => {
                     
                     {/* Vignette overlay */}
                     <div 
-                      className="absolute inset-0 z-20 pointer-events-none"
+                      className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-80"
                       style={{
                         boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), inset 0 0 3px rgba(0,0,0,0.1)',
                         background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.07) 100%)'
@@ -115,14 +116,14 @@ const AboutSection = () => {
                     
                     {/* Subtle golden highlight at the bottom */}
                     <div 
-                      className="absolute bottom-0 left-0 right-0 h-16 z-20 pointer-events-none opacity-30"
+                      className="absolute bottom-0 left-0 right-0 h-16 z-20 pointer-events-none opacity-30 transition-opacity duration-500 group-hover:opacity-50"
                       style={{
                         background: 'linear-gradient(to top, rgba(176, 141, 87, 0.18), transparent)'
                       }}
                     ></div>
                   </div>
                   <div 
-                    className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg"
+                    className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg transition-all duration-500 group-hover:w-28 group-hover:h-28 group-hover:bg-primary-gold/90"
                     aria-hidden="true"
                   ></div>
                 </div>

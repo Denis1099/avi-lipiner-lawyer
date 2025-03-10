@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import ContactForm from './ContactForm';
 import AnimatedBox from './AnimatedBox';
-import { Sparkles } from 'lucide-react';
 
 const HeroSection = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -97,7 +96,6 @@ const HeroSection = () => {
               <br />
               <span className="text-primary-gold relative inline-block" style={{ color: '#b08d57' }}>
                 בעסקאות מכר דירות
-                <Sparkles className="absolute -top-8 -left-8 text-primary-gold/60 w-6 h-6 animate-pulse" />
               </span>
             </h1>
             
