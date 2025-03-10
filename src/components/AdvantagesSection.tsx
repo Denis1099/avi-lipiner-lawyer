@@ -43,7 +43,7 @@ const AdvantagesSection = () => {
       <div className="container mx-auto">
         <AnimatedBox animation="fadeIn">
           <h2 className="section-title text-center mx-auto text-3xl md:text-5xl">למה לבחור בליווי משפטי של עו"ד אבי ליפינר?</h2>
-          <p className="section-subtitle text-center text-lg">
+          <p className="section-subtitle text-center text-lg font-assistant">
             עסקת מכר דירה היא אחת ההחלטות הפיננסיות המשמעותיות בחייכם. ליווי משפטי מקצועי ומנוסה עושה את ההבדל בין עסקה מוצלחת לבין כאב ראש מתמשך.
           </p>
         </AnimatedBox>
@@ -54,13 +54,15 @@ const AdvantagesSection = () => {
               key={index} 
               animation="scaleIn" 
               delay={100 * index}
-              className="bg-primary-light rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="bg-primary-light rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 text-center"
             >
-              <div className="bg-primary-gold/30 rounded-full p-4 inline-block mb-4 text-primary-gold">
-                {advantage.icon}
+              <div className="flex justify-center mb-4">
+                <div className="bg-primary-gold/30 rounded-full p-4 inline-block text-primary-gold">
+                  {advantage.icon}
+                </div>
               </div>
               <h3 className="text-2xl font-bold mb-3 text-primary-gold">{advantage.title}</h3>
-              <p className="text-black text-lg">{advantage.description}</p>
+              <p className="text-black text-lg font-assistant">{advantage.description}</p>
             </AnimatedBox>
           ))}
         </div>
@@ -72,7 +74,7 @@ const AdvantagesSection = () => {
                 {statistics.map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="text-4xl font-bold text-primary-gold mb-2">{stat.value}</div>
-                    <div className="text-primary-light">{stat.label}</div>
+                    <div className="text-primary-light font-assistant">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -83,7 +85,7 @@ const AdvantagesSection = () => {
         <AnimatedBox animation="fadeIn" delay={600} className="mt-12 text-center">
           <a 
             href="#contact" 
-            className="inline-block py-3 px-8 bg-primary-gold text-primary-light font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xl"
+            className="inline-block py-3 px-8 bg-primary-gold text-primary-light font-assistant font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xl"
           >
             צרו קשר עכשיו
           </a>

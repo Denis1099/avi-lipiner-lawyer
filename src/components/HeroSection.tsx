@@ -1,6 +1,8 @@
+
 import React from 'react';
 import ContactForm from './ContactForm';
 import AnimatedBox from './AnimatedBox';
+
 const HeroSection = () => {
   return <section id="hero" className="relative min-h-screen flex items-center pt-16 pb-12 overflow-hidden" style={{
     backgroundColor: '#d6d6d6',
@@ -17,7 +19,7 @@ const HeroSection = () => {
           <AnimatedBox animation="slideInRight" className="w-full lg:w-6/12 mb-12 lg:mb-0 text-center lg:text-right">
             <span style={{
             color: '#b08d57'
-          }} className="inline-block text-primary-gold px-4 py-1 rounded-full border border-primary-gold mb-6 font-bold text-xl">
+          }} className="inline-block text-primary-gold px-4 py-1 rounded-full border border-primary-gold mb-6 font-bold text-xl font-assistant">
               עו״ד אבי ליפינר - מומחה במקרקעין
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-light leading-tight mb-4 font-karantina" style={{
@@ -25,7 +27,7 @@ const HeroSection = () => {
           }}>
               ליווי משפטי מקצועי ואישי בעסקאות מכר דירות
             </h1>
-            <p className="text-2xl text-primary-light mb-8 max-w-2xl lg:mx-0 mx-auto font-karantina" style={{
+            <p className="text-2xl text-primary-light mb-8 max-w-2xl lg:mx-0 mx-auto font-assistant" style={{
             color: '#fbfbfb'
           }}>
               מהייעוץ הראשוני ועד למסירת המפתח - שילוב מנצח של מומחיות משפטית ופיננסית שמבטיח לכם עסקה בטוחה, מוצלחת, ללא דאגות וללא פשרות
@@ -48,8 +50,8 @@ const HeroSection = () => {
           </AnimatedBox>
         </div>
         
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer animate-float">
+        {/* Scroll indicator - adjusted position to be lower */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 cursor-pointer animate-float">
           <div className="w-10 h-10 flex items-center justify-center rounded-full bg-primary-gold/30 backdrop-blur-md text-primary-light">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" style={{
             color: '#fbfbfb'
@@ -61,4 +63,5 @@ const HeroSection = () => {
       </div>
     </section>;
 };
+
 export default HeroSection;

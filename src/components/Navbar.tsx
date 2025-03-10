@@ -56,7 +56,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-black hover:text-primary-gold hover:bg-secondary-gray px-3 py-2 rounded-md text-xl font-medium transition-all duration-200"
+                  className="font-assistant text-black hover:text-primary-gold hover:bg-secondary-gray px-3 py-2 rounded-md text-xl font-medium transition-all duration-200"
                   style={{ color: scrolled ? '#000000' : '#fbfbfb' }}
                 >
                   {link.name}
@@ -69,7 +69,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center">
             <a
               href="tel:+1234567890"
-              className="bg-primary-gold text-primary-light hover:bg-opacity-90 px-4 py-2 rounded-md text-xl font-medium transition-all duration-300 flex items-center"
+              className="font-assistant bg-primary-gold text-primary-light hover:bg-opacity-90 px-4 py-2 rounded-md text-xl font-medium transition-all duration-300 flex items-center"
               style={{ backgroundColor: '#b08d57', color: '#fbfbfb' }}
             >
               <Phone size={16} className="ml-2" />
@@ -77,12 +77,12 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Mobile Navigation Button */}
+          {/* Mobile Navigation Button - Always golden */}
           <div className="lg:hidden flex items-center">
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-primary-gold hover:text-primary-gold/80 focus:outline-none transition-all duration-300"
-              style={{ color: scrolled ? '#b08d57' : '#fbfbfb' }}
+              style={{ color: '#b08d57' }}
             >
               {isMenuOpen ? (
                 <X size={24} className="block h-6 w-6" />
@@ -103,7 +103,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-xl font-medium text-black hover:text-primary-gold hover:bg-secondary-gray rounded-md"
+                className="font-assistant block px-3 py-2 text-xl font-medium text-black hover:text-primary-gold hover:bg-secondary-gray rounded-md"
                 style={{ color: '#000000' }}
               >
                 {link.name}
@@ -111,7 +111,7 @@ const Navbar = () => {
             ))}
             <a
               href="tel:+1234567890"
-              className="block px-3 py-2 text-xl font-medium text-primary-light bg-primary-gold hover:bg-opacity-90 rounded-md mt-3 text-center"
+              className="font-assistant block px-3 py-2 text-xl font-medium text-primary-light bg-primary-gold hover:bg-opacity-90 rounded-md mt-3 text-center"
               style={{ backgroundColor: '#b08d57', color: '#fbfbfb' }}
             >
               התקשרו עכשיו
