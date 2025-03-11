@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -101,11 +100,11 @@ export default {
 					'100%': { opacity: '1' },
 				},
 				slideInRight: {
-					'0%': { transform: 'translateX(-20px)', opacity: '0' },
+					'0%': { transform: 'translateX(30px)', opacity: '0' },
 					'100%': { transform: 'translateX(0)', opacity: '1' },
 				},
 				slideInLeft: {
-					'0%': { transform: 'translateX(20px)', opacity: '0' },
+					'0%': { transform: 'translateX(-30px)', opacity: '0' },
 					'100%': { transform: 'translateX(0)', opacity: '1' },
 				},
 				slideUp: {
@@ -121,20 +120,20 @@ export default {
 					'50%': { transform: 'translateY(-10px)' },
 				},
 				scaleIn: {
-					'0%': { transform: 'scale(0.9)', opacity: '0' },
+					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' },
 				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				fadeIn: 'fadeIn 0.6s ease-in-out forwards',
-				slideInRight: 'slideInRight 0.6s ease-out forwards',
-				slideInLeft: 'slideInLeft 0.6s ease-out forwards',
-				slideUp: 'slideUp 0.6s ease-out forwards',
+				fadeIn: 'fadeIn 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards',
+				slideInRight: 'slideInRight 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards',
+				slideInLeft: 'slideInLeft 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards',
+				slideUp: 'slideUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards',
 				pulse: 'pulse 3s infinite',
 				float: 'float 6s ease-in-out infinite',
-				scaleIn: 'scaleIn 0.5s ease-out forwards',
+				scaleIn: 'scaleIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
 			},
 			transitionDuration: {
 				'2000': '2000ms',

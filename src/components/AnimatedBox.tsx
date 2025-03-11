@@ -1,5 +1,4 @@
-
-import React, { useEffect, useRef, useState, ReactNode } from 'react';
+import React, { useEffect, useRef, useState, ReactNode, memo } from 'react';
 import { cn } from '@/lib/utils';
 
 interface AnimatedBoxProps {
@@ -10,119 +9,129 @@ interface AnimatedBoxProps {
   duration?: number;
   threshold?: number;
   once?: boolean;
-  easing?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'cubic-bezier';
+  easing?: string;
 }
 
-const AnimatedBox: React.FC<AnimatedBoxProps> = ({
+// Using memo to prevent excess re-renders
+const AnimatedBox = memo(({
   children,
   delay = 0,
   className,
   animation = 'fadeIn',
-  duration = 800, // Increased from 500 for smoother animations
+  // Reduced default duration from 800ms to 600ms for faster animations
+  duration = 600,
   threshold = 0.1,
   once = true,
-  easing = 'cubic-bezier(0.25, 0.1, 0.25, 1.0)' // Using a smoother cubic-bezier curve
-}) => {
+  // Adjusted default easing for quicker start (faster fade-in perception)
+  easing = 'cubic-bezier(0.15, 0.7, 0.4, 1.0)'
+}: AnimatedBoxProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Initialize visible state for elements that are in view on page load
-    if (ref.current) {
-      try {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting && (!hasAnimated || !once)) {
-              setTimeout(() => {
-                setIsVisible(true);
-                setHasAnimated(true);
-              }, 50); // Small delay to allow for smoother batch rendering
-              
-              if (ref.current && once) {
-                observer.unobserve(ref.current);
-              }
-            } else if (!entry.isIntersecting && !once && hasAnimated) {
-              setIsVisible(false);
-            }
-          },
-          {
-            rootMargin: '0px',
-            threshold
-          }
-        );
-
-        observer.observe(ref.current);
-
-        return () => {
-          if (ref.current) {
-            observer.unobserve(ref.current);
-          }
-        };
-      } catch (error) {
-        console.warn('IntersectionObserver failed, forcing visibility');
-        setIsVisible(true);
-        setHasAnimated(true);
-      }
-    }
-
-    // Fallback for browsers without IntersectionObserver
-    const fallbackTimeout = setTimeout(() => {
-      if (!isVisible) {
-        setIsVisible(true);
-        setHasAnimated(true);
-      }
-    }, 1000);
-
-    return () => clearTimeout(fallbackTimeout);
-  }, [hasAnimated, isVisible, once, threshold]);
-
-  const getAnimationClass = () => {
-    if (!isVisible) return '';
-    
+  const elementRef = useRef<HTMLDivElement>(null);
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const hasAnimated = useRef(false);
+  
+  // Get the initial styles based on animation type - before any transitions
+  const getInitialStyles = () => {
     switch (animation) {
       case 'fadeIn':
-        return 'animate-fadeIn';
+        return { opacity: 0 };
       case 'slideInRight':
-        return 'animate-slideInRight';
+        return { opacity: 0, transform: 'translateX(30px)' };
       case 'slideInLeft':
-        return 'animate-slideInLeft';
+        return { opacity: 0, transform: 'translateX(-30px)' };
       case 'slideUp':
-        return 'animate-slideUp';
+        return { opacity: 0, transform: 'translateY(20px)' };
       case 'scaleIn':
-        return 'animate-scaleIn';
+        return { opacity: 0, transform: 'scale(0.95)' };
       case 'bounce':
-        return 'animate-bounce';
+        return { opacity: 0, transform: 'translateY(20px)' };
       default:
-        return 'animate-fadeIn';
+        return { opacity: 0 };
     }
   };
+  
+  // Get final styles when visible
+  const getFinalStyles = () => {
+    return { opacity: 1, transform: 'none' };
+  };
+  
+  // Combine computed styles with base transition styles
+  const styles = {
+    ...(isVisible ? getFinalStyles() : getInitialStyles()),
+    transitionProperty: 'opacity, transform',
+    transitionDuration: `${duration}ms`,
+    transitionTimingFunction: easing,
+    transitionDelay: `${delay}ms`,
+    // Hardware acceleration
+    willChange: 'opacity, transform',
+    backfaceVisibility: 'hidden' as const,
+  };
+
+  useEffect(() => {
+    const element = elementRef.current;
+    if (!element) return;
+
+    // Apply hardware acceleration from the start
+    if (element) {
+      element.style.transform = element.style.transform || 'translateZ(0)';
+    }
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      const [entry] = entries;
+      
+      if (entry.isIntersecting && (!hasAnimated.current || !once)) {
+        // Only update state if needed to prevent unnecessary renders
+        if (!isVisible) {
+          // Use requestAnimationFrame for smoother animation starts
+          requestAnimationFrame(() => {
+            setIsVisible(true);
+          });
+        }
+        hasAnimated.current = true;
+        
+        if (once && observerRef.current) {
+          observerRef.current.disconnect();
+        }
+      } else if (!entry.isIntersecting && !once && hasAnimated.current) {
+        if (isVisible) {
+          setIsVisible(false);
+        }
+      }
+    };
+
+    // Set up IntersectionObserver
+    try {
+      observerRef.current = new IntersectionObserver(handleIntersection, {
+        threshold,
+        // Increased rootMargin to start animations slightly earlier
+        rootMargin: '10px'
+      });
+      
+      observerRef.current.observe(element);
+    } catch (error) {
+      console.warn('IntersectionObserver not supported, fallback to visible');
+      setIsVisible(true);
+    }
+
+    // Cleanup function
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, [once, threshold, isVisible]); // Keep dependencies minimal
 
   return (
-    <div
-      ref={ref}
-      className={cn(
-        'transition-opacity',
-        {
-          'opacity-0': !isVisible,
-          'opacity-100': isVisible,
-        },
-        getAnimationClass(),
-        className
-      )}
-      style={{ 
-        animationDelay: isVisible ? `${delay}ms` : '0ms',
-        animationDuration: `${duration}ms`,
-        animationTimingFunction: easing,
-        transitionDuration: `${duration}ms`,
-        transitionTimingFunction: easing,
-        willChange: isVisible ? 'opacity, transform' : 'auto',
-        visibility: isVisible ? 'visible' : 'hidden'
-      }}
+    <div 
+      ref={elementRef} 
+      className={cn(className)}
+      style={styles}
     >
       {children}
     </div>
   );
-};
+});
+
+AnimatedBox.displayName = 'AnimatedBox';
 
 export default AnimatedBox;

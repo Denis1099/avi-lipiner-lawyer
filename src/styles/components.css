@@ -53,11 +53,11 @@
     @apply inline-block px-3 py-1 text-sm font-medium rounded-full bg-primary-navy text-primary-light;
   }
   
-  /* Force visibility for animated elements */
-  [class*='animate-'] {
+  /* Removed the conflicting !important rule that was preventing animations */
+  /* [class*='animate-'] {
     opacity: 1 !important;
     visibility: visible !important;
-  }
+  } */
   
   /* Ensure transitions are smooth */
   .transition-all {
@@ -116,13 +116,11 @@
   
   /* Fix animation issues */
   .animate-on-scroll {
-    opacity: 1 !important;
-    visibility: visible !important;
     transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1.0);
   }
   
   .animate-on-scroll.animated {
-    opacity: 1 !important;
+    opacity: 1;
   }
   
   /* Graceful image loading */
@@ -151,25 +149,35 @@
     @apply mx-auto;
   }
   
-  /* Animation classes - improved for smoother animations */
+  /* Animation classes - updated for smoother animations */
   .animate-fadeIn {
-    animation: fadeIn 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+    animation-name: fadeIn;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
   }
   
   .animate-slideInRight {
-    animation: slideInRight 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+    animation-name: slideInRight;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
   }
   
   .animate-slideInLeft {
-    animation: slideInLeft 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+    animation-name: slideInLeft;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
   }
   
   .animate-slideUp {
-    animation: slideUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1.0) forwards;
+    animation-name: slideUp;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1.0);
   }
   
   .animate-scaleIn {
-    animation: scaleIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-name: scaleIn;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   
   @keyframes fadeIn {
@@ -223,6 +231,13 @@
       opacity: 1;
       transform: scale(1);
     }
+  }
+  
+  /* Add hardware acceleration for smoother animations */
+  [class*='animate-'] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
   
   /* Ensure proper z-indexing for decorative elements */
