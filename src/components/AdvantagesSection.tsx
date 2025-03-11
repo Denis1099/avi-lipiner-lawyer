@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Award, Users, ClipboardCheck, Clock, ShieldCheck } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -91,7 +92,7 @@ const AdvantagesSection = () => {
   
   return (
     <section id="advantages" className="section-padding py-16 md:py-20 bg-gradient-to-b from-primary-light to-secondary-gray relative overflow-hidden">
-      <div className="container mx-auto px-5 md:px-8">
+      <div className="container mx-auto px-5 md:px-8 relative z-10">
         <AnimatedBox animation="fadeIn">
           <h2 className="section-title text-center mx-auto text-3xl md:text-5xl mb-4">למה לבחור בליווי משפטי של עו"ד אבי ליפינר?</h2>
           <p className="section-subtitle text-center font-assistant text-xl max-w-3xl mx-auto">
@@ -123,7 +124,7 @@ const AdvantagesSection = () => {
             <div className="p-8 md:p-10">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
                 {statistics.map((stat, index) => (
-                  <div key={index} className="text-center group hover:transform hover:scale-105 transition-transform duration-300">
+                  <div key={index} className="text-center">
                     <div className="text-5xl md:text-6xl font-bold text-primary-gold mb-2 font-karantina">
                       <CountUp end={stat.value} suffix={stat.suffix} duration={2000} />
                     </div>
@@ -147,17 +148,17 @@ const AdvantagesSection = () => {
         </AnimatedBox>
       </div>
 
-      {/* Decorative elements with improved visibility */}
+      {/* Decorative elements positioned behind with proper z-index */}
       <div 
-        className="absolute -bottom-16 -left-16 w-64 h-64 bg-primary-gold/10 rounded-full"
+        className="absolute -bottom-16 -left-16 w-64 h-64 bg-primary-gold/10 rounded-full -z-10"
         aria-hidden="true"
       ></div>
       <div 
-        className="absolute top-1/4 -right-8 w-32 h-32 bg-primary-navy/10 rounded-full"
+        className="absolute top-1/4 -right-8 w-32 h-32 bg-primary-navy/10 rounded-full -z-10"
         aria-hidden="true"
       ></div>
       <div 
-        className="absolute top-1/2 left-1/4 w-24 h-24 bg-primary-gold/5 rounded-full"
+        className="absolute top-1/2 left-1/4 w-24 h-24 bg-primary-gold/5 rounded-full -z-10"
         aria-hidden="true"
       ></div>
     </section>

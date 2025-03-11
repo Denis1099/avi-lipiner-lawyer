@@ -21,16 +21,16 @@ const AboutSection = () => {
           {/* Left column (image) - Only visible on desktop */}
           <div className="hidden lg:block lg:w-5/12">
             <AnimatedBox animation="slideInRight">
-              <div className="relative group">
+              <div className="relative">
                 <div 
-                  className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg transition-all duration-500 group-hover:bg-primary-gold/25"
+                  className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg z-0"
                   aria-hidden="true"
                 ></div>
-                <div className="relative rounded-lg overflow-hidden shadow-xl transition-all duration-500 transform group-hover:scale-105">
+                <div className="relative rounded-lg overflow-hidden shadow-xl z-10">
                   <img 
                     src="/lovable-uploads/avi-image.webp" 
                     alt="עו״ד אבי ליפינר" 
-                    className="w-full h-auto relative z-10 object-cover transition-all duration-500"
+                    className="w-full h-auto relative z-10 object-cover"
                     style={{ 
                       aspectRatio: '3/4',
                       filter: 'contrast(1.08) saturate(1.08) brightness(1.02)',
@@ -43,7 +43,7 @@ const AboutSection = () => {
                   
                   {/* Vignette overlay to add depth and hide compression artifacts */}
                   <div 
-                    className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-80"
+                    className="absolute inset-0 z-20 pointer-events-none"
                     style={{
                       boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), inset 0 0 3px rgba(0,0,0,0.1)',
                       background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.07) 100%)'
@@ -52,14 +52,14 @@ const AboutSection = () => {
                   
                   {/* Subtle golden highlight at the bottom */}
                   <div 
-                    className="absolute bottom-0 left-0 right-0 h-20 z-20 pointer-events-none opacity-30 transition-opacity duration-500 group-hover:opacity-50"
+                    className="absolute bottom-0 left-0 right-0 h-20 z-20 pointer-events-none opacity-30"
                     style={{
                       background: 'linear-gradient(to top, rgba(176, 141, 87, 0.18), transparent)'
                     }}
                   ></div>
                 </div>
                 <div 
-                  className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg transition-all duration-500 group-hover:w-28 group-hover:h-28 group-hover:bg-primary-gold/90"
+                  className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg z-0"
                   aria-hidden="true"
                 ></div>
               </div>
@@ -85,16 +85,16 @@ const AboutSection = () => {
             {/* Mobile-only image - appears earlier in the flow */}
             <div className="block lg:hidden mb-8">
               <AnimatedBox animation="slideInRight">
-                <div className="relative group">
+                <div className="relative">
                   <div 
-                    className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg transition-all duration-500 group-hover:bg-primary-gold/25"
+                    className="absolute -top-4 -right-4 w-full h-full bg-primary-gold/15 rounded-lg z-0"
                     aria-hidden="true"
                   ></div>
-                  <div className="relative rounded-lg overflow-hidden shadow-xl transition-all duration-500 transform group-hover:scale-105">
+                  <div className="relative rounded-lg overflow-hidden shadow-xl z-10">
                     <img 
                       src="/lovable-uploads/avi-image.webp" 
                       alt="עו״ד אבי ליפינר" 
-                      className="w-full h-auto relative z-10 object-cover transition-all duration-500"
+                      className="w-full h-auto relative z-10 object-cover"
                       style={{ 
                         aspectRatio: '3/4',
                         filter: 'contrast(1.08) saturate(1.08) brightness(1.02)',
@@ -107,7 +107,7 @@ const AboutSection = () => {
                     
                     {/* Vignette overlay */}
                     <div 
-                      className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-500 group-hover:opacity-80"
+                      className="absolute inset-0 z-20 pointer-events-none"
                       style={{
                         boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), inset 0 0 3px rgba(0,0,0,0.1)',
                         background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.07) 100%)'
@@ -116,14 +116,14 @@ const AboutSection = () => {
                     
                     {/* Subtle golden highlight at the bottom */}
                     <div 
-                      className="absolute bottom-0 left-0 right-0 h-16 z-20 pointer-events-none opacity-30 transition-opacity duration-500 group-hover:opacity-50"
+                      className="absolute bottom-0 left-0 right-0 h-16 z-20 pointer-events-none opacity-30"
                       style={{
                         background: 'linear-gradient(to top, rgba(176, 141, 87, 0.18), transparent)'
                       }}
                     ></div>
                   </div>
                   <div 
-                    className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg transition-all duration-500 group-hover:w-28 group-hover:h-28 group-hover:bg-primary-gold/90"
+                    className="absolute -bottom-6 -left-6 w-24 h-24 bg-primary-gold rounded-lg z-0"
                     aria-hidden="true"
                   ></div>
                 </div>
@@ -137,7 +137,7 @@ const AboutSection = () => {
                 <ul className="space-y-4 text-lg">
                   {achievements.map((achievement, index) => (
                     <li key={index} className="flex items-start group">
-                      <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
+                      <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0">
                         <Check size={16} className="text-primary-light" />
                       </div>
                       <span className="text-black text-lg font-medium">{achievement}</span>
@@ -164,7 +164,7 @@ const AboutSection = () => {
                   <img 
                     src="/lovable-uploads/avi-lipiner-signature.webp" 
                     alt="חתימת עו״ד אבי ליפינר" 
-                    className="w-full h-auto transition-all duration-300 hover:opacity-90"
+                    className="w-full h-auto"
                     width="256"
                     height="100"
                     loading="lazy"
@@ -176,17 +176,17 @@ const AboutSection = () => {
         </div>
       </div>
       
-      {/* Decorative elements - enhanced visibility */}
+      {/* Decorative elements - positioned behind content with proper z-index */}
       <div 
-        className="hidden lg:block absolute top-20 left-10 w-72 h-72 bg-primary-gold/8 rounded-full"
+        className="hidden lg:block absolute top-20 left-10 w-72 h-72 bg-primary-gold/8 rounded-full -z-10"
         aria-hidden="true"
       ></div>
       <div 
-        className="hidden lg:block absolute bottom-20 right-10 w-48 h-48 bg-primary-gold/12 rounded-full"
+        className="hidden lg:block absolute bottom-20 right-10 w-48 h-48 bg-primary-gold/12 rounded-full -z-10"
         aria-hidden="true"
       ></div>
       <div 
-        className="block lg:hidden absolute top-10 left-5 w-32 h-32 bg-primary-gold/8 rounded-full"
+        className="block lg:hidden absolute top-10 left-5 w-32 h-32 bg-primary-gold/8 rounded-full -z-10"
         aria-hidden="true"
       ></div>
     </section>

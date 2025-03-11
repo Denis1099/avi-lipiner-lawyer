@@ -26,59 +26,49 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Force visibility immediately for better user experience
-    const immediateVisibilityTimeout = setTimeout(() => {
+    // Initialize visible state for elements that are in view on page load
+    if (ref.current) {
+      try {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting && (!hasAnimated || !once)) {
+              setIsVisible(true);
+              setHasAnimated(true);
+              
+              if (ref.current && once) {
+                observer.unobserve(ref.current);
+              }
+            }
+          },
+          {
+            rootMargin: '0px',
+            threshold
+          }
+        );
+
+        observer.observe(ref.current);
+
+        return () => {
+          if (ref.current) {
+            observer.unobserve(ref.current);
+          }
+        };
+      } catch (error) {
+        console.warn('IntersectionObserver failed, forcing visibility');
+        setIsVisible(true);
+        setHasAnimated(true);
+      }
+    }
+
+    // Fallback for browsers without IntersectionObserver
+    const fallbackTimeout = setTimeout(() => {
       if (!isVisible) {
         setIsVisible(true);
         setHasAnimated(true);
       }
-    }, 800); // Much shorter timeout for better UX
+    }, 1000);
 
-    let observer: IntersectionObserver | null = null;
-
-    try {
-      observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting && (!hasAnimated || !once)) {
-            setIsVisible(true);
-            setHasAnimated(true);
-            
-            if (ref.current && once) {
-              observer?.unobserve(ref.current);
-            }
-          }
-        },
-        {
-          rootMargin: '0px',
-          threshold
-        }
-      );
-
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-    } catch (error) {
-      console.warn('IntersectionObserver failed, forcing visibility');
-      setIsVisible(true);
-      setHasAnimated(true);
-    }
-
-    // Initial visibility check
-    if (ref.current && window.getComputedStyle(ref.current).opacity === '0') {
-      setTimeout(() => {
-        if (!isVisible) {
-          setIsVisible(true);
-          setHasAnimated(true);
-        }
-      }, 100);
-    }
-
-    return () => {
-      clearTimeout(immediateVisibilityTimeout);
-      if (ref.current && observer) {
-        observer.unobserve(ref.current);
-      }
-    };
+    return () => clearTimeout(fallbackTimeout);
   }, [hasAnimated, isVisible, once, threshold]);
 
   const getAnimationClass = () => {
@@ -106,7 +96,7 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
     <div
       ref={ref}
       className={cn(
-        'transition-all',
+        'transition-opacity',
         {
           'opacity-0': !isVisible,
           'opacity-100': isVisible,
@@ -117,7 +107,7 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
       style={{ 
         animationDelay: isVisible ? `${delay}ms` : '0ms',
         transitionDuration: `${duration}ms`,
-        willChange: 'opacity, transform',
+        willChange: isVisible ? 'opacity, transform' : 'auto',
         visibility: isVisible ? 'visible' : 'hidden'
       }}
     >
