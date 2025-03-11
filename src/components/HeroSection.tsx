@@ -40,15 +40,9 @@ const HeroSection = () => {
 
   return (
     <section 
-      id="hero" 
-      className="relative min-h-screen flex items-center pt-28 md:pt-16 pb-16 overflow-hidden"
-      style={{
-        backgroundImage: 'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.65)), url("/lovable-uploads/bg-image.webp")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
-    >
+  id="hero" 
+  className="relative min-h-screen flex items-center pt-28 md:pt-16 pb-16 overflow-hidden hero-background"
+>
       {/* Enhanced overlay with better gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 backdrop-blur-sm"></div>
       
