@@ -24,11 +24,20 @@ const Index = () => {
     const fixDecorative = () => {
       document.querySelectorAll('[aria-hidden="true"]').forEach(el => {
         (el as HTMLElement).style.zIndex = '-1';
+        (el as HTMLElement).style.position = 'absolute';
       });
       
       document.querySelectorAll('.decorative-element').forEach(el => {
         (el as HTMLElement).style.zIndex = '-1';
         (el as HTMLElement).style.position = 'absolute';
+        (el as HTMLElement).style.pointerEvents = 'none';
+      });
+      
+      // Fix specifically for circles and other decorative shapes
+      document.querySelectorAll('.circle-decoration, .golden-rectangle').forEach(el => {
+        (el as HTMLElement).style.zIndex = '-1';
+        (el as HTMLElement).style.position = 'absolute';
+        (el as HTMLElement).style.pointerEvents = 'none';
       });
     };
     

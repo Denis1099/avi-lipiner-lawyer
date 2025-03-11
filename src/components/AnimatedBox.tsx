@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState, ReactNode, memo } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -18,11 +19,9 @@ const AnimatedBox = memo(({
   delay = 0,
   className,
   animation = 'fadeIn',
-  // Reduced default duration from 800ms to 600ms for faster animations
   duration = 600,
   threshold = 0.1,
   once = true,
-  // Adjusted default easing for quicker start (faster fade-in perception)
   easing = 'cubic-bezier(0.15, 0.7, 0.4, 1.0)'
 }: AnimatedBoxProps) => {
   const [isVisible, setIsVisible] = useState(false);
