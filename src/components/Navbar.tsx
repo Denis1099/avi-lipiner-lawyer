@@ -33,13 +33,14 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection: propActiveSection }) => 
             navLinks={navLinks} 
           />
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation - pass scrolled prop */}
           <MobileNav 
             isMenuOpen={isMenuOpen} 
             toggleMenu={toggleMenu} 
             activeSection={activeSection} 
             navLinks={navLinks}
             setIsMenuOpen={setIsMenuOpen}
+            scrolled={scrolled}
           />
         </div>
       </div>

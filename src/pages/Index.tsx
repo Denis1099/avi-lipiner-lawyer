@@ -20,6 +20,18 @@ const Index = () => {
     // This enables smooth scrolling when clicking on navigation links
     document.documentElement.style.scrollBehavior = 'smooth';
     
+    // Apply necessary CSS fixes for decorative elements
+    const fixDecorative = () => {
+      document.querySelectorAll('[aria-hidden="true"]').forEach(el => {
+        (el as HTMLElement).style.zIndex = '-1';
+      });
+      
+      document.querySelectorAll('.decorative-element').forEach(el => {
+        (el as HTMLElement).style.zIndex = '-1';
+        (el as HTMLElement).style.position = 'absolute';
+      });
+    };
+    
     // Force any hidden elements to be visible
     const forceVisibility = () => {
       // Apply inline styles to ensure text visibility
@@ -59,6 +71,7 @@ const Index = () => {
         (el as HTMLElement).style.fontFamily = 'Assistant, sans-serif';
       });
 
+      fixDecorative();
       setIsLoaded(true);
     };
 
@@ -76,6 +89,9 @@ const Index = () => {
           }
         }
       }
+      
+      // Re-fix decorative elements on scroll
+      fixDecorative();
     };
 
     // Run on load and after a delay to catch dynamically rendered elements

@@ -9,6 +9,7 @@ interface MobileNavProps {
   activeSection: string;
   navLinks: NavLink[];
   setIsMenuOpen: (isOpen: boolean) => void;
+  scrolled: boolean; // Add scrolled prop
 }
 
 const MobileNav: React.FC<MobileNavProps> = ({ 
@@ -16,7 +17,8 @@ const MobileNav: React.FC<MobileNavProps> = ({
   toggleMenu, 
   activeSection, 
   navLinks,
-  setIsMenuOpen
+  setIsMenuOpen,
+  scrolled // Use scrolled prop
 }) => {
   return (
     <>
@@ -27,7 +29,11 @@ const MobileNav: React.FC<MobileNavProps> = ({
             e.stopPropagation();
             toggleMenu();
           }}
-          className="inline-flex items-center justify-center w-12 h-12 rounded-md text-primary-gold hover:bg-primary-gold/10 focus:outline-none transition-all duration-300 touch-manipulation"
+          className={`inline-flex items-center justify-center w-12 h-12 rounded-md focus:outline-none transition-all duration-300 touch-manipulation
+            ${scrolled 
+              ? 'text-primary-gold hover:bg-primary-gold/10' 
+              : 'text-primary-light bg-primary-navy/80 hover:bg-primary-navy'}
+          `}
           aria-expanded={isMenuOpen}
           aria-label="תפריט ניווט"
         >

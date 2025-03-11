@@ -93,7 +93,7 @@ const AdvantagesSection = () => {
   return (
     <section id="advantages" className="section-padding py-16 md:py-20 bg-gradient-to-b from-primary-light to-secondary-gray relative overflow-hidden">
       <div className="container mx-auto px-5 md:px-8 relative z-10">
-        <AnimatedBox animation="fadeIn">
+        <AnimatedBox animation="fadeIn" duration={1000} threshold={0.05}>
           <h2 className="section-title text-center mx-auto text-3xl md:text-5xl mb-4">למה לבחור בליווי משפטי של עו"ד אבי ליפינר?</h2>
           <p className="section-subtitle text-center font-assistant text-xl max-w-3xl mx-auto">
             עסקת מכר דירה היא אחת ההחלטות הפיננסיות המשמעותיות בחייכם. ליווי משפטי מקצועי ומנוסה עושה את ההבדל בין עסקה מוצלחת לבין כאב ראש מתמשך.
@@ -106,6 +106,8 @@ const AdvantagesSection = () => {
               key={index} 
               animation="scaleIn" 
               delay={100 * index} 
+              duration={800}
+              threshold={0.05}
               className="bg-primary-light rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 text-center h-full flex flex-col"
             >
               <div className="flex justify-center mb-4">
@@ -119,7 +121,7 @@ const AdvantagesSection = () => {
           ))}
         </div>
 
-        <AnimatedBox animation="slideUp" delay={300} className="mt-16">
+        <AnimatedBox animation="slideUp" delay={300} duration={1000} threshold={0.1} className="mt-16">
           <div className="bg-primary-navy rounded-2xl shadow-xl overflow-hidden">
             <div className="p-8 md:p-10">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
@@ -137,7 +139,7 @@ const AdvantagesSection = () => {
           </div>
         </AnimatedBox>
 
-        <AnimatedBox animation="fadeIn" delay={500} className="mt-12 text-center">
+        <AnimatedBox animation="fadeIn" delay={500} duration={1000} className="mt-12 text-center">
           <a 
             href="#contact" 
             className="inline-block py-4 px-10 bg-primary-gold text-primary-light font-assistant font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-xl"
@@ -150,15 +152,15 @@ const AdvantagesSection = () => {
 
       {/* Decorative elements positioned behind with proper z-index */}
       <div 
-        className="absolute -bottom-16 -left-16 w-64 h-64 bg-primary-gold/10 rounded-full -z-10"
+        className="decorative-element -bottom-16 -left-16 w-64 h-64 bg-primary-gold/10 rounded-full"
         aria-hidden="true"
       ></div>
       <div 
-        className="absolute top-1/4 -right-8 w-32 h-32 bg-primary-navy/10 rounded-full -z-10"
+        className="decorative-element top-1/4 -right-8 w-32 h-32 bg-primary-navy/10 rounded-full"
         aria-hidden="true"
       ></div>
       <div 
-        className="absolute top-1/2 left-1/4 w-24 h-24 bg-primary-gold/5 rounded-full -z-10"
+        className="decorative-element top-1/2 left-1/4 w-24 h-24 bg-primary-gold/5 rounded-full"
         aria-hidden="true"
       ></div>
     </section>

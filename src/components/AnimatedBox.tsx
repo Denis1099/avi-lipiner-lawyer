@@ -10,6 +10,7 @@ interface AnimatedBoxProps {
   duration?: number;
   threshold?: number;
   once?: boolean;
+  easing?: 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'cubic-bezier';
 }
 
 const AnimatedBox: React.FC<AnimatedBoxProps> = ({
@@ -17,9 +18,10 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
   delay = 0,
   className,
   animation = 'fadeIn',
-  duration = 500,
+  duration = 800, // Increased from 500 for smoother animations
   threshold = 0.1,
-  once = true
+  once = true,
+  easing = 'cubic-bezier(0.25, 0.1, 0.25, 1.0)' // Using a smoother cubic-bezier curve
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -32,12 +34,16 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
         const observer = new IntersectionObserver(
           ([entry]) => {
             if (entry.isIntersecting && (!hasAnimated || !once)) {
-              setIsVisible(true);
-              setHasAnimated(true);
+              setTimeout(() => {
+                setIsVisible(true);
+                setHasAnimated(true);
+              }, 50); // Small delay to allow for smoother batch rendering
               
               if (ref.current && once) {
                 observer.unobserve(ref.current);
               }
+            } else if (!entry.isIntersecting && !once && hasAnimated) {
+              setIsVisible(false);
             }
           },
           {
@@ -106,7 +112,10 @@ const AnimatedBox: React.FC<AnimatedBoxProps> = ({
       )}
       style={{ 
         animationDelay: isVisible ? `${delay}ms` : '0ms',
+        animationDuration: `${duration}ms`,
+        animationTimingFunction: easing,
         transitionDuration: `${duration}ms`,
+        transitionTimingFunction: easing,
         willChange: isVisible ? 'opacity, transform' : 'auto',
         visibility: isVisible ? 'visible' : 'hidden'
       }}
