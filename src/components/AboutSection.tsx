@@ -147,6 +147,54 @@ const AboutSection = () => {
               </div>
             </AnimatedBox>
             
+            {/* Partnership section - NEW */}
+            <AnimatedBox animation="fadeIn" delay={400}>
+              <div className="mt-10 bg-primary-light rounded-xl p-6 shadow-md border-r-4 border-primary-gold">
+                <h3 className="font-bold mb-5 text-primary-gold text-3xl">שיתוף פעולה מקצועי</h3>
+                
+                <div className="flex flex-col md:flex-row gap-6 mb-5">
+                  {/* Image container with decorative elements */}
+                  <div className="w-full md:w-1/2 relative">
+                    <div className="relative">
+                      <div 
+                        className="absolute -top-3 -right-3 w-full h-full bg-primary-gold/15 rounded-lg z-0"
+                        aria-hidden="true"
+                      ></div>
+                      <div className="relative rounded-lg overflow-hidden shadow-lg z-10">
+                        <img 
+                          src="/lovable-uploads/485c117c-9cae-466a-84cd-901571e4f17f.png" 
+                          alt="עו״ד אבי ליפינר ועו״ד ירון פוקס" 
+                          className="w-full h-auto object-cover"
+                          width="600"
+                          height="450"
+                          loading="lazy"
+                        />
+                        
+                        {/* Vignette overlay */}
+                        <div 
+                          className="absolute inset-0 z-20 pointer-events-none"
+                          style={{
+                            boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), inset 0 0 3px rgba(0,0,0,0.1)',
+                            background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.07) 100%)'
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Text describing the partnership */}
+                  <div className="w-full md:w-1/2 flex flex-col justify-center">
+                    <p className="text-black text-lg font-medium mb-4">
+                      משרדנו גאה לשתף פעולה עם עו"ד ירון פוקס, המתמחה בתחומים משלימים ומעשיר את השירות המשפטי שאנו מציעים ללקוחותינו.
+                    </p>
+                    <p className="text-black text-lg font-medium">
+                      עו"ד ירון פוקס הינו תושב שכונת הדר גנים בפתח תקווה, שכונה עם קהילה חמה ותוססת. לתושבי השכונה אנו מציעים שירות ביתי וחם וכן הנחות מיוחדות.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </AnimatedBox>
+            
             {/* Commitment section */}
             <AnimatedBox animation="fadeIn" delay={500}>
               <div className="mt-10 p-6 border-r-4 border-primary-gold bg-primary-light shadow-md rounded-lg">
