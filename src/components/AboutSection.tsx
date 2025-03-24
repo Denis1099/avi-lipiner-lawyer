@@ -64,6 +64,23 @@ const AboutSection = () => {
                 ></div>
               </div>
             </AnimatedBox>
+
+            {/* Achievements section now under Avi's image on desktop */}
+            <AnimatedBox animation="slideUp" delay={300} className="mt-8">
+              <div className="bg-secondary-gray rounded-xl p-6 shadow-md py-[30px] px-[30px]">
+                <h3 className="font-bold mb-5 text-primary-gold text-3xl">הישגים מקצועיים:</h3>
+                <ul className="space-y-4 text-lg">
+                  {achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-start group">
+                      <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0">
+                        <Check size={16} className="text-primary-light" />
+                      </div>
+                      <span className="text-black text-lg font-medium">{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </AnimatedBox>
           </div>
           
           {/* Right column (content) - Full width on mobile */}
@@ -130,24 +147,26 @@ const AboutSection = () => {
               </AnimatedBox>
             </div>
             
-            {/* Achievements section */}
-            <AnimatedBox animation="slideUp" delay={300}>
-              <div className="bg-secondary-gray rounded-xl p-6 shadow-md py-[30px] px-[30px] mb-6">
-                <h3 className="font-bold mb-5 text-primary-gold text-3xl">הישגים מקצועיים:</h3>
-                <ul className="space-y-4 text-lg">
-                  {achievements.map((achievement, index) => (
-                    <li key={index} className="flex items-start group">
-                      <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0">
-                        <Check size={16} className="text-primary-light" />
-                      </div>
-                      <span className="text-black text-lg font-medium">{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </AnimatedBox>
+            {/* Mobile-only Achievements section */}
+            <div className="block lg:hidden mb-8">
+              <AnimatedBox animation="slideUp" delay={300}>
+                <div className="bg-secondary-gray rounded-xl p-6 shadow-md py-[30px] px-[30px]">
+                  <h3 className="font-bold mb-5 text-primary-gold text-3xl">הישגים מקצועיים:</h3>
+                  <ul className="space-y-4 text-lg">
+                    {achievements.map((achievement, index) => (
+                      <li key={index} className="flex items-start group">
+                        <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0">
+                          <Check size={16} className="text-primary-light" />
+                        </div>
+                        <span className="text-black text-lg font-medium">{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </AnimatedBox>
+            </div>
             
-            {/* Partnership section - centered and full width */}
+            {/* Partnership section - placed under paragraph */}
             <AnimatedBox animation="fadeIn" delay={400}>
               <div className="bg-primary-light rounded-xl p-6 shadow-md border-r-4 border-primary-gold mx-auto mb-6">
                 <h3 className="font-bold mb-5 text-primary-gold text-3xl text-center">שיתוף פעולה ייחודי ומקצועי:</h3>
@@ -194,34 +213,32 @@ const AboutSection = () => {
                 </div>
               </div>
             </AnimatedBox>
-            
-            {/* Commitment section */}
-            <AnimatedBox animation="fadeIn" delay={500}>
-              <div className="mt-6 p-6 border-r-4 border-primary-gold bg-primary-light shadow-md rounded-lg mx-auto">
-                <h3 className="font-bold mb-3 text-primary-gold text-3xl">המחויבות שלי אליכם:</h3>
-                <p className="text-black text-lg font-medium" style={{ lineHeight: '1.6' }}>
-                  המחויבות שלי היא לספק ללקוחותיי שירות מקצועי, אמין ואישי. אני מאמין ביחס אישי לכל לקוח, בזמינות מרבית, בסבלנות לכל שאלה ובקשה, ובדקדקנות תוך ירידה לפרטים הקטנים ביותר. יחד נבטיח שהעסקה שלכם תהיה בטוחה, מוצלחת, ללא דאגות וללא פשרות!
-                </p>
-              </div>
-            </AnimatedBox>
-            
-            {/* Signature section - centered */}
-            <AnimatedBox animation="fadeIn" delay={600}>
-              <div className="mt-6 flex justify-center">
-                <div className="w-48 md:w-64">
-                  <img 
-                    src="/lovable-uploads/avi-lipiner-signature.webp" 
-                    alt="חתימת עו״ד אבי ליפינר" 
-                    className="w-full h-auto"
-                    width="256"
-                    height="100"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </AnimatedBox>
           </div>
         </div>
+        
+        {/* Commitment section - full width */}
+        <AnimatedBox animation="fadeIn" delay={500}>
+          <div className="mt-6 p-6 border-r-4 border-primary-gold bg-primary-light shadow-md rounded-lg mx-auto">
+            <h3 className="font-bold mb-3 text-primary-gold text-3xl">המחויבות שלי אליכם:</h3>
+            <p className="text-black text-lg font-medium" style={{ lineHeight: '1.6' }}>
+              המחויבות שלי היא לספק ללקוחותיי שירות מקצועי, אמין ואישי. אני מאמין ביחס אישי לכל לקוח, בזמינות מרבית, בסבלנות לכל שאלה ובקשה, ובדקדקנות תוך ירידה לפרטים הקטנים ביותר. יחד נבטיח שהעסקה שלכם תהיה בטוחה, מוצלחת, ללא דאגות וללא פשרות!
+            </p>
+          </div>
+        </AnimatedBox>
+        
+        {/* Signature section - centered */}
+        <AnimatedBox animation="fadeIn" delay={600} className="flex justify-center">
+          <div className="mt-6 w-48 md:w-64">
+            <img 
+              src="/lovable-uploads/avi-lipiner-signature.webp" 
+              alt="חתימת עו״ד אבי ליפינר" 
+              className="w-full h-auto"
+              width="256"
+              height="100"
+              loading="lazy"
+            />
+          </div>
+        </AnimatedBox>
       </div>
       
       {/* Decorative elements - positioned behind content with proper z-index */}
