@@ -18,8 +18,8 @@ const AboutSection = () => {
       <div className="container mx-auto px-5 md:px-8">
         {/* Desktop layout */}
         <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-16">
-          {/* Left column (image) - Only visible on desktop */}
-          <div className="hidden lg:block lg:w-5/12">
+          {/* Left column (image) - Only visible on desktop but smaller */}
+          <div className="hidden lg:block lg:w-4/12">
             <AnimatedBox animation="slideInRight">
               <div className="relative">
                 <div 
@@ -36,8 +36,8 @@ const AboutSection = () => {
                       filter: 'contrast(1.08) saturate(1.08) brightness(1.02)',
                       imageRendering: 'crisp-edges'
                     }}
-                    width="600"
-                    height="800"
+                    width="400"
+                    height="533"
                     loading="lazy"
                   />
                   
@@ -67,7 +67,7 @@ const AboutSection = () => {
           </div>
           
           {/* Right column (content) - Full width on mobile */}
-          <div className="w-full lg:w-7/12">
+          <div className="w-full lg:w-8/12">
             {/* Title and intro paragraphs */}
             <AnimatedBox animation="slideInLeft" delay={100}>
               <h2 className="section-title mb-6 text-3xl md:text-5xl">עו"ד אבי ליפינר - מומחה במקרקעין ופיננסים</h2>
@@ -130,77 +130,74 @@ const AboutSection = () => {
               </AnimatedBox>
             </div>
             
-            {/* Improved layout for partnership and achievements sections */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-              {/* Achievements section - moved to left column on desktop */}
-              <AnimatedBox animation="slideUp" delay={300}>
-                <div className="bg-secondary-gray rounded-xl p-6 shadow-md py-[30px] px-[30px] h-full">
-                  <h3 className="font-bold mb-5 text-primary-gold text-3xl">הישגים מקצועיים:</h3>
-                  <ul className="space-y-4 text-lg">
-                    {achievements.map((achievement, index) => (
-                      <li key={index} className="flex items-start group">
-                        <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0">
-                          <Check size={16} className="text-primary-light" />
-                        </div>
-                        <span className="text-black text-lg font-medium">{achievement}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </AnimatedBox>
-              
-              {/* Partnership section - moved to right column on desktop */}
-              <AnimatedBox animation="fadeIn" delay={400}>
-                <div className="bg-primary-light rounded-xl p-6 shadow-md border-r-4 border-primary-gold h-full">
-                  <h3 className="font-bold mb-5 text-primary-gold text-3xl">שיתוף פעולה ייחודי ומקצועי:</h3>
-                  
-                  <div className="flex flex-col gap-6 mb-5">
-                    {/* Image container with decorative elements */}
-                    <div className="w-full relative">
-                      <div className="relative">
+            {/* Achievements section */}
+            <AnimatedBox animation="slideUp" delay={300}>
+              <div className="bg-secondary-gray rounded-xl p-6 shadow-md py-[30px] px-[30px] mb-6">
+                <h3 className="font-bold mb-5 text-primary-gold text-3xl">הישגים מקצועיים:</h3>
+                <ul className="space-y-4 text-lg">
+                  {achievements.map((achievement, index) => (
+                    <li key={index} className="flex items-start group">
+                      <div className="bg-primary-gold rounded-full p-1 mt-1 ml-3 flex-shrink-0">
+                        <Check size={16} className="text-primary-light" />
+                      </div>
+                      <span className="text-black text-lg font-medium">{achievement}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </AnimatedBox>
+            
+            {/* Partnership section - centered and full width */}
+            <AnimatedBox animation="fadeIn" delay={400}>
+              <div className="bg-primary-light rounded-xl p-6 shadow-md border-r-4 border-primary-gold mx-auto mb-6">
+                <h3 className="font-bold mb-5 text-primary-gold text-3xl text-center">שיתוף פעולה ייחודי ומקצועי:</h3>
+                
+                <div className="flex flex-col md:flex-row gap-6 mb-5">
+                  {/* Image container with decorative elements */}
+                  <div className="w-full md:w-1/2 relative mx-auto" style={{ maxWidth: "400px" }}>
+                    <div className="relative">
+                      <div 
+                        className="absolute -top-3 -right-3 w-full h-full bg-primary-gold/15 rounded-lg z-0"
+                        aria-hidden="true"
+                      ></div>
+                      <div className="relative rounded-lg overflow-hidden shadow-lg z-10">
+                        <img 
+                          src="/lovable-uploads/avi-and-yaron.webp" 
+                          alt="עו״ד אבי ליפינר ועו״ד ירון פוקס" 
+                          className="w-full h-auto object-cover"
+                          width="500"
+                          height="500"
+                          loading="lazy"
+                        />
+                        
+                        {/* Vignette overlay */}
                         <div 
-                          className="absolute -top-3 -right-3 w-full h-full bg-primary-gold/15 rounded-lg z-0"
-                          aria-hidden="true"
+                          className="absolute inset-0 z-20 pointer-events-none"
+                          style={{
+                            boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), inset 0 0 3px rgba(0,0,0,0.1)',
+                            background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.07) 100%)'
+                          }}
                         ></div>
-                        <div className="relative rounded-lg overflow-hidden shadow-lg z-10">
-                          <img 
-                            src="/lovable-uploads/avi-and-yaron.webp" 
-                            alt="עו״ד אבי ליפינר ועו״ד ירון פוקס" 
-                            className="w-full h-auto object-cover"
-                            width="500"
-                            height="500"
-                            loading="lazy"
-                          />
-                          
-                          {/* Vignette overlay */}
-                          <div 
-                            className="absolute inset-0 z-20 pointer-events-none"
-                            style={{
-                              boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), inset 0 0 3px rgba(0,0,0,0.1)',
-                              background: 'radial-gradient(circle, transparent 60%, rgba(0,0,0,0.07) 100%)'
-                            }}
-                          ></div>
-                        </div>
                       </div>
                     </div>
-                    
-                    {/* Text describing the partnership */}
-                    <div className="w-full flex flex-col justify-center">
-                      <p className="text-black text-lg font-medium mb-4">
-                        משרדנו גאה לשתף פעולה עם עו"ד ירון פוקס, המתמחה במגוון שירותים המשלימים את השירותים המשפטיים שאנו מעניקים. שיתוף פעולה זה מאפשר לנו להציע מענה משפטי כולל ומקיף תחת קורת גג אחת.
-                      </p>
-                      <p className="text-black text-lg font-medium">
-                        עו"ד ירון פוקס הינו תושב ותיק ומוכר בשכונת הדר גנים בפתח תקווה, שכונה בעלת קהילה חמה ומגובשת. אנו שמחים להציע לתושבי השכונה שירות משפטי אישי ומקצועי ברמה הגבוהה ביותר, הכולל פגישות ייעוץ בבית הלקוח, ליווי צמוד לאורך כל התהליך, וכמובן - הטבות והנחות ייחודיות ובלעדיות.
-                      </p>
-                    </div>
+                  </div>
+                  
+                  {/* Text describing the partnership */}
+                  <div className="w-full md:w-1/2 flex flex-col justify-center">
+                    <p className="text-black text-lg font-medium mb-4">
+                      משרדנו גאה לשתף פעולה עם עו"ד ירון פוקס, המתמחה במגוון שירותים המשלימים את השירותים המשפטיים שאנו מעניקים. שיתוף פעולה זה מאפשר לנו להציע מענה משפטי כולל ומקיף תחת קורת גג אחת.
+                    </p>
+                    <p className="text-black text-lg font-medium">
+                      עו"ד ירון פוקס הינו תושב ותיק ומוכר בשכונת הדר גנים בפתח תקווה, שכונה בעלת קהילה חמה ומגובשת. אנו שמחים להציע לתושבי השכונה שירות משפטי אישי ומקצועי ברמה הגבוהה ביותר, הכולל פגישות ייעוץ בבית הלקוח, ליווי צמוד לאורך כל התהליך, וכמובן - הטבות והנחות ייחודיות ובלעדיות.
+                    </p>
                   </div>
                 </div>
-              </AnimatedBox>
-            </div>
+              </div>
+            </AnimatedBox>
             
             {/* Commitment section */}
             <AnimatedBox animation="fadeIn" delay={500}>
-              <div className="mt-6 p-6 border-r-4 border-primary-gold bg-primary-light shadow-md rounded-lg">
+              <div className="mt-6 p-6 border-r-4 border-primary-gold bg-primary-light shadow-md rounded-lg mx-auto">
                 <h3 className="font-bold mb-3 text-primary-gold text-3xl">המחויבות שלי אליכם:</h3>
                 <p className="text-black text-lg font-medium" style={{ lineHeight: '1.6' }}>
                   המחויבות שלי היא לספק ללקוחותיי שירות מקצועי, אמין ואישי. אני מאמין ביחס אישי לכל לקוח, בזמינות מרבית, בסבלנות לכל שאלה ובקשה, ובדקדקנות תוך ירידה לפרטים הקטנים ביותר. יחד נבטיח שהעסקה שלכם תהיה בטוחה, מוצלחת, ללא דאגות וללא פשרות!
@@ -208,7 +205,7 @@ const AboutSection = () => {
               </div>
             </AnimatedBox>
             
-            {/* Signature section */}
+            {/* Signature section - centered */}
             <AnimatedBox animation="fadeIn" delay={600}>
               <div className="mt-6 flex justify-center">
                 <div className="w-48 md:w-64">
