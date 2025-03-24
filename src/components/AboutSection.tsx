@@ -150,7 +150,7 @@ const AboutSection = () => {
             {/* Partnership section - NEW */}
             <AnimatedBox animation="fadeIn" delay={400}>
               <div className="mt-10 bg-primary-light rounded-xl p-6 shadow-md border-r-4 border-primary-gold">
-                <h3 className="font-bold mb-5 text-primary-gold text-3xl">שיתוף פעולה מקצועי</h3>
+                <h3 className="font-bold mb-5 text-primary-gold text-3xl">שיתוף פעולה ייחודי ומקצועי:</h3>
                 
                 <div className="flex flex-col md:flex-row gap-6 mb-5">
                   {/* Image container with decorative elements */}
@@ -160,13 +160,13 @@ const AboutSection = () => {
                         className="absolute -top-3 -right-3 w-full h-full bg-primary-gold/15 rounded-lg z-0"
                         aria-hidden="true"
                       ></div>
-                      <div className="relative rounded-lg overflow-hidden shadow-lg z-10">
+                      <div className="relative  rounded-lg overflow-hidden shadow-lg z-10">
                         <img 
-                          src="/lovable-uploads/485c117c-9cae-466a-84cd-901571e4f17f.png" 
+                          src="/lovable-uploads/avi-and-yaron.webp" 
                           alt="עו״ד אבי ליפינר ועו״ד ירון פוקס" 
                           className="w-full h-auto object-cover"
-                          width="600"
-                          height="450"
+                          width="500"
+                          height="500"
                           loading="lazy"
                         />
                         
@@ -185,10 +185,10 @@ const AboutSection = () => {
                   {/* Text describing the partnership */}
                   <div className="w-full md:w-1/2 flex flex-col justify-center">
                     <p className="text-black text-lg font-medium mb-4">
-                      משרדנו גאה לשתף פעולה עם עו"ד ירון פוקס, המתמחה בתחומים משלימים ומעשיר את השירות המשפטי שאנו מציעים ללקוחותינו.
+                    משרדנו גאה לשתף פעולה עם עו"ד ירון פוקס, המתמחה במגוון שירותים המשלימים את השירותים המשפטיים שאנו מעניקים. שיתוף פעולה זה מאפשר לנו להציע מענה משפטי כולל ומקיף תחת קורת גג אחת.
                     </p>
                     <p className="text-black text-lg font-medium">
-                      עו"ד ירון פוקס הינו תושב שכונת הדר גנים בפתח תקווה, שכונה עם קהילה חמה ותוססת. לתושבי השכונה אנו מציעים שירות ביתי וחם וכן הנחות מיוחדות.
+                    עו"ד ירון פוקס הינו תושב ותיק ומוכר בשכונת הדר גנים בפתח תקווה, שכונה בעלת קהילה חמה ומגובשת. אנו שמחים להציע לתושבי השכונה שירות משפטי אישי ומקצועי ברמה הגבוהה ביותר, הכולל פגישות ייעוץ בבית הלקוח, ליווי צמוד לאורך כל התהליך, וכמובן - הטבות והנחות ייחודיות ובלעדיות. השילוב בין מקצועיות בלתי מתפשרת לבין יחס אישי וחם הוא המפתח לשירות המשפטי שאנו מאמינים בו.
                     </p>
                   </div>
                 </div>
