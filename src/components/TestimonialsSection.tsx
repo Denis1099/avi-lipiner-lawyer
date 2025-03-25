@@ -177,10 +177,15 @@ const TestimonialsSection: React.FC = () => {
     <section id="testimonials" className="section-padding py-16 bg-gradient-to-b from-primary-light to-gray-50 relative overflow-hidden">
       <div className="container mx-auto px-5 md:px-8">
         <AnimatedBox animation="fadeIn">
-          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl mb-3 flex justify-center">לקוחות מספרים על הליווי המשפטי שקיבלו</h2>
-          <p className="text-center text-lg text-black/80 max-w-3xl mx-auto">
-            המטרה שלנו היא לספק שירות ברמה הגבוהה ביותר וליצור חוויית לקוח יוצאת דופן
-          </p>
+          <div className="flex flex-col items-center">
+            <h2 className="section-title text-center text-3xl md:text-5xl mb-3 relative">
+              לקוחות מספרים על הליווי המשפטי שקיבלו
+              <span className="absolute -bottom-2 right-0 w-16 h-1 bg-primary-gold"></span>
+            </h2>
+            <p className="text-center text-lg text-black/80 max-w-3xl mx-auto">
+              המטרה שלנו היא לספק שירות ברמה הגבוהה ביותר וליצור חוויית לקוח יוצאת דופן
+            </p>
+          </div>
         </AnimatedBox>
 
         <div className="mt-12 relative">

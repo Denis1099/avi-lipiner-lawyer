@@ -94,10 +94,15 @@ const AdvantagesSection = () => {
     <section id="advantages" className="section-padding py-16 md:py-20 bg-gradient-to-b from-primary-light to-secondary-gray relative overflow-hidden">
       <div className="container mx-auto px-5 md:px-8 relative z-10">
         <AnimatedBox animation="fadeIn" duration={1000} threshold={0.05}>
-          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl mb-4 flex justify-center">למה לבחור בליווי משפטי של עו"ד אבי ליפינר?</h2>
-          <p className="section-subtitle text-center font-assistant text-xl max-w-3xl mx-auto">
-            עסקת מכר דירה היא אחת ההחלטות הפיננסיות המשמעותיות בחייכם. ליווי משפטי מקצועי ומנוסה עושה את ההבדל בין עסקה מוצלחת לבין כאב ראש מתמשך.
-          </p>
+          <div className="flex flex-col items-center">
+            <h2 className="section-title text-center text-3xl md:text-5xl mb-4 relative">
+              למה לבחור בליווי משפטי של עו"ד אבי ליפינר?
+              <span className="absolute -bottom-2 right-0 w-16 h-1 bg-primary-gold"></span>
+            </h2>
+            <p className="section-subtitle text-center font-assistant text-xl max-w-3xl mx-auto">
+              עסקת מכר דירה היא אחת ההחלטות הפיננסיות המשמעותיות בחייכם. ליווי משפטי מקצועי ומנוסה עושה את ההבדל בין עסקה מוצלחת לבין כאב ראש מתמשך.
+            </p>
+          </div>
         </AnimatedBox>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12">
