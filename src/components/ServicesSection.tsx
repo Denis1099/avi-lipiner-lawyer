@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { FileText, Calculator, HomeIcon, ChevronRight, ChevronLeft } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -57,7 +58,7 @@ const ServicesSection = () => {
     <section id="services" className="section-padding py-16 bg-primary-light relative">
       <div className="container mx-auto px-5 md:px-8">
         <AnimatedBox animation="fadeIn">
-          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl mb-3">הליווי המשפטי המקיף שלנו בעסקאות מכר דירות</h2>
+          <h2 className="section-title text-center mx-auto text-3xl md:text-5xl mb-3 flex justify-center">הליווי המשפטי המקיף שלנו בעסקאות מכר דירות</h2>
           <p className="text-center text-lg text-black/80 max-w-3xl mx-auto">
             אנו מלווים אתכם בכל שלבי העסקה - מהבדיקות הראשוניות ועד רישום הזכויות בטאבו, תוך שמירה על האינטרסים שלכם לאורך כל הדרך.
           </p>
@@ -86,7 +87,7 @@ const ServicesSection = () => {
                   </div>
                 </div>
                 
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-6 flex flex-col flex-grow text-center">
                   <h3 className="text-2xl font-bold mb-3 text-primary-gold">{service.title}</h3>
                   <p className="text-black mb-4 leading-relaxed">{service.description}</p>
                   
@@ -160,15 +161,15 @@ const ServicesSection = () => {
                       </div>
                     </div>
                     
-                    <div className="p-5">
+                    <div className="p-5 text-center">
                       <h3 className="text-2xl font-bold mb-3 text-primary-gold">{service.title}</h3>
                       <p className="text-black mb-4 text-sm leading-relaxed">{service.description}</p>
                       
                       <ul className="mb-4 space-y-2">
                         {service.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-start">
+                          <li key={idx} className="flex items-start justify-center">
                             <div className="text-primary-gold ml-2 mt-1 flex-shrink-0">•</div>
-                            <span className="text-sm">{benefit}</span>
+                            <span className="text-sm text-right">{benefit}</span>
                           </li>
                         ))}
                       </ul>

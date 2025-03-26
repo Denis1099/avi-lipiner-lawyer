@@ -5,15 +5,16 @@
   }
   
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-6 text-primary-gold relative inline-block;
+    @apply text-3xl md:text-4xl font-bold mb-6 text-primary-gold;
     position: relative;
     color: #b08d57; /* Explicit color for section titles */
   }
   
-  .section-title::after {
+  /* Remove the automatic ::after element since we're adding spans manually */
+  /* .section-title::after {
     content: "";
     @apply absolute -bottom-2 right-0 w-16 h-1 bg-primary-gold;
-  }
+  } */
   
   .section-subtitle {
     @apply text-lg md:text-xl max-w-3xl mx-auto mb-12;
