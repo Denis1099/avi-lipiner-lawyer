@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Award, Users, ClipboardCheck, Clock, ShieldCheck } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -42,9 +41,14 @@ const CountUp = ({ end, duration = 2000, startOnView = true, suffix = '' }) => {
     };
   }, [end, duration, startOnView, hasAnimated]);
 
+  // Format the number with commas for display
+  const formattedCount = typeof count === 'number' ? 
+    count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : 
+    count;
+
   return (
     <span ref={elementRef} className="font-karantina">
-      {count}{suffix}
+      {formattedCount}{suffix}
     </span>
   );
 };
@@ -79,14 +83,14 @@ const AdvantagesSection = () => {
     label: 'שיעור הצלחה בהשלמת עסקאות',
     description: 'כל העסקאות שליוויתי הגיעו לקו הסיום בהצלחה'
   }, {
-    value: 95,
+    value: 100,
     suffix: '%',
     label: 'מהלקוחות ממליצים לחבריהם',
     description: 'לקוחות מרוצים שבוחרים להמליץ עליי לחבריהם'
   }, {
-    value: 3000,
+    value: 300000,
     suffix: ' ₪',
-    label: 'חיסכון ממוצע ללקוח',
+    label: 'חיסכון ממוצע ללקוח למשכנתא',
     description: 'בזכות זיהוי מוקדם של סיכונים אפשריים בעסקה'
   }];
   
