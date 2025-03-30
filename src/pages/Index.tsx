@@ -121,8 +121,8 @@ const Index = () => {
     <div className={`min-h-screen bg-white transition-opacity duration-700 ${isLoaded ? 'opacity-100' : 'opacity-0'}`} dir="rtl">
       <Navbar activeSection={activeSection} />
       <HeroSection />
-      <AboutSection />
       <AdvantagesSection />
+      <AboutSection />
       <ServicesSection />
       <TestimonialsSection />
       <FaqSection />

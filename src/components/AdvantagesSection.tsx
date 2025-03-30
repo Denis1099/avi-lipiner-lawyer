@@ -103,8 +103,8 @@ const AdvantagesSection = () => {
               למה לבחור בליווי משפטי של עו"ד אבי ליפינר?
               <span className="absolute -bottom-2 right-0 w-16 h-1 bg-primary-gold"></span>
             </h2>
-            <p className="section-subtitle text-center font-assistant text-xl max-w-3xl mx-auto">
-              עסקת מכר דירה היא אחת ההחלטות הפיננסיות המשמעותיות בחייכם. ליווי משפטי מקצועי ומנוסה עושה את ההבדל בין עסקה מוצלחת לבין כאב ראש מתמשך.
+            <p className="section-subtitle text-center font-assistant mb-6 text-xl max-w-3xl mx-auto">
+            רכישת דירה היא אחת ההחלטות הפיננסיות המשמעותיות בחייכם. ליווי משפטי מקצועי, המבוסס על ידע מעמיק הן בהיבטים המשפטיים והן בהיבטים המימוניים של העסקה, עושה את ההבדל בין עסקה מוצלחת לבין כאב ראש מתמשך.
             </p>
           </div>
         </AnimatedBox>
