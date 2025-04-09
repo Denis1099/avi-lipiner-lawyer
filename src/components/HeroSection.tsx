@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import ContactForm from './ContactForm';
 import AnimatedBox from './AnimatedBox';
@@ -18,15 +17,35 @@ const HeroSection = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !phone) return;
     
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Send data to Hostinger PHP endpoint
+      const response = await fetch('https://your-domain.com/api/submit-lead.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          email: '',
+          serviceType: 'לא צוין',
+          message: '',
+          source: 'hero-form'
+        }),
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.message || 'אירעה שגיאה בשליחת הטופס');
+      }
+      
       setSubmitted(true);
       setName('');
       setPhone('');
@@ -35,14 +54,19 @@ const HeroSection = () => {
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
-    }, 1000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('אירעה שגיאה בשליחת הטופס, נסה שנית');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section 
-  id="hero" 
-  className="relative min-h-screen flex items-center pt-28 md:pt-16 pb-16 overflow-hidden hero-background"
->
+      id="hero" 
+      className="relative min-h-screen flex items-center pt-28 md:pt-16 pb-16 overflow-hidden hero-background"
+    >
       {/* Enhanced overlay with better gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 backdrop-blur-sm"></div>
       

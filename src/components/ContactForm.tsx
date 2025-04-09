@@ -59,8 +59,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
     if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'נא להזין כתובת דוא״ל תקינה';
     }
-
-    // No terms agreement validation needed anymore
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -103,8 +101,23 @@ const ContactForm: React.FC<ContactFormProps> = ({
     setLoading(true);
     
     try {
-      // Here you would replace setTimeout with actual API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Send data to Hostinger PHP endpoint
+      const response = await fetch('https://your-domain.com/api/submit-lead.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          source: simplified ? 'hero-form' : 'contact-form'
+        }),
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.message || 'אירעה שגיאה בשליחת הטופס');
+      }
       
       toast.success('הטופס נשלח בהצלחה! נחזור אליך בהקדם', {
         duration: 5000,
@@ -125,6 +138,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         onSubmit(formData);
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       toast.error('אירעה שגיאה בשליחת הטופס, נסה שנית', {
         duration: 5000,
         position: 'top-center',
@@ -278,8 +292,6 @@ const ContactForm: React.FC<ContactFormProps> = ({
                 placeholder="יש לך שאלות או פרטים נוספים? זה המקום לשתף"
               />
             </div>
-
-
           </>
         )}
         
