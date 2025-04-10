@@ -23,7 +23,7 @@ const HeroSection = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('https://lipiner.co.il/real-estate/api/submit-lead.php', {
+      const response = await fetch('https://real-estate.lipiner.co.il/api/submit-lead.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

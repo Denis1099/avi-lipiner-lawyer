@@ -1,7 +1,8 @@
 <?php
 header('Access-Control-Allow-Origin: https://real-estate.lipiner.co.il');
-header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
+header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json');
 
 // Database configuration
@@ -12,6 +13,12 @@ $db_pass = 'your_database_password'; // Replace with your database password
 
 // Email configuration
 $admin_email = 'lipiner10@gmail.com';
+
+// Handle preflight OPTIONS request
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 // Only process POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
