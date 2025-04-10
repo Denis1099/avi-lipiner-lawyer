@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ContactForm from './ContactForm';
 import AnimatedBox from './AnimatedBox';
 
 const HeroSection = () => {
@@ -24,8 +23,7 @@ const HeroSection = () => {
     setIsSubmitting(true);
     
     try {
-      // Send data to Hostinger PHP endpoint
-      const response = await fetch('https://your-domain.com/api/submit-lead.php', {
+      const response = await fetch('https://lipiner.co.il/real-estate/api/submit-lead.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -135,7 +133,7 @@ const HeroSection = () => {
               </div>
             </div>
           </AnimatedBox>
-          
+
           <AnimatedBox animation="scaleIn" delay={300} className="w-full lg:w-5/12">
             <div 
               className="backdrop-blur-md rounded-xl overflow-hidden shadow-2xl border border-white/10 hover:shadow-primary-gold/10 transition-shadow duration-500"
