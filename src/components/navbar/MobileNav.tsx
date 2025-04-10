@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { NavLink } from './types';
+import { scrollToSection } from './utils';
 
 interface MobileNavProps {
   isMenuOpen: boolean;
@@ -8,7 +10,7 @@ interface MobileNavProps {
   activeSection: string;
   navLinks: NavLink[];
   setIsMenuOpen: (isOpen: boolean) => void;
-  scrolled: boolean; // Add scrolled prop
+  scrolled: boolean;
 }
 
 const MobileNav: React.FC<MobileNavProps> = ({ 
@@ -17,8 +19,14 @@ const MobileNav: React.FC<MobileNavProps> = ({
   activeSection, 
   navLinks,
   setIsMenuOpen,
-  scrolled // Use scrolled prop
+  scrolled
 }) => {
+  const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    scrollToSection(sectionId);
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       {/* Mobile Navigation Button */}
@@ -55,10 +63,10 @@ const MobileNav: React.FC<MobileNavProps> = ({
       >
         <div className="p-4 space-y-2">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
-              onClick={() => setIsMenuOpen(false)}
+              to={link.href}
+              onClick={(e) => handleNavClick(e, link.sectionId)}
               className={`block px-4 py-3 text-lg font-medium rounded-md transition-colors duration-200 ${
                 activeSection === link.section 
                   ? 'bg-primary-gold/10 text-primary-gold' 
@@ -66,17 +74,20 @@ const MobileNav: React.FC<MobileNavProps> = ({
               }`}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           
           <div className="pt-2 mt-3 border-t border-gray-200">
-            <a
-              href="tel:0502230066"
+            <button
+              onClick={() => {
+                scrollToSection('contact');
+                setIsMenuOpen(false);
+              }}
               className="flex items-center justify-center w-full px-4 py-3 text-white bg-primary-gold hover:bg-primary-gold/90 rounded-md text-lg font-medium transition-all duration-200"
             >
               התקשרו עכשיו - 050-2230066
               <Phone size={18} className="mr-2" />
-            </a>
+            </button>
           </div>
         </div>
       </div>

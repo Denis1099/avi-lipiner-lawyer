@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -131,28 +130,6 @@ const Index = () => {
       
       {/* WhatsApp Button */}
       <WhatsAppButton />
-      
-      {/* Back to top button with enhanced animation */}
-      <a 
-        href="#hero" 
-        className={`fixed bottom-6 left-6 bg-primary-navy text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-primary-gold transition-all duration-300 z-30 ${activeSection === 'hero' ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-        aria-label="חזרה למעלה"
-      >
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          className="h-6 w-6" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth={2} 
-            d="M5 10l7-7m0 0l7 7m-7-7v18" 
-          />
-        </svg>
-      </a>
     </div>
   );
 };
