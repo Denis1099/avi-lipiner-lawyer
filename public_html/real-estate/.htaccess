@@ -1,0 +1,24 @@
+# Enable rewriting
+RewriteEngine On
+
+# If an existing asset or directory is requested, serve it
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
+
+# Handle static assets in subdirectories
+RewriteCond %{REQUEST_URI} !^/real-estate/api/
+RewriteCond %{REQUEST_URI} !^/real-estate/assets/
+RewriteCond %{REQUEST_URI} !^/real-estate/lovable-uploads/
+
+# Serve index.html for all other routes
+RewriteRule ^ /real-estate/index.html [L]
+
+# Properly serve js and css files with correct content type
+<FilesMatch "\.js$">
+    ForceType application/javascript
+</FilesMatch>
+
+<FilesMatch "\.css$">
+    ForceType text/css
+</FilesMatch> 
