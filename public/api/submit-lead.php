@@ -1,9 +1,28 @@
 <?php
-header('Access-Control-Allow-Origin: https://real-estate.lipiner.co.il');
+// Allow requests from both domains
+$allowed_origins = array(
+    'https://real-estate.lipiner.co.il',
+    'https://lipiner.co.il'
+);
+
+// Get the origin of the request
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+
+// Check if the origin is allowed
+if (in_array($origin, $allowed_origins)) {
+    header("Access-Control-Allow-Origin: $origin");
+}
+
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json');
+
+// Handle preflight OPTIONS request first
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 // Database configuration
 $db_host = 'localhost';
@@ -13,12 +32,6 @@ $db_pass = 'your_database_password'; // Replace with your database password
 
 // Email configuration
 $admin_email = 'lipiner10@gmail.com';
-
-// Handle preflight OPTIONS request
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    http_response_code(200);
-    exit();
-}
 
 // Only process POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -36,23 +49,19 @@ try {
     }
 
     // Validate required fields
-    $required_fields = ['name', 'email', 'phone'];
+    $required_fields = ['name', 'phone'];  // Removed email from required fields
     foreach ($required_fields as $field) {
         if (empty($data[$field])) {
             throw new Exception("Missing required field: $field");
         }
     }
 
-    // Validate email
-    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-        throw new Exception('Invalid email format');
-    }
-
     // Sanitize inputs
     $name = htmlspecialchars(strip_tags($data['name']));
-    $email = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
     $phone = htmlspecialchars(strip_tags($data['phone']));
+    $email = !empty($data['email']) ? filter_var($data['email'], FILTER_SANITIZE_EMAIL) : 'no-email@provided.com';
     $message = isset($data['message']) ? htmlspecialchars(strip_tags($data['message'])) : '';
+    $source = isset($data['source']) ? htmlspecialchars(strip_tags($data['source'])) : 'website';
 
     // Connect to database
     $pdo = new PDO(
@@ -63,18 +72,21 @@ try {
     );
 
     // Insert into database
-    $stmt = $pdo->prepare('INSERT INTO leads (name, email, phone, message) VALUES (?, ?, ?, ?)');
-    $stmt->execute([$name, $email, $phone, $message]);
+    $stmt = $pdo->prepare('INSERT INTO leads (name, email, phone, message, source) VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute([$name, $email, $phone, $message, $source]);
 
     // Prepare email content
     $subject = 'ליד חדש מאתר נדל"ן';
     $email_content = "התקבל ליד חדש מהאתר:\n\n";
     $email_content .= "שם: $name\n";
-    $email_content .= "אימייל: $email\n";
     $email_content .= "טלפון: $phone\n";
+    if ($email !== 'no-email@provided.com') {
+        $email_content .= "אימייל: $email\n";
+    }
     if ($message) {
         $email_content .= "הודעה: $message\n";
     }
+    $email_content .= "מקור: $source\n";
 
     // Set email headers
     $headers = "From: no-reply@lipiner.co.il\r\n";

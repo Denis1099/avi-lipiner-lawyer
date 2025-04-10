@@ -13,8 +13,15 @@ const HeroSection = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call it immediately to set initial state
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Add a second useEffect to handle initial scroll position
+  useEffect(() => {
+    // Set initial scroll state
+    setIsScrolled(window.scrollY > 50);
+  }, []); // Empty dependency array means this runs once on mount
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,7 +38,7 @@ const HeroSection = () => {
         body: JSON.stringify({
           name,
           phone,
-          email: '',
+          email: 'no-email@provided.com',
           serviceType: 'לא צוין',
           message: '',
           source: 'hero-form'
