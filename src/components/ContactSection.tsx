@@ -17,6 +17,7 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
+      console.log('Submitting contact form...', { name, phone, email, message });
       const response = await fetch('https://real-estate.lipiner.co.il/api/submit-lead.php', {
         method: 'POST',
         headers: {

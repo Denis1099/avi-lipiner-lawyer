@@ -30,6 +30,7 @@ const HeroSection = () => {
     setIsSubmitting(true);
     
     try {
+      console.log('Submitting form...', { name, phone });
       const response = await fetch('https://real-estate.lipiner.co.il/api/submit-lead.php', {
         method: 'POST',
         headers: {
