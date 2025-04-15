@@ -1,7 +1,8 @@
 <?php
-// For debugging
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// For debugging (turn off display for production)
+error_reporting(E_ALL); // Keep reporting all errors...
+ini_set('display_errors', 0); // ...but don't display them to the user
+// error_log('submit-lead.php script started.'); // Optional: uncomment for verbose logging
 
 // CORS Headers
 header('Access-Control-Allow-Origin: https://real-estate.lipiner.co.il');
@@ -24,9 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Database configuration
 $db_host = 'localhost';
-$db_name = 'u556043506_real_estate'; 
+$db_name = 'u556043506_real_estate';
 $db_user = 'u556043506_denis109';
-$db_pass = 'R#t5FMwQ1';
+$db_pass = getenv('DB_PASSWORD');
+
+if ($db_pass === false) {
+    error_log('Database password environment variable (DB_PASSWORD) not set.');
+    http_response_code(500);
+    echo json_encode(['success' => false, 'error' => 'Server configuration error.']);
+    exit;
+}
 
 // Email configuration
 $admin_email = 'lipiner10@gmail.com';
@@ -98,16 +106,17 @@ try {
         // Insert into database
         $stmt = $pdo->prepare('INSERT INTO leads (name, email, phone, message, source) VALUES (?, ?, ?, ?, ?)');
         $stmt->execute([$name, $email, $phone, $message, $source]);
+    } catch (PDOException $db_exception) {
+        error_log("Database connection or query failed: " . $db_exception->getMessage());
     } catch (Exception $db_exception) {
-        // Log error but continue - we still want to send the email even if DB fails
-        // Just returning the email success is sufficient
+        error_log("Database error: " . $db_exception->getMessage());
     }
 
     // Return success response
     echo json_encode(['success' => true, 'email_sent' => $mail_sent]);
 
 } catch (Exception $e) {
-    // Return error response
+    error_log("General error in submit-lead.php: " . $e->getMessage());
     http_response_code(400);
     echo json_encode(['success' => false, 'error' => $e->getMessage()]);
 } 
