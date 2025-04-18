@@ -101,15 +101,16 @@ const ContactForm: React.FC<ContactFormProps> = ({
     setLoading(true);
     
     try {
-      // Send data to Hostinger PHP endpoint
-      const response = await fetch('https://your-domain.com/api/submit-lead.php', {
+      // Send data to the new PHP endpoint for the Shomron site
+      const response = await fetch('/api/submit-shomron-lead.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           ...formData,
-          source: simplified ? 'hero-form' : 'contact-form'
+          // Identify the source based on simplified prop, prefixing with shomron
+          source: simplified ? 'shomron-hero-form' : 'shomron-contact-form' 
         }),
       });
       

@@ -31,7 +31,7 @@ const HeroSection = () => {
     
     try {
       console.log('Submitting form...', { name, phone });
-      const response = await fetch('https://real-estate.lipiner.co.il/api/submit-lead.php', {
+      const response = await fetch('/api/submit-shomron-lead.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const HeroSection = () => {
           email: 'no-email@provided.com',
           serviceType: 'לא צוין',
           message: '',
-          source: 'hero-form'
+          source: 'shomron-hero-form'
         }),
       });
       
@@ -104,7 +104,7 @@ const HeroSection = () => {
                 style={{ color: '#b08d57' }} 
                 className="inline-block text-primary-gold px-6 py-2 rounded-full border border-primary-gold font-bold text-xl font-assistant relative z-10 shadow-lg group-hover:shadow-primary-gold/30 transition-shadow duration-300"
               >
-                עו״ד אבי ליפינר - מומחה במקרקעין
+                עו״ד אבי ליפינר ועו״ד ירון פוקס - מומחים במקרקעין ביהודה ושומרון
               </span>
               <div className="absolute -inset-0.5 bg-primary-gold/20 rounded-full blur-sm group-hover:bg-primary-gold/30 transition-colors duration-300"></div>
             </div>
@@ -114,29 +114,29 @@ const HeroSection = () => {
               style={{ color: '#ffffff', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
             >
               <span className="relative inline-block">
-                ליווי משפטי מקצועי ואישי
+                ליווי משפטי ופיננסי מקצועי
                 <div className="absolute h-1 w-24 bg-primary-gold right-0 -bottom-2 lg:block hidden"></div>
               </span>
               <br />
               <span className="text-primary-gold relative inline-block" style={{ color: '#b08d57' }}>
-                בעסקאות מכר דירות
+                בעסקאות נדל"ן ביהודה ושומרון
               </span>
             </h1>
             
             <div className="text-xl md:text-2xl text-primary-light mb-0 md:mb-8 max-w-2xl lg:mx-0 mx-auto font-assistant leading-relaxed" style={{ color: '#fbfbfb' }}>
-              <p className="mb-4 animate-fadeIn" style={{ animationDelay: '0.3s' }}>מהייעוץ הראשוני ועד למסירת המפתח - שילוב מנצח של מומחיות משפטית ופיננסית</p>
+              <p className="mb-4 animate-fadeIn" style={{ animationDelay: '0.3s' }}>מהבדיקות המקדמיות במינהל האזרחי ועד להשלמת הרישום – שילוב מנצח של מומחיות משפטית ופיננסית בהתמודדות עם מורכבויות ייחודיות</p>
               <div className="flex flex-col space-y-4 md:space-y-3">
                 <div className="flex items-start transform transition-transform duration-300 hover:translate-x-[-5px]">
                   <div className="w-3 h-3 rounded-full bg-primary-gold mt-2 ml-4" style={{ backgroundColor: '#b08d57', minWidth: '12px' }}></div>
-                  <span>עסקה בטוחה ומוצלחת</span>
+                  <span>עסקה בטוחה ומוצלחת גם באזורים מורכבים</span>
                 </div>
                 <div className="flex items-start transform transition-transform duration-300 hover:translate-x-[-5px]">
                   <div className="w-3 h-3 rounded-full bg-primary-gold mt-2 ml-4" style={{ backgroundColor: '#b08d57', minWidth: '12px' }}></div>
-                  <span>ליווי אישי לאורך כל התהליך</span>
+                  <span>ליווי אישי לאורך כל התהליך, כולל מול גורמי המימון והרישום</span>
                 </div>
                 <div className="flex items-start transform transition-transform duration-300 hover:translate-x-[-5px]">
                   <div className="w-3 h-3 rounded-full bg-primary-gold mt-2 ml-4" style={{ backgroundColor: '#b08d57', minWidth: '12px' }}></div>
-                  <span>ללא דאגות וללא פשרות</span>
+                  <span>פתרונות יצירתיים לאתגרים ייחודיים במימון ומשכנתא</span>
                 </div>
               </div>
             </div>
