@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronRight, ChevronLeft, Quote, Star } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -12,27 +11,35 @@ interface Testimonial {
 }
 
 const TestimonialsSection: React.FC = () => {
+  // Updated testimonials for Shomron
   const testimonials: Testimonial[] = [
     {
-      text: "עו\"ד אבי ליפינר ליווה אותנו ברכישת הדירה הראשונה שלנו. כזוג צעיר, היינו חסרי ניסיון וחששנו מאוד. אבי הוביל אותנו צעד אחר צעד, הסביר כל שלב בבהירות, וגרם לנו להרגיש בטוחים. הידע הפיננסי שלו חסך לנו עשרות אלפי שקלים במשכנתא!",
-      name: "משפחת כהן",
-      location: "קנו דירה בפתח תקווה",
-      rating: 5,
-      projectType: "רכישת דירה"
+      text: "עו\"ד אבי ליפינר ליווה אותנו ברכישת הבית הראשון שלנו באפרת. היו מספר אתגרים מורכבים בנוגע לרישום במינהל האזרחי וקושי משמעותי בהשגת משכנתא. אבי הצליח למצוא לנו פתרון מימון יצירתי עם הון עצמי של 25% בלבד, וטיפל בכל הבירוקרטיה בצורה יעילה שחסכה לנו חודשים של המתנה. הליווי האישי שלו היה מעל ומעבר למצופה.",
+      name: "משפחת לוי",
+      location: "רכשו בית באפרת",
+      rating: 5, // Keep or remove rating
+      projectType: "רכישת בית ביישוב"
     },
     {
-      text: "מכרנו דירה שהייתה בבעלותנו כ-30 שנה. אבי ידע לטפל בכל המורכבויות הקשורות למס שבח, תיאום מול הבנק ודרישות המיוחדות של הקונים. הכל התנהל בצורה חלקה והרבה מעבר למה שציפינו.",
-      name: "חיים ושרה לוי",
-      location: "מכרו דירה בתל אביב",
-      rating: 5,
-      projectType: "מכירת דירה"
+      text: "מכרנו נכס עם סוגיות תכנוניות מורכבות באריאל. כאשר התגלו בעיות ברישום ההיסטורי במינהל האזרחי, חשבנו שהעסקה תתבטל. עו\"ד ליפינר ועו\"ד פוקס עבדו במשותף מול המינהל האזרחי, הצליחו לתקן את הרישום ולפתור את הבעיות באופן שהפתיע גם אותנו. הידע והניסיון שלהם ביהודה ושומרון הציל את העסקה.",
+      name: "יעקב ורחל כהן",
+      location: "מכרו נכס באריאל",
+      rating: 5, // Keep or remove rating
+      projectType: "מכירת נכס במורכבות גבוהה"
     },
     {
-      text: "עסקת המכר שלנו הייתה מורכבת במיוחד וכללה פיצול נכסים ואתגרים משפטיים לא פשוטים. אבי הפגין מקצועיות יוצאת דופן, ידע להתמודד עם כל הסוגיות שעלו, והצליח להביא את העסקה לידי סיום מוצלח.",
-      name: "דוד אברהמי",
-      location: "עסקת מכר מורכבת בירושלים",
-      rating: 5,
-      projectType: "עסקה מורכבת"
+      text: "כשכל הבנקים אליהם פנינו סירבו לתת לנו משכנתא לנכס בבית אל בגלל מיקומו, עו\"ד ליפינר לא ויתר. הוא פתח בפנינו אפשרויות מימון שלא הכרנו, עזר לנו לבנות תיק פיננסי מותאם, וליווה אותנו בתהליך מרוכב עד שהשגנו את המימון המלא. ללא הניסיון שלו במקרים דומים ביהודה ושומרון, לא היינו מצליחים לרכוש את הבית.",
+      name: "משפחת אברהמי",
+      location: "רכשו בית בבית אל",
+      rating: 5, // Keep or remove rating
+      projectType: "התמודדות עם בעיות מימון"
+    },
+    {
+      text: "במהלך רכישת ביתנו ביצהר, התגלו בעיות בנסחים העות\'מאניים שאיימו לטרפד את העסקה. עו\"ד ליפינר נעזר בצוות המקצועי שלו, כולל מומחה לבדיקת מסמכים עות\'מאניים, וייצג אותנו בהליך מורכב מול המינהל האזרחי. הוא הצליח להסדיר את כל הרישומים ולהבטיח שהעסקה תושלם ללא עיכובים מיותרים.",
+      name: "דוד ושרה ברקוביץ",
+      location: "רכשו נכס ביצהר",
+      rating: 5, // Keep or remove rating
+      projectType: "עסקה עם בעיות רישום"
     }
   ];
 
@@ -179,11 +186,13 @@ const TestimonialsSection: React.FC = () => {
         <AnimatedBox animation="fadeIn">
           <div className="flex flex-col items-center">
             <h2 className="section-title text-center text-3xl md:text-5xl mb-3 relative">
-              לקוחות מספרים על הליווי המשפטי שקיבלו
+              {/* Updated Section Title */}
+              לקוחות מספרים על הליווי המשפטי שלנו ביהודה ושומרון
               <span className="absolute -bottom-2 right-0 w-16 h-1 bg-primary-gold"></span>
             </h2>
             <p className="text-center text-lg text-black/80 max-w-3xl mx-auto">
-              המטרה שלנו היא לספק שירות ברמה הגבוהה ביותר וליצור חוויית לקוח יוצאת דופן
+              {/* Updated Section Subtitle */}
+              המטרה שלנו היא לספק שירות ברמה הגבוהה ביותר, עם מענה מותאם לאתגרים הייחודיים של האזור
             </p>
           </div>
         </AnimatedBox>
@@ -216,7 +225,7 @@ const TestimonialsSection: React.FC = () => {
               <Quote size={60} opacity={0.4} />
             </div>
             
-            <div className="pt-16 pb-16 px-6 sm:px-12 relative z-10">
+            <div className="pt-16 pb-28 px-6 sm:px-12 relative z-10">
               <div className="flex flex-col items-center min-h-[280px] relative">
                 {testimonials.map((testimonial, index) => (
                   <div
@@ -260,7 +269,7 @@ const TestimonialsSection: React.FC = () => {
               </div>
             </div>
             
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-3 space-x-reverse">
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-3 space-x-reverse mt-4">
               {testimonials.map((_, index) => (
                 <button
                   key={index}

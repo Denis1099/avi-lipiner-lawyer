@@ -37,16 +37,16 @@ const AboutSection = () => {
             <div className="w-full md:w-5/12 mb-6 md:mb-0 md:ml-10 flex-shrink-0 order-1 md:order-2">
               <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                 <img 
-                  src="/lovable-uploads/avi-lipiner-real-estate-profile.webp" 
+                  src="/lovable-uploads/avi-image.webp"
                   alt="תמונת פרופיל של עו״ד אבי ליפינר" 
                   className="w-full h-auto object-cover"
                   width="500"
                   height="500"
-                  loading="lazy"
-                />
+                    loading="lazy"
+                  />
               </div>
-            </div>
-            
+          </div>
+          
             {/* Text section - IMPROVED for mobile */}
             <div className="w-full md:w-7/12 order-2 md:order-1">
               <div className="space-y-3 md:space-y-4 text-right">
@@ -75,7 +75,7 @@ const AboutSection = () => {
                   </p>
                 </div>
               </div>
-            </div>
+              </div>
           </div>
         </AnimatedBox>
         
