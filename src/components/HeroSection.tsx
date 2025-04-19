@@ -104,13 +104,13 @@ const HeroSection = () => {
                 style={{ color: '#b08d57' }} 
                 className="inline-block text-primary-gold px-6 py-2 rounded-full border border-primary-gold font-bold text-xl font-assistant relative z-10 shadow-lg group-hover:shadow-primary-gold/30 transition-shadow duration-300"
               >
-                עו״ד אבי ליפינר ועו״ד ירון פוקס - מומחים במקרקעין ביהודה ושומרון
+                עו״ד אבי ליפינר ועו״ד ירון פוקס
               </span>
               <div className="absolute -inset-0.5 bg-primary-gold/20 rounded-full blur-sm group-hover:bg-primary-gold/30 transition-colors duration-300"></div>
             </div>
             
             <h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-light leading-tight mb-6 md:mb-8 font-karantina relative animate-slideUp"
+              className="text-4xl sm:text-5xl lg:text-7xl font-bold text-primary-light leading-tight mb-6 md:mb-8 font-karantina relative animate-slideUp"
               style={{ color: '#ffffff', textShadow: '0 2px 4px rgba(0,0,0,0.3)' }}
             >
               <span className="relative inline-block">
@@ -124,19 +124,19 @@ const HeroSection = () => {
             </h1>
             
             <div className="text-xl md:text-2xl text-primary-light mb-0 md:mb-8 max-w-2xl lg:mx-0 mx-auto font-assistant leading-relaxed" style={{ color: '#fbfbfb' }}>
-              <p className="mb-4 animate-fadeIn" style={{ animationDelay: '0.3s' }}>מהבדיקות המקדמיות במינהל האזרחי ועד להשלמת הרישום – שילוב מנצח של מומחיות משפטית ופיננסית בהתמודדות עם מורכבויות ייחודיות</p>
+             
               <div className="flex flex-col space-y-4 md:space-y-3">
                 <div className="flex items-start transform transition-transform duration-300 hover:translate-x-[-5px]">
                   <div className="w-3 h-3 rounded-full bg-primary-gold mt-2 ml-4" style={{ backgroundColor: '#b08d57', minWidth: '12px' }}></div>
-                  <span>עסקה בטוחה ומוצלחת גם באזורים מורכבים</span>
+                  <span>עסקה בטוחה באזורים מורכבים</span>
                 </div>
                 <div className="flex items-start transform transition-transform duration-300 hover:translate-x-[-5px]">
                   <div className="w-3 h-3 rounded-full bg-primary-gold mt-2 ml-4" style={{ backgroundColor: '#b08d57', minWidth: '12px' }}></div>
-                  <span>ליווי אישי לאורך כל התהליך, כולל מול גורמי המימון והרישום</span>
+                  <span>ליווי אישי מול גורמי המימון והרישום</span>
                 </div>
                 <div className="flex items-start transform transition-transform duration-300 hover:translate-x-[-5px]">
                   <div className="w-3 h-3 rounded-full bg-primary-gold mt-2 ml-4" style={{ backgroundColor: '#b08d57', minWidth: '12px' }}></div>
-                  <span>פתרונות יצירתיים לאתגרים ייחודיים במימון ומשכנתא</span>
+                  <span>פתרונות יצירתיים למשכנתאות</span>
                 </div>
               </div>
             </div>
