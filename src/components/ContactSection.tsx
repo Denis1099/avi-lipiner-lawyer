@@ -114,7 +114,7 @@ const ContactSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Contact Details and Map */}
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto lg:col-span-2">
             {/* Contact Form */}
             <AnimatedBox animation="fadeIn" className="w-full mb-12">
               <div className="w-full bg-white shadow-lg p-6 rounded-lg">

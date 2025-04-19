@@ -182,9 +182,9 @@ const TestimonialsSection: React.FC = () => {
 
   return (
     <section id="testimonials" className="section-padding py-16 bg-gradient-to-b from-primary-light to-gray-50 relative overflow-hidden">
-      <div className="container mx-auto px-5 md:px-8">
+      <div className="container mx-auto px-1 md:px-8">
         <AnimatedBox animation="fadeIn">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center ">
             <h2 className="section-title text-center text-3xl md:text-5xl mb-3 relative">
               {/* Updated Section Title */}
               לקוחות מספרים על הליווי המשפטי שלנו ביהודה ושומרון
@@ -225,7 +225,7 @@ const TestimonialsSection: React.FC = () => {
               <Quote size={60} opacity={0.4} />
             </div>
             
-            <div className="pt-16 pb-28 px-6 sm:px-12 relative z-10">
+            <div className="pt-8 pb-40 md:pb-28 px-6 sm:px-12 relative z-10">
               <div className="flex flex-col items-center min-h-[280px] relative">
                 {testimonials.map((testimonial, index) => (
                   <div
@@ -251,11 +251,11 @@ const TestimonialsSection: React.FC = () => {
                       
                       {testimonial.rating && renderStars(testimonial.rating)}
                       
-                      <p className="text-xl text-black mb-10 leading-relaxed text-center max-w-2xl mx-auto">
+                      <p className="text-base md:text-xl px-4 md:px-8 pt-4 text-black mb-0 leading-relaxed text-center max-w-2xl mx-auto">
                         {testimonial.text}
                       </p>
                       
-                      <div className="text-center mt-6 border-t border-gray-100 pt-6 w-32">
+                      <div className="text-center mt-2 md:mt-6 border-t border-gray-100 pt-6 w-32">
                         <p className="font-bold text-primary-gold text-2xl font-karantina">
                           {testimonial.name}
                         </p>
@@ -291,18 +291,18 @@ const TestimonialsSection: React.FC = () => {
           
           <button
             onClick={goToPrevSlide}
-            className="absolute top-1/2 right-2 md:right-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
+            className="absolute top-1/2 right-0 md:right-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
             aria-label="המלצה קודמת"
           >
-            <ChevronRight size={24} />
+                        <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
           </button>
           
           <button
             onClick={goToNextSlide}
-            className="absolute top-1/2 left-2 md:left-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
+            className="absolute top-1/2 left-0 md:left-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
             aria-label="המלצה הבאה"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
           </button>
         </div>
 

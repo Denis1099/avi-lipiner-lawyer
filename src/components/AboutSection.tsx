@@ -33,8 +33,8 @@ const AboutSection = () => {
         {/* Content section */}
         <AnimatedBox animation="slideUp" delay={200}>
           <div className="flex flex-col md:flex-row items-center justify-between bg-primary-light rounded-xl shadow-lg p-6 md:p-10 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
-            {/* Image section - IMPROVED for mobile */}
-            <div className="w-full md:w-5/12 mb-6 md:mb-0 md:ml-10 flex-shrink-0 order-1 md:order-2">
+            {/* Image section - Swapped order classes */}
+            <div className="w-full md:w-5/12 mb-6 md:mb-0 md:ml-10 flex-shrink-0 order-1 md:order-1">
               <div className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                 <img 
                   src="/lovable-uploads/avi-image.webp"
@@ -47,8 +47,8 @@ const AboutSection = () => {
               </div>
           </div>
           
-            {/* Text section - IMPROVED for mobile */}
-            <div className="w-full md:w-7/12 order-2 md:order-1">
+            {/* Text section - Swapped order classes */}
+            <div className="w-full md:w-7/12 order-2 md:order-2">
               <div className="space-y-3 md:space-y-4 text-right">
                 {/* Updated Paragraph 1 */}
                 <p className="text-black text-base md:text-lg font-medium" style={{ lineHeight: '1.7' }}>
@@ -85,8 +85,8 @@ const AboutSection = () => {
             <h3 className="font-bold mb-4 md:mb-6 text-primary-gold text-2xl md:text-3xl text-center">שיתוף פעולה ייחודי ומקצועי:</h3>
             
             <div className="flex flex-col lg:flex-row gap-6 md:gap-8 mb-3 items-center">
-              {/* Image container with decorative elements - IMPROVED for mobile */}
-              <div className="w-full lg:w-1/3 relative max-w-xs mx-auto lg:mx-0">
+              {/* Image container - Added lg:order-2 to place it visually second (left in RTL) */}
+              <div className="w-full lg:w-1/3 relative max-w-xs mx-auto lg:mx-0 lg:order-2">
                 <div className="relative">
                   <div 
                     className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-full h-full bg-primary-gold/15 rounded-lg z-0"
@@ -114,8 +114,8 @@ const AboutSection = () => {
                 </div>
               </div>
               
-              {/* Text describing the partnership - IMPROVED for mobile */}
-              <div className="w-full lg:w-2/3 flex flex-col justify-center">
+              {/* Text describing the partnership - Added lg:order-1 to place it visually first (right in RTL) */}
+              <div className="w-full lg:w-2/3 flex flex-col justify-center lg:order-1">
                 <div className="bg-white/50 p-4 md:p-8 rounded-lg shadow-sm border-r-2 border-primary-gold/30">
                   <p className="text-black text-base md:text-lg font-medium mb-4 md:mb-8" style={{ lineHeight: '1.7' }}>
                   משרדנו גאה לשתף פעולה עם עו"ד ירון פוקס, המתמחה במגוון שירותים המשלימים את השירותים המשפטיים שאנו מעניקים. שיתוף פעולה זה מאפשר לנו להציע מענה משפטי כולל ומקיף תחת קורת גג אחת.
