@@ -31,7 +31,7 @@ const HeroSection = () => {
     
     try {
       console.log('Submitting form...', { name, phone });
-      const response = await fetch('/api/submit-shomron-lead.php', {
+      const response = await fetch('/api/submit-lead.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
