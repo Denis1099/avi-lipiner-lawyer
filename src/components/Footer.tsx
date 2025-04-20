@@ -68,7 +68,7 @@ const Footer = () => {
             </div>
             
             <p className="text-gray-300 mb-6 text-base leading-relaxed">
-              עו"ד אבי ליפינר - מומחה במקרקעין. מעניק ללקוחותיו ליווי משפטי מקצועי, אישי וזמין בעסקאות מכר דירות, תוך שילוב ייחודי של ידע משפטי ופיננסי.
+              עו"ד אבי ליפינר – מומחה בליווי עסקאות נדל"ן ביהודה ושומרון, משלב בדיקות במינהל האזרחי ועד רישום זכויות וביטחון מלא בעסקה.
             </p>
             
             {/* Social links */}
@@ -172,9 +172,26 @@ const Footer = () => {
           </div>
         </div>
         
-        {/* Copyright */}
-        <div className="border-t border-white/10 mt-10 pt-6 text-center text-gray-400 text-sm">
-          <p>© {currentYear} כל הזכויות שמורות | עו"ד אבי ליפינר - מומחה במקרקעין</p>
+        {/* Bottom Bar */}
+        <div className="mt-8 pt-6 border-t border-primary-gold/20 flex flex-col md:flex-row justify-between items-center text-center md:text-right">
+          <p className="text-gray-400 text-sm mb-4 md:mb-0">
+            © 2025 עו"ד אבי ליפינר. כל הזכויות שמורות.
+          </p>
+          
+          <div className="flex space-x-4 space-x-reverse text-sm">
+            {socialLinks.map((link, index) => (
+              <a 
+                key={index}
+                href={link.href} 
+                className="bg-white/10 hover:bg-primary-gold text-white p-2.5 rounded-full transition-colors duration-300" 
+                aria-label={link.name}
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                {link.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Award, Users, ClipboardCheck, Clock, ShieldCheck } from 'lucide-react';
+import { Award, Users, ClipboardCheck, Clock, ShieldCheck, MapPin, Scale, Handshake, SearchCheck, Network } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
 
 const CountUp = ({ end, duration = 2000, startOnView = true, suffix = '' }) => {
@@ -54,27 +54,39 @@ const CountUp = ({ end, duration = 2000, startOnView = true, suffix = '' }) => {
 };
 
 const AdvantagesSection = () => {
-  const advantages = [{
-    icon: <Award size={28} />,
-    title: 'מענה הוליסטי',
-    description: 'שילוב ייחודי של ידע משפטי ופיננסי מקיף להבטחת עסקה מוצלחת'
-  }, {
-    icon: <ShieldCheck size={28} />,
-    title: 'מומחיות מוכחת',
-    description: 'יועץ משכנתאות מוסמך ובעל רישיון תיווך מקרקעין עם ניסיון מעשי'
-  }, {
-    icon: <ClipboardCheck size={28} />,
-    title: 'ליווי אישי ומדוקדק',
-    description: 'ירידה לפרטים הקטנים ביותר בכל שלב בעסקה וזיהוי סיכונים מראש'
-  }, {
-    icon: <Clock size={28} />,
-    title: 'זמינות וסבלנות',
-    description: 'זמן אישי לכל לקוח ומענה מהיר לכל שאלה ובקשה לאורך כל התהליך'
-  }, {
-    icon: <Users size={28} />,
-    title: 'ניסיון מוכח',
-    description: 'מאות משפחות שלוו בהצלחה בעסקאות מורכבות עם 100% שביעות רצון'
-  }];
+  // Updated advantages for Shomron
+  const advantages = [
+    {
+      icon: MapPin, // Keep icon or choose a new one
+      title: "התמחות ייחודית ביהודה ושומרון",
+      description: "ניסיון עשיר של 20 שנה בעסקאות מכר באזור, הכרות מעמיקה עם הדרישות הייחודיות של המנהל האזרחי, והבנה מלאה של האתגרים המשפטיים הספציפיים לאזור."
+    },
+    {
+      icon: Scale, // Keep icon or choose a new one
+      title: "מומחיות כפולה: משפטית ופיננסית",
+      description: "ידע דיני מקרקעין ייחודיים לשטחים והבנה פיננסית רחבה עם התמחות במימון - חיוני במיוחד בעסקאות ביהודה ושומרון, בהן רבים מהבנקים נזהרים ממתן משכנתאות."
+    },
+    {
+      icon: Handshake, // Keep icon or choose a new one
+      title: "פתרונות מימון יצירתיים",
+      description: "קשרים עם גורמי מימון בנקאיים וחוץ-בנקאיים, יכולת להציג את העסקה באופן שיקטין את רמת הסיכון בעיני המערכת הבנקאית, וניסיון בהשגת משכנתאות גם במקרים מורכבים."
+    },
+    {
+      icon: SearchCheck, // Keep icon or choose a new one
+      title: "טיפול בקרקעות מורכבות",
+      description: "טיפול בקרקעות בלתי‑רשומות ותיקוני גבולות במינהל האזרחי, זיהוי מוקדם של סיכונים כמו קרקע פרטית פלסטינית, ומניעת הפתעות לא נעימות שעלולות לסכן את העסקה."
+    },
+    {
+      icon: Users, // Keep icon or choose a new one
+      title: "ליווי אישי וזמינות גבוהה",
+      description: "פגישות ביתיות אישיות בישובים, שירות טלפוני וייעוץ מקוון. אנו מבינים את המתח והחששות הנלווים לרכישת נכס ביהודה ושומרון, ולכן מעניקים ליווי אישי וצמוד."
+    },
+    {
+      icon: Network, // Keep icon or choose a new one
+      title: "רשת מקצועית ייעודית לאזור",
+      description: "שיתופי פעולה עם שמאים, יועצי משכנתאות, נוטריונים וגורמים במנהל האזרחי, המאפשרים לנו להעניק מעטפת מקצועית מקיפה ומותאמת לאזור."
+    }
+  ];
   
   // Keep statistics in consistent order for desktop and mobile
   const statistics = [{
@@ -96,15 +108,29 @@ const AdvantagesSection = () => {
   
   return (
     <section id="advantages" className="section-padding py-16 md:py-20 bg-gradient-to-b from-primary-light to-secondary-gray relative overflow-hidden">
+      {/* Decorative elements */}
+      <div 
+        className="absolute top-0 left-0 w-full h-2/3 bg-gradient-to-b from-primary-light to-gray-50 -z-10"
+        aria-hidden="true"
+      ></div>
+      <div 
+        className="hidden lg:block absolute top-10 right-10 w-40 h-40 bg-primary-gold/10 rounded-full -z-10 opacity-70"
+        aria-hidden="true"
+      ></div>
+       <div 
+        className="hidden lg:block absolute bottom-20 left-10 w-60 h-60 bg-primary-gold/5 rounded-full -z-10 opacity-50"
+        aria-hidden="true"
+      ></div>
+      
       <div className="container mx-auto px-5 md:px-8 relative z-10">
         <AnimatedBox animation="fadeIn" duration={1000} threshold={0.05}>
           <div className="flex flex-col items-center">
             <h2 className="section-title text-center text-3xl md:text-5xl mb-4 relative">
-              למה לבחור בליווי משפטי של עו"ד אבי ליפינר?
+              למה לבחור בנו לליווי עסקת הנדל"ן שלכם ביהודה ושומרון?
               <span className="absolute -bottom-2 right-0 w-16 h-1 bg-primary-gold"></span>
             </h2>
             <p className="section-subtitle text-center font-assistant mb-6 text-xl max-w-3xl mx-auto">
-            רכישת דירה היא אחת ההחלטות הפיננסיות המשמעותיות בחייכם. ליווי משפטי מקצועי, המבוסס על ידע מעמיק הן בהיבטים המשפטיים והן בהיבטים המימוניים של העסקה, עושה את ההבדל בין עסקה מוצלחת לבין כאב ראש מתמשך.
+            היתרונות שמעניקים לכם שקט נפשי ובטחון מלא באזור מאתגר משפטית
             </p>
           </div>
         </AnimatedBox>
@@ -121,7 +147,7 @@ const AdvantagesSection = () => {
             >
               <div className="flex justify-center mb-4">
                 <div className="bg-primary-gold/30 rounded-full p-4 inline-block text-primary-gold">
-                  {advantage.icon}
+                  <advantage.icon size={28} className="text-primary-gold" />
                 </div>
               </div>
               <h3 className="text-2xl font-bold mb-3 text-primary-gold">{advantage.title}</h3>
@@ -158,20 +184,6 @@ const AdvantagesSection = () => {
           </a>
         </AnimatedBox>
       </div>
-
-      {/* Decorative elements positioned behind with proper z-index */}
-      <div 
-        className="decorative-element -bottom-16 -left-16 w-64 h-64 bg-primary-gold/10 rounded-full"
-        aria-hidden="true"
-      ></div>
-      <div 
-        className="decorative-element top-1/4 -right-8 w-32 h-32 bg-primary-navy/10 rounded-full"
-        aria-hidden="true"
-      ></div>
-      <div 
-        className="decorative-element top-1/2 left-1/4 w-24 h-24 bg-primary-gold/5 rounded-full"
-        aria-hidden="true"
-      ></div>
     </section>
   );
 };
