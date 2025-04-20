@@ -28,18 +28,12 @@ const LeadForm: React.FC<LeadFormProps> = ({ onSuccess, className = '' }) => {
     setIsSubmitting(true);
 
     try {
-      // Prepare data with source included
-      const submissionData = {
-        ...formData,
-        source: 'shomron-contact-form' // Add source for this form
-      };
-
-      const response = await fetch('https://shomron.lipiner.co.il/api/submit-lead.php', {
+      const response = await fetch('https://real-estate.lipiner.co.il/api/submit-lead.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(submissionData), // Send data with source
+        body: JSON.stringify(formData),
       });
 
       const data = await response.json();

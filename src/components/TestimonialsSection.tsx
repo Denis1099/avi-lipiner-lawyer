@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronRight, ChevronLeft, Quote, Star } from 'lucide-react';
 import AnimatedBox from './AnimatedBox';
@@ -11,35 +12,27 @@ interface Testimonial {
 }
 
 const TestimonialsSection: React.FC = () => {
-  // Updated testimonials for Shomron
   const testimonials: Testimonial[] = [
     {
-      text: "עו\"ד אבי ליפינר ליווה אותנו ברכישת הבית הראשון שלנו באפרת. היו מספר אתגרים מורכבים בנוגע לרישום במינהל האזרחי וקושי משמעותי בהשגת משכנתא. אבי הצליח למצוא לנו פתרון מימון יצירתי עם הון עצמי של 25% בלבד, וטיפל בכל הבירוקרטיה בצורה יעילה שחסכה לנו חודשים של המתנה. הליווי האישי שלו היה מעל ומעבר למצופה.",
-      name: "משפחת לוי",
-      location: "רכשו בית באפרת",
-      rating: 5, // Keep or remove rating
-      projectType: "רכישת בית ביישוב"
+      text: "עו\"ד אבי ליפינר ליווה אותנו ברכישת הדירה הראשונה שלנו. כזוג צעיר, היינו חסרי ניסיון וחששנו מאוד. אבי הוביל אותנו צעד אחר צעד, הסביר כל שלב בבהירות, וגרם לנו להרגיש בטוחים. הידע הפיננסי שלו חסך לנו עשרות אלפי שקלים במשכנתא!",
+      name: "משפחת כהן",
+      location: "קנו דירה בפתח תקווה",
+      rating: 5,
+      projectType: "רכישת דירה"
     },
     {
-      text: "מכרנו נכס עם סוגיות תכנוניות מורכבות באריאל. כאשר התגלו בעיות ברישום ההיסטורי במינהל האזרחי, חשבנו שהעסקה תתבטל. עו\"ד ליפינר ועו\"ד פוקס עבדו במשותף מול המינהל האזרחי, הצליחו לתקן את הרישום ולפתור את הבעיות באופן שהפתיע גם אותנו. הידע והניסיון שלהם ביהודה ושומרון הציל את העסקה.",
-      name: "יעקב ורחל כהן",
-      location: "מכרו נכס באריאל",
-      rating: 5, // Keep or remove rating
-      projectType: "מכירת נכס במורכבות גבוהה"
+      text: "מכרנו דירה שהייתה בבעלותנו כ-30 שנה. אבי ידע לטפל בכל המורכבויות הקשורות למס שבח, תיאום מול הבנק ודרישות המיוחדות של הקונים. הכל התנהל בצורה חלקה והרבה מעבר למה שציפינו.",
+      name: "חיים ושרה לוי",
+      location: "מכרו דירה בתל אביב",
+      rating: 5,
+      projectType: "מכירת דירה"
     },
     {
-      text: "כשכל הבנקים אליהם פנינו סירבו לתת לנו משכנתא לנכס בבית אל בגלל מיקומו, עו\"ד ליפינר לא ויתר. הוא פתח בפנינו אפשרויות מימון שלא הכרנו, עזר לנו לבנות תיק פיננסי מותאם, וליווה אותנו בתהליך מרוכב עד שהשגנו את המימון המלא. ללא הניסיון שלו במקרים דומים ביהודה ושומרון, לא היינו מצליחים לרכוש את הבית.",
-      name: "משפחת אברהמי",
-      location: "רכשו בית בבית אל",
-      rating: 5, // Keep or remove rating
-      projectType: "התמודדות עם בעיות מימון"
-    },
-    {
-      text: "במהלך רכישת ביתנו ביצהר, התגלו בעיות בנסחים העות\'מאניים שאיימו לטרפד את העסקה. עו\"ד ליפינר נעזר בצוות המקצועי שלו, כולל מומחה לבדיקת מסמכים עות\'מאניים, וייצג אותנו בהליך מורכב מול המינהל האזרחי. הוא הצליח להסדיר את כל הרישומים ולהבטיח שהעסקה תושלם ללא עיכובים מיותרים.",
-      name: "דוד ושרה ברקוביץ",
-      location: "רכשו נכס ביצהר",
-      rating: 5, // Keep or remove rating
-      projectType: "עסקה עם בעיות רישום"
+      text: "עסקת המכר שלנו הייתה מורכבת במיוחד וכללה פיצול נכסים ואתגרים משפטיים לא פשוטים. אבי הפגין מקצועיות יוצאת דופן, ידע להתמודד עם כל הסוגיות שעלו, והצליח להביא את העסקה לידי סיום מוצלח.",
+      name: "דוד אברהמי",
+      location: "עסקת מכר מורכבת בירושלים",
+      rating: 5,
+      projectType: "עסקה מורכבת"
     }
   ];
 
@@ -182,17 +175,15 @@ const TestimonialsSection: React.FC = () => {
 
   return (
     <section id="testimonials" className="section-padding py-16 bg-gradient-to-b from-primary-light to-gray-50 relative overflow-hidden">
-      <div className="container mx-auto px-1 md:px-8">
+      <div className="container mx-auto px-5 md:px-8">
         <AnimatedBox animation="fadeIn">
-          <div className="flex flex-col items-center ">
+          <div className="flex flex-col items-center">
             <h2 className="section-title text-center text-3xl md:text-5xl mb-3 relative">
-              {/* Updated Section Title */}
-              לקוחות מספרים על הליווי המשפטי שלנו ביהודה ושומרון
+              לקוחות מספרים על הליווי המשפטי שקיבלו
               <span className="absolute -bottom-2 right-0 w-16 h-1 bg-primary-gold"></span>
             </h2>
             <p className="text-center text-lg text-black/80 max-w-3xl mx-auto">
-              {/* Updated Section Subtitle */}
-              המטרה שלנו היא לספק שירות ברמה הגבוהה ביותר, עם מענה מותאם לאתגרים הייחודיים של האזור
+              המטרה שלנו היא לספק שירות ברמה הגבוהה ביותר וליצור חוויית לקוח יוצאת דופן
             </p>
           </div>
         </AnimatedBox>
@@ -225,7 +216,7 @@ const TestimonialsSection: React.FC = () => {
               <Quote size={60} opacity={0.4} />
             </div>
             
-            <div className="pt-8 pb-40 md:pb-28 px-6 sm:px-12 relative z-10">
+            <div className="pt-16 pb-16 px-6 sm:px-12 relative z-10">
               <div className="flex flex-col items-center min-h-[280px] relative">
                 {testimonials.map((testimonial, index) => (
                   <div
@@ -251,11 +242,11 @@ const TestimonialsSection: React.FC = () => {
                       
                       {testimonial.rating && renderStars(testimonial.rating)}
                       
-                      <p className="text-base md:text-xl px-4 md:px-8 pt-4 text-black mb-0 leading-relaxed text-center max-w-2xl mx-auto">
+                      <p className="text-xl text-black mb-10 leading-relaxed text-center max-w-2xl mx-auto">
                         {testimonial.text}
                       </p>
                       
-                      <div className="text-center mt-2 md:mt-6 border-t border-gray-100 pt-6 w-32">
+                      <div className="text-center mt-6 border-t border-gray-100 pt-6 w-32">
                         <p className="font-bold text-primary-gold text-2xl font-karantina">
                           {testimonial.name}
                         </p>
@@ -269,7 +260,7 @@ const TestimonialsSection: React.FC = () => {
               </div>
             </div>
             
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-3 space-x-reverse mt-4">
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center space-x-3 space-x-reverse">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
@@ -291,18 +282,18 @@ const TestimonialsSection: React.FC = () => {
           
           <button
             onClick={goToPrevSlide}
-            className="absolute top-1/2 right-0 md:right-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
+            className="absolute top-1/2 right-2 md:right-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
             aria-label="המלצה קודמת"
           >
-                        <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
+            <ChevronRight size={24} />
           </button>
           
           <button
             onClick={goToNextSlide}
-            className="absolute top-1/2 left-0 md:left-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
+            className="absolute top-1/2 left-2 md:left-6 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 text-primary-gold z-20 hover:bg-primary-gold hover:text-white"
             aria-label="המלצה הבאה"
           >
-            <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
+            <ChevronLeft size={24} />
           </button>
         </div>
 
